@@ -5,9 +5,11 @@
 <html lang="ja">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>MARBLE|MARVELが好きになる映画検索サイト</title>
     <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+    <div id="fb-root"></div>
+    <script async defer crossorigin="anonymous" src="https://connect.facebook.net/ja_JP/sdk.js#xfbml=1&version=v9.0&appId=1265845113778425&autoLogAppEvents=1" nonce="EsAvtUL5"></script>
+
 </head>
 <body>
     <header>
@@ -15,6 +17,7 @@
             <h1><a href="{% url 'app:index' %}">MARBLE</a></h1> 
             <div class="header-menu">
                 {% if request.user.is_authenticated %}
+                    <h2>{{user.email}}さんがログイン中です</h2>
                     <a href="{% url 'app:logout' %}">ログアウト</a>
                 {% else %}
                     <a href="{% url 'app:login' %}">ログイン</a>

@@ -11,3 +11,5 @@ db.sqlite3-journal
 
 venv
 .vscode
+
+*settings.py

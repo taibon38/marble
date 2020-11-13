@@ -1,7 +1,15 @@
 {% extends 'app/base.html' %}
 
 {% block content %}
-<form class="form-signin" method="POST">{% csrf_token %}
+<h2>ソーシャルサービスを選択してログイン</h2>
+<ul>
+    <li><a href="{% url 'social:begin' 'google-oauth2' %}">Googleでログイン</a></li> 
+    <li><a href="{% url 'social:begin' 'facebook' %}">Facebookでログイン</a></li> 
+</ul>
+<div class="fb-login-button" data-size="large" data-button-type="continue_with" data-layout="rounded" data-auto-logout-link="false" data-use-continue-as="false" data-width=""></div>
+<a href="{% url 'app:index' %}">戻る</a>
+
+<!-- <form class="form-signin" method="POST">{% csrf_token %}
     {% if form.errors %} 
         <p>メールアドレスもしくはパスワードが間違っています</p>
     {% endif %}
@@ -13,6 +21,6 @@
     <input type="password" name="password">
     <br>
     <input type="submit" value="ログイン">
-</form>
+</form> -->
 
 {% endblock %}

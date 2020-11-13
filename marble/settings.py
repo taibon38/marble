@@ -39,6 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'users',
     'app',
+    'social_django', #SNS認証で利用
 ]
 
 AUTH_USER_MODEL = 'users.User' 
@@ -52,6 +53,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'social_django.middleware.SocialAuthExceptionMiddleware', #SNS認証で利用
 ]
 
 ROOT_URLCONF = 'marble.urls'
@@ -67,6 +69,8 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'social_django.context_processors.backends',  # SNS認証で利用
+                'social_django.context_processors.login_redirect', # SNS認証で利用
             ],
         },
     },
@@ -129,3 +133,25 @@ STATIC_URL = '/static/'
 LOGIN_URL = 'app:login'
 LOGIN_REDIRECT_URL = 'app:index'
 LOGOUT_REDIRECT_URL = 'app:index'
+
+
+#SNS認証機能作成時に定義
+AUTHENTICATION_BACKENDS = (
+    'social_core.backends.open_id.OpenIdAuth',
+    'social_core.backends.google.GoogleOpenId',
+    'social_core.backends.google.GoogleOAuth2',
+
+    'social_core.backends.github.GithubOAuth2',
+    'social_core.backends.twitter.TwitterOAuth',
+    'social_core.backends.facebook.FacebookOAuth2',
+
+    'django.contrib.auth.backends.ModelBackend', #これは必ず入れる。（消すとDjango認証Modelを介してログインできなくなる
+)
+
+#Googleログイン設定
+SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = '50481614333-6amb86jgeu59ubhbfid9rilqkragu44n.apps.googleusercontent.com'  # クライアントID
+SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = 'tBeUK29KvfnCd_2LQ-Jdvp3w' # クライアント シークレット
+
+#Facebookログイン設定
+SOCIAL_AUTH_FACEBOOK_KEY = '1265845113778425'  # アプリID
+SOCIAL_AUTH_FACEBOOK_SECRET = 'dd49e624f36a3e69cb8ed659f0cc37d5'  # app secret
