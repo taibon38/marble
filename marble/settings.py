@@ -25,7 +25,7 @@ SECRET_KEY = 'cqxm=fpw2)#dnob1))8p1neos55p-@*y5^!-e$x+)fs4c(kf+i'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ['127.0.0.1','0.0.0.0']
 
 
 # Application definition
@@ -147,7 +147,7 @@ AUTHENTICATION_BACKENDS = (
 
     'django.contrib.auth.backends.ModelBackend', #これは必ず入れる。（消すとDjango認証Modelを介してログインできなくなる
 )
-
+         
 #Googleログイン設定
 SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = '50481614333-6amb86jgeu59ubhbfid9rilqkragu44n.apps.googleusercontent.com'  # クライアントID
 SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = 'tBeUK29KvfnCd_2LQ-Jdvp3w' # クライアント シークレット
