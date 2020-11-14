@@ -25,7 +25,7 @@ SECRET_KEY = 'cqxm=fpw2)#dnob1))8p1neos55p-@*y5^!-e$x+)fs4c(kf+i'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['127.0.0.1','0.0.0.0']
+ALLOWED_HOSTS = ['127.0.0.1','0.0.0.0','localhost']
 
 
 # Application definition
@@ -147,11 +147,26 @@ AUTHENTICATION_BACKENDS = (
 
     'django.contrib.auth.backends.ModelBackend', #これは必ず入れる。（消すとDjango認証Modelを介してログインできなくなる
 )
-         
+        
+
+
+import environ
+
+# settings.pyの位置を起点として３つ上の親ディレクトリを参照。
+BASE_DIR = environ.Path(__file__) - 3
+
+env = environ.Env()
+
+# 環境変数でDJANGO_READ_ENV_FILEをTrueにしておくと.envを読んでくれる。
+READ_ENV_FILE = env.bool('DJANGO_READ_ENV_FILE', default=False)
+if READ_ENV_FILE:
+    env_file = str(BASE_DIR.path('.env'))
+    env.read_env(env_file)
+
 #Googleログイン設定
-SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = '50481614333-6amb86jgeu59ubhbfid9rilqkragu44n.apps.googleusercontent.com'  # クライアントID
-SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = 'tBeUK29KvfnCd_2LQ-Jdvp3w' # クライアント シークレット
+SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = env('SOCIAL_AUTH_GOOGLE_OAUTH2_KEY') # クライアントID
+SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = env('SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET')# クライアント シークレット
 
 #Facebookログイン設定
-SOCIAL_AUTH_FACEBOOK_KEY = '1265845113778425'  # アプリID
-SOCIAL_AUTH_FACEBOOK_SECRET = 'dd49e624f36a3e69cb8ed659f0cc37d5'  # app secret
+SOCIAL_AUTH_FACEBOOK_KEY = env('SOCIAL_AUTH_FACEBOOK_KEY') # アプリID
+SOCIAL_AUTH_FACEBOOK_SECRET = env('SOCIAL_AUTH_FACEBOOK_SECRET') # app secret
