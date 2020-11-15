@@ -152,21 +152,30 @@ AUTHENTICATION_BACKENDS = (
 
 import environ
 
-# settings.pyの位置を起点として３つ上の親ディレクトリを参照。
-BASE_DIR = environ.Path(__file__) - 3
+# settings.pyの位置を起点として1つ上の親ディレクトリを参照。
+BASE_DIR = environ.Path(__file__) - 1
 
 env = environ.Env()
+env.read_env('.env')
 
-# 環境変数でDJANGO_READ_ENV_FILEをTrueにしておくと.envを読んでくれる。
-READ_ENV_FILE = env.bool('DJANGO_READ_ENV_FILE', default=False)
-if READ_ENV_FILE:
-    env_file = str(BASE_DIR.path('.env'))
-    env.read_env(env_file)
+# # 環境変数でDJANGO_READ_ENV_FILEをTrueにしておくと.envを読んでくれる。
+# READ_ENV_FILE = env.bool('DJANGO_READ_ENV_FILE', default=False)
+# if READ_ENV_FILE:
+#     # env_file = str(BASE_DIR.path('.env'))
+#     env.read_env('.env')
 
-#Googleログイン設定
+# Googleログイン設定
 SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = env('SOCIAL_AUTH_GOOGLE_OAUTH2_KEY') # クライアントID
 SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET = env('SOCIAL_AUTH_GOOGLE_OAUTH2_SECRET')# クライアント シークレット
 
-#Facebookログイン設定
+# Facebookログイン設定
 SOCIAL_AUTH_FACEBOOK_KEY = env('SOCIAL_AUTH_FACEBOOK_KEY') # アプリID
 SOCIAL_AUTH_FACEBOOK_SECRET = env('SOCIAL_AUTH_FACEBOOK_SECRET') # app secret
+
+# Twitterログイン設定
+SOCIAL_AUTH_TWITTER_KEY = env('SOCIAL_AUTH_TWITTER_KEY') #APIID
+SOCIAL_AUTH_TWITTER_SECRET = env('SOCIAL_AUTH_TWITTER_SECRET')
+SOCIAL_AUTH_LOGIN_REDIRECT_URL = '/index'
+
+# メールをコンソールに表示する
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'

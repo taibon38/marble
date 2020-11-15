@@ -4,24 +4,24 @@
 {% block content %}
 
 {% load static %}
-<h2>ソーシャルサービスを選択してログイン</h2>
+<h2>SNSアカウントで登録・ログイン</h2>
 <ul>
     <li><a href="{% url 'social:begin' 'google-oauth2' %}"><img src="{% static 'app/google.png' %}"></a></li> 
-    <li><a href="{% url 'social:begin' 'facebook' %}">Facebookでログイン</a></li> 
+    <li><div class="fb-login-button" data-size="large" data-button-type="continue_with" data-layout="rounded" data-auto-logout-link="false" data-use-continue-as="false" data-width=""></div></li>
+    <li><a href="{% url 'social:begin' 'twitter' %}">Twitterでログイン</a></li>
+    <!-- <li><a href="{% url 'social:begin' 'facebook' %}">Facebookでログイン</a></li>  -->
 </ul>
 <div class="card col-md-6">
     <div class="card-body">
         <a href="{% url 'app:user_create' %}" class="btn btn-success btn-lg btn-block" >会員登録</a>
     </div>
-</div><
-<div class="fb-login-button" data-size="large" data-button-type="continue_with" data-layout="rounded" data-auto-logout-link="false" data-use-continue-as="false" data-width=""></div>
-<a href="{% url 'app:index' %}">戻る</a>
+</div><a href="{% url 'app:index' %}">戻る</a>
 
-<!-- <form class="form-signin" method="POST">{% csrf_token %}
+<form class="form-signin" method="POST">{% csrf_token %}
     {% if form.errors %} 
         <p>メールアドレスもしくはパスワードが間違っています</p>
     {% endif %}
-    <h2>ログイン</h2>
+    <h2>メールアドレスでログイン</h2>
     <label>メールアドレス</label>
     <input name="username">
     <br>
@@ -29,6 +29,6 @@
     <input type="password" name="password">
     <br>
     <input type="submit" value="ログイン">
-</form> -->
+</form>
 
 {% endblock %}
