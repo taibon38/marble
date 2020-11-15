@@ -1,11 +1,19 @@
+
 {% extends 'app/base.html' %}
 
 {% block content %}
+
+{% load static %}
 <h2>ソーシャルサービスを選択してログイン</h2>
 <ul>
-    <li><a href="{% url 'social:begin' 'google-oauth2' %}">Googleでログイン</a></li> 
+    <li><a href="{% url 'social:begin' 'google-oauth2' %}"><img src="{% static 'app/google.png' %}"></a></li> 
     <li><a href="{% url 'social:begin' 'facebook' %}">Facebookでログイン</a></li> 
 </ul>
+<div class="card col-md-6">
+    <div class="card-body">
+        <a href="{% url 'app:user_create' %}" class="btn btn-success btn-lg btn-block" >会員登録</a>
+    </div>
+</div><
 <div class="fb-login-button" data-size="large" data-button-type="continue_with" data-layout="rounded" data-auto-logout-link="false" data-use-continue-as="false" data-width=""></div>
 <a href="{% url 'app:index' %}">戻る</a>
 
