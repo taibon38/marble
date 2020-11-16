@@ -18,6 +18,8 @@ from django.urls import path,include
 from django.urls import path
 from django.contrib.auth import views as auth_views
 from app import views
+from django.conf import settings #ImageFieldの画像表示目的
+from django.conf.urls.static import static #ImageFieldの画像表示目的
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -25,3 +27,6 @@ urlpatterns = [
     path('oauth/',include('social_django.urls',namespace='social')),
     path('accounts/profile/',views.index,name='index'),
 ]
+
+# 画像表示目的で追加
+urlpatterns += static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)

@@ -179,3 +179,11 @@ SOCIAL_AUTH_LOGIN_REDIRECT_URL = '/index'
 
 # メールをコンソールに表示する
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
+
+
+# ImageFieldのアップロード先
+import os
+
+MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
+MEDIA_URL = '/media/'
