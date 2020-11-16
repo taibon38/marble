@@ -45,7 +45,7 @@ class User(AbstractBaseUser, PermissionsMixin):
     """カスタムユーザーモデル"""
     name = models.TextField("ユーザー名",blank=False,max_length=100)
     email = models.EmailField("メールアドレス",unique=True)
-    profile_icon = ImageField(upload_to='icons')
+    profile_icon = ImageField("プロフィールアイコン",upload_to='profile_icons')
     is_staff = models.BooleanField("is_staff", default=False) 
     is_active = models.BooleanField("is_active", default=True)
     date_joined = models.DateTimeField("date_joined",default=timezone.now)
@@ -58,3 +58,7 @@ class User(AbstractBaseUser, PermissionsMixin):
     class Meta:
         verbose_name = "user" 
         verbose_name_plural = "users"
+
+    # メールの送信に関するメソッド
+    def email_user(self, subject, message, from_email=None, **kwargs):
+        send_mail(subject, message, from_email, [self.email], **kwargs)
