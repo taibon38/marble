@@ -1,6 +1,6 @@
 from django.contrib import admin
 from django.contrib.admin.options import ModelAdmin
-from .models import Movie, Character, Category ,MovieCategory, MovieCharacter
+from .models import Movie, Character, Category, MovieCategory, MovieCharacter
 
 # Register your models here.
 
@@ -13,41 +13,59 @@ class MovieCharacterInline(admin.TabularInline):
     extra = 1
 
 class MovieAdmin(admin.ModelAdmin):
-    inlines = [MovieCategoryInline, MovieCharacterInline] #MovieとCategoryを同時に編集できるようにInlineを設定。
+    #MovieとCategory、MovieとCharacterを同時に編集できるようにInlineを設定。
+    inlines = [MovieCategoryInline, MovieCharacterInline] 
     list_display = (
         'id',
         'title',
         'publication_date',
         'screening_time',
-        'movie_icon')
+        'movie_icon',
+        'short_sumally',
+        'short_detail',
+        '_categories',
+        '_characters',)
+
     list_display_links = (
         'id',
         'title',
-        'publication_date',
-        'screening_time',
-        'movie_icon')
-    
+        )
 
-class CaracterAdmin(admin.ModelAdmin):
+    def _categories(self,movie):
+        return ','.join([category.title for category in movie.categories.all()])
+
+    def _characters(self,movie):
+        return ','.join([character.name for character in movie.characters.all()])
+    
+class CharacterAdmin(admin.ModelAdmin):
+    #MovieとCharacterを同時に編集できるようにInlineを設定。
     inlines = [MovieCharacterInline]
     list_display = (
         'id',
-        'name',)
+        'name',
+        '_movies')
     list_display_links = (
         'id',
         'name',)
 
+    def _movies(self,character):
+        return ','.join([movie.title for movie in character.movies.all()])
 
 class CategoryAdmin(admin.ModelAdmin):
-    inlines = [MovieCategoryInline] #MovieとCategoryを同時に編集できるようにInlineを設定。
+    #MovieとCategoryを同時に編集できるようにInlineを設定。
+    inlines = [MovieCategoryInline] 
     list_display = (
         'id',
-        'title',)
+        'title',
+        '_movies')
     list_display_links = (
         'id',
         'title',)
+    
+    def _movies(self,category):
+        return ','.join([movie.title for movie in category.movies.all()])
 
 
 admin.site.register(Movie, MovieAdmin)
-admin.site.register(Character, CaracterAdmin)
+admin.site.register(Character, CharacterAdmin)
 admin.site.register(Category, CategoryAdmin)
