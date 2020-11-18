@@ -25,7 +25,7 @@ class MyUserAdmin(UserAdmin):
     """カスタムユーザーモデルの Admin"""
     fieldsets = (
         (None, {
-            'fields': ('email', 'password', 'profile_icon')}),
+            'fields': ('name','email', 'password', 'profile_icon')}),
         (_('Permissions'), {'fields':
                             ('is_active', 'is_staff', 'is_superuser', 'groups',
                                 'user_permissions')}),
@@ -40,7 +40,7 @@ class MyUserAdmin(UserAdmin):
     )
     form = MyUserChangeForm
     add_form = MyUserCreationForm
-    list_display = ('email', 'is_staff')
+    list_display = ('email','name', 'is_staff')
     list_filter = ('is_staff', 'is_superuser', 'is_active', 'groups')
     search_fields = ('email',)
     ordering = ('email',)

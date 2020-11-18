@@ -5,6 +5,7 @@ from django.core.mail import send_mail
 from django.utils import timezone
 from django.db.models.fields.files import ImageField
 from django.contrib.auth.base_user import BaseUserManager
+from app.models import Movie, Character
 
 # Create your models here.
 
@@ -18,7 +19,7 @@ class UserManager(BaseUserManager):
         # emailを必須にする
         if not email:
             raise ValueError('メールアドレスは必須です')
-        # emailでUserモデルを作成
+        # emailでUserモデルを作成FavedMovie
         email = self.normalize_email(email)
         user = self.model(email=email, **extra_fields)
         user.set_password(password)
@@ -42,12 +43,34 @@ class UserManager(BaseUserManager):
 
 class User(AbstractBaseUser, PermissionsMixin):
     """カスタムユーザーモデル"""
-    name = models.TextField("ユーザー名", blank=False, max_length=100)
+    name = models.CharField("ユーザー名", blank=False, max_length=100)
     email = models.EmailField("メールアドレス", unique=True)
     profile_icon = ImageField("プロフィールアイコン", upload_to='profile_icons')
     is_staff = models.BooleanField("is_staff", default=False)
     is_active = models.BooleanField("is_active", default=True)
     date_joined = models.DateTimeField("date_joined", default=timezone.now)
+    faved_characters = models.ManyToManyField(
+        Character,
+        verbose_name='好きなキャラ',
+        through="FavedCharacter",
+        blank=True,
+    )
+
+    faved_movies = models.ManyToManyField(
+        Movie,
+        verbose_name='お気に入り映画',
+        through="FavedMovie",
+        blank=True,
+        related_name='faved_movie'
+    )
+
+    watched_movies = models.ManyToManyField(
+        Movie,
+        verbose_name='閲覧済',
+        through="WatchedMovie",
+        blank=True,
+        related_name='watched_movie'
+    )
 
     objects = UserManager()
     USERNAME_FIELD = "email"
@@ -61,3 +84,20 @@ class User(AbstractBaseUser, PermissionsMixin):
     # メールの送信に関するメソッド
     def email_user(self, subject, message, from_email=None, **kwargs):
         send_mail(subject, message, from_email, [self.email], **kwargs)
+
+
+# お気に入り登録用のclass
+class FavedCharacter(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    character = models.ForeignKey(Character, on_delete=models.CASCADE)
+    created_at = models.DateTimeField(auto_now_add=True)
+
+class FavedMovie(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    movie = models.ForeignKey(Movie, on_delete=models.CASCADE)
+    created_at = models.DateTimeField(auto_now_add=True)
+
+class WatchedMovie(models.Model):
+    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    movie = models.ForeignKey(Movie, on_delete=models.CASCADE)
+    created_at = models.DateTimeField(auto_now_add=True)
