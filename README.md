@@ -9,6 +9,8 @@ MARBLE（MARVEL + ASSEMBLE)とは、MARVEL好きによる、MARVEL好きのた�
 - 好きなキャラクター/楽しみ方で検索も可能
  
 # Requirement
+
+### package
 ```
 Package                Version
 ---------------------- ---------
@@ -19,6 +21,13 @@ flake8                 3.8.4 →pep8通りにコードが書けているかを�
 Pillow                 8.0.1 →画像ファイルを利用
 requests               2.25.0 →requestsを利用
 social-auth-app-django 4.0.0 →SNSログイン実装で利用
+```
+### design
+```
+Bootstrap https://getbootstrap.com/
+jQuery https://jquery.com/
+popper.js https://github.com/popperjs/popper-core/releases
+
 ```
 
 # Installation
