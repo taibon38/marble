@@ -1,0 +1,15 @@
+ul{
+    list-style: none;
+}
+
+.header-menu{
+    white-space:nowrap;
+}
+
+.profile_icon{
+    width: 100%;
+    max-width: 30px;
+    height: 30px;
+    object-fit: cover;
+    border-radius: 4px;
+}

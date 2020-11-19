@@ -6,26 +6,65 @@
 <head>
     <meta charset="UTF-8">
     <title>MARBLE|MARVELが好きになる映画検索サイト</title>
-    <link rel="stylesheet" type="text/css" href="{% static 'css/style.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'app/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" type="text/css" href="{% static 'app/css/style.css' %}">
     <div id="fb-root"></div>
     <script async defer crossorigin="anonymous" src="https://connect.facebook.net/ja_JP/sdk.js#xfbml=1&version=v9.0&appId=1265845113778425&autoLogAppEvents=1" nonce="EsAvtUL5"></script>
 
 </head>
 <body>
     <header>
-        <div class="container">
-            <h1><a href="{% url 'app:index' %}">MARBLE</a></h1> 
-            <div class="header-menu">
-                {% if request.user.is_authenticated %}
-                    <h2>{{user.email}}さんがログイン中です</h2>
-                    <a href="{% url 'app:logout' %}">ログアウト</a>
-                {% else %}
-                    <a href="{% url 'app:login' %}">ログイン</a>
-                {% endif %}
-            </div>
-        </div>
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+            <a href="{% url 'app:index' %}">MARBLE</a>
+            <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#Navber" aria-controls="Navber" aria-expanded="false" aria-label="ナビゲーションの切替">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+        
+            <div class="collapse navbar-collapse" id="Navber">
+                <ul class="navbar-nav mr-auto">
+                    <li class="nav-item active">
+                        <a class="nav-link" href="#">ホーム <span class="sr-only">(現位置)</span></a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#">リンク</a>
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a href="#" class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        ドロップダウン
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="#">メニュー1</a>
+                        <a class="dropdown-item" href="#">メニュー2</a>
+                        <div class="dropdown-divider"></div>
+                        <a class="dropdown-item" href="#">その他</a>
+                    </div>
+                        </li>
+                        <li class="nav-item">
+                        <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">無効</a>
+                        </li>
+                </ul>
+                <div >
+                    {% if request.user.is_authenticated %}
+                        <img src={{user.profile_icon.url}}  class="profile_icon">
+                        <nobr class="text-light">{{user.username}}さん。こんにちは。</nobr>
+                        <a href="{% url 'app:logout' %}">ログアウト</a>
+                    {% else %}
+                        <a href="{% url 'app:login' %}">ログイン</a>
+                    {% endif %}
+                </div>
+                
+                <form class="form-inline my-2 my-lg-0">
+                    <input type="search" class="form-control mr-sm-2" placeholder="作品名/キャラ名で検索" aria-label="作品名/キャラ名で検索">
+                    <button type="submit" class="btn btn-outline-success my-2 my-sm-0">検索</button>
+                </form>
+            </div><!-- /.navbar-collapse -->
+        </nav>
+
     </header>
     <div class="container">
+
+
+
         {% block content %}{% endblock %}
     </div>
 </body>
