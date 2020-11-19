@@ -16,6 +16,7 @@ Package                Version
 ---------------------- ---------
 autopep8               1.5.4  →autopep8 --in-place --aggressive --aggressive ファイル名 で、コードを整型
 Django                 3.1.3 →Djangoを利用
+django-bootstrap4      2.3.1 →bootstrap4を利用
 django-environ         0.4.5 →.envを利用
 flake8                 3.8.4 →pep8通りにコードが書けているかを確認
 Pillow                 8.0.1 →画像ファイルを利用
@@ -29,6 +30,26 @@ jQuery https://jquery.com/
 popper.js https://github.com/popperjs/popper-core/releases
 
 ```
+
+### dirctory
+```
+marble
+└── app
+    └── static
+        └── app
+            ├── css
+            │   ├── bootstrap.min.css
+            │   └── bootstrap.min.css.map
+            └── js
+                ├── bootstrap.bundle.min.js
+                ├── bootstrap.bundle.min.js.map
+                ├── jquery-3.4.1.min.js
+                └── jquery-3.4.1.min.map
+
+*.map ファイルは、ブラウザーの開発者ツールで、JavaScriptのデバッグをしたり、HTMLの要素を見てCSSを検証したりする際に、元の行番号を出すためのものです。なくても動作はします。
+bootstrap.bundle.min.js は、Popper.js を含む（バンドルしている）ものです。
+```
+
 
 # Installation
  
