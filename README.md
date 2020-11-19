@@ -9,7 +9,7 @@ MARBLE（MARVEL + ASSEMBLE)とは、MARVEL好きによる、MARVEL好きのた�
 - 好きなキャラクター/楽しみ方で検索も可能
  
 # Requirement
- 
+```
 Package                Version
 ---------------------- ---------
 asgiref                3.3.1
@@ -42,7 +42,7 @@ social-auth-core       3.3.3
 sqlparse               0.4.1
 toml                   0.10.2
 urllib3                1.26.2
-
+```
 # Installation
  
 ```bash
