@@ -19,7 +19,7 @@ from django.views import generic
 from .forms import (
     LoginForm, UserCreateForm
 )
-from django.core.mail import BadHeaderError #送信時のエラー解消目的
+from django.core.mail import BadHeaderError  # 送信時のエラー解消目的
 
 User = get_user_model()
 
@@ -28,7 +28,6 @@ User = get_user_model()
 
 def index(request):
     return render(request, 'app/index.html')
-
 
 def signup(request):
     if request.method == 'POST':
@@ -46,6 +45,8 @@ def signup(request):
     return render(request, 'app/signup.html', {'form': form})
 
 # メール認証時に追加
+
+
 class UserCreate(generic.CreateView):
     """ユーザー仮登録"""
     template_name = 'app/user_create.html'
@@ -69,10 +70,15 @@ class UserCreate(generic.CreateView):
             'user': user,
         }
 
-        subject = render_to_string('app/mail_template/create/subject.txt', context).strip() #.strip()で改行を取り除く
-        message = render_to_string('app/mail_template/create/message.txt', context).strip()
+        subject = render_to_string(
+            'app/mail_template/create/subject.txt',
+            context).strip()  # .strip()で改行を取り除く
+        message = render_to_string(
+            'app/mail_template/create/message.txt',
+            context).strip()
 
-        user.email_user(subject, message) #宛先１名に対する送信メソッド。user.email_user('メールの件名', 'メールの本文')
+        # 宛先１名に対する送信メソッド。user.email_user('メールの件名', 'メールの本文')
+        user.email_user(subject, message)
         return redirect('app:user_create_done')
 
 
@@ -84,7 +90,10 @@ class UserCreateDone(generic.TemplateView):
 class UserCreateComplete(generic.TemplateView):
     """メール内URLアクセス後のユーザー本登録"""
     template_name = 'app/user_create_complete.html'
-    timeout_seconds = getattr(settings, 'ACTIVATION_TIMEOUT_SECONDS', 60*60*24)  # デフォルトでは1日以内
+    timeout_seconds = getattr(
+        settings,
+        'ACTIVATION_TIMEOUT_SECONDS',
+        60 * 60 * 24)  # デフォルトでは1日以内
 
     def get(self, request, **kwargs):
         """tokenが正しければ本登録."""
