@@ -37,9 +37,12 @@ class Movie(models.Model):
     @property
     def short_sumally(self):
         return truncatechars(self.sumally, 10)
+    short_sumally.fget.short_description = 'あらすじ'
 
+    @property
     def short_detail(self):
         return truncatechars(self.detail, 10)
+    short_detail.fget.short_description = '解説'
 
 class Character(models.Model):
     """キャラクター"""

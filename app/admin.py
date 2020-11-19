@@ -33,9 +33,12 @@ class MovieAdmin(admin.ModelAdmin):
 
     def _categories(self,movie):
         return ','.join([category.title for category in movie.categories.all()])
+    _categories.short_description = '楽しみ方'
 
     def _characters(self,movie):
         return ','.join([character.name for character in movie.characters.all()])
+    _characters.short_description = '出演キャラ'
+        
     
 class CharacterAdmin(admin.ModelAdmin):
     #MovieとCharacterを同時に編集できるようにInlineを設定。

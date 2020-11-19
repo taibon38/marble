@@ -1,3 +1,4 @@
+from django.contrib.auth import get_user_model
 from django.db import models
 from django.contrib.auth.models import PermissionsMixin
 from django.contrib.auth.base_user import AbstractBaseUser
@@ -16,9 +17,9 @@ class UserManager(BaseUserManager):
     use_in_migrations = True
 
     def _create_user(self, email, password, **extra_fields):
-        # emailを必須にする
-        if not email:
-            raise ValueError('メールアドレスは必須です')
+        # # emailを必須にする
+        # if not email:
+        #     raise ValueError('メールアドレスは必須です')
         # emailでUserモデルを作成FavedMovie
         email = self.normalize_email(email)
         user = self.model(email=email, **extra_fields)
@@ -43,8 +44,8 @@ class UserManager(BaseUserManager):
 
 class User(AbstractBaseUser, PermissionsMixin):
     """カスタムユーザーモデル"""
-    name = models.CharField("ユーザー名", blank=False, max_length=100)
-    email = models.EmailField("メールアドレス", unique=True)
+    username = models.CharField("ユーザー名", unique=True, blank=False, max_length=100)
+    email = models.EmailField("メールアドレス") 
     profile_icon = ImageField("プロフィールアイコン", upload_to='profile_icons')
     is_staff = models.BooleanField("is_staff", default=False)
     is_active = models.BooleanField("is_active", default=True)
@@ -73,7 +74,7 @@ class User(AbstractBaseUser, PermissionsMixin):
     )
 
     objects = UserManager()
-    USERNAME_FIELD = "email"
+    USERNAME_FIELD = "username"
     EMAIL_FIELD = "email"
     REQUIRED_FIELDS = []
 
@@ -88,16 +89,17 @@ class User(AbstractBaseUser, PermissionsMixin):
 
 # お気に入り登録用のclass
 class FavedCharacter(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    user = models.ForeignKey(get_user_model(), on_delete=models.CASCADE)
     character = models.ForeignKey(Character, on_delete=models.CASCADE)
     created_at = models.DateTimeField(auto_now_add=True)
 
+
 class FavedMovie(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    user = models.ForeignKey(get_user_model(), on_delete=models.CASCADE)
     movie = models.ForeignKey(Movie, on_delete=models.CASCADE)
     created_at = models.DateTimeField(auto_now_add=True)
 
 class WatchedMovie(models.Model):
-    user = models.ForeignKey(User, on_delete=models.CASCADE)
+    user = models.ForeignKey(get_user_model(), on_delete=models.CASCADE)
     movie = models.ForeignKey(Movie, on_delete=models.CASCADE)
     created_at = models.DateTimeField(auto_now_add=True)
