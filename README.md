@@ -1,4 +1,4 @@
-# marble
+# MARBLE
 
 MARBLE（MARVEL + ASSEMBLE)とは、MARVEL好きによる、MARVEL好きのための映画検索サイトです。
 
