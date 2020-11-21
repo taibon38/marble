@@ -32,8 +32,8 @@ def index(request):
     return render(request, 'app/index.html')
 
 
-def character(request):
-    character = get_object_or_404(Character, pk=id)
+def character(request, pk):
+    character = get_object_or_404(Character, pk=pk)
     return render(request, 'app/character.html', {'character': character})
 
 
