@@ -1,5 +1,5 @@
 from django.contrib.auth.forms import UserCreationForm
-from django.shortcuts import render, redirect
+from django.shortcuts import get_object_or_404, render, redirect
 from django.contrib.auth import authenticate, login
 from .forms import CustomUserCreationForm
 from django.shortcuts import render
@@ -21,6 +21,8 @@ from .forms import (
 )
 from django.core.mail import BadHeaderError  # 送信時のエラー解消目的
 
+from .models import Character
+
 User = get_user_model()
 
 
@@ -28,6 +30,12 @@ User = get_user_model()
 
 def index(request):
     return render(request, 'app/index.html')
+
+
+def character(request):
+    character = get_object_or_404(Character, pk=id)
+    return render(request, 'app/character.html', {'character': character})
+
 
 def signup(request):
     if request.method == 'POST':
