@@ -1,0 +1,11 @@
+{% extends 'app/base.html' %}
+{% load static %}
+
+{% block content %}
+キャラクターページです
+
+<h2>{{character.name}}</h2>
+<img src="{{character.character_icon.url}}" class="character-icon">
+
+
+{% endblock %}

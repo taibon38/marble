@@ -37,4 +37,8 @@ urlpatterns = [
         'user_create/complete/<token>/',
         views.UserCreateComplete.as_view(),
         name='user_create_complete'),
+    path(
+        'character/<int:pk>',
+        views.character,
+        name='character'),
 ]
