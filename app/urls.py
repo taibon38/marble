@@ -41,4 +41,8 @@ urlpatterns = [
         'character/<int:pk>',
         views.character,
         name='character'),
+    path(
+        'movie/<int:pk>',
+        views.movie,
+        name='movie'),
 ]
