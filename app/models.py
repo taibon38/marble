@@ -17,7 +17,7 @@ class Movie(models.Model):
     detail = models.TextField(verbose_name='解説', blank=True)
     movie_icon = models.ImageField(
         verbose_name='作品アイコン',
-        upload_to='movie-icons',
+        upload_to='movie_icons',
         null=True,
         blank=True)
     categories = models.ManyToManyField(

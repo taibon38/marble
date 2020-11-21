@@ -21,7 +21,7 @@ from .forms import (
 )
 from django.core.mail import BadHeaderError  # 送信時のエラー解消目的
 
-from .models import Character
+from .models import Character, Movie
 
 User = get_user_model()
 
@@ -29,12 +29,18 @@ User = get_user_model()
 # Create your views here.
 
 def index(request):
+    movies_list = Movie.objects.all()
     return render(request, 'app/index.html')
 
 
 def character(request, pk):
     character = get_object_or_404(Character, pk=pk)
     return render(request, 'app/character.html', {'character': character})
+
+
+def movie(request, pk):
+    movie = get_object_or_404(Movie, pk=pk)
+    return render(request, 'app/movie.html', {'movie': movie})
 
 
 def signup(request):
