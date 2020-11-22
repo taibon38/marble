@@ -13,6 +13,10 @@ urlpatterns = [
         views.index,
         name='index'),
     path(
+        'mypage/',
+        views.mypage,
+        name='mypage'),
+    path(
         'signup/',
         views.signup,
         name='signup'),
