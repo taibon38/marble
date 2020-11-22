@@ -29,8 +29,8 @@ User = get_user_model()
 # Create your views here.
 
 def index(request):
-    movies_list = Movie.objects.all()
-    return render(request, 'app/index.html')
+    movies_list = Movie.objects.all().order_by('publication_date')
+    return render(request, 'app/index.html', {'movies_list': movies_list})
 
 
 def character(request, pk):
