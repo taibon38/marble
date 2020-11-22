@@ -32,6 +32,8 @@ def index(request):
     movies_list = Movie.objects.all().order_by('publication_date')
     return render(request, 'app/index.html', {'movies_list': movies_list})
 
+def mypage(request):
+    return render(request, 'app/mypage.html')
 
 def character(request, pk):
     character = get_object_or_404(Character, pk=pk)
