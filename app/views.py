@@ -20,8 +20,12 @@ from .forms import (
     LoginForm, UserCreateForm
 )
 from django.core.mail import BadHeaderError  # 送信時のエラー解消目的
-
 from .models import Character, Movie
+
+# お気に入り登録用で追加
+from django.contrib.auth.decorators import login_required
+from django.views.decorators.http import require_POST
+
 
 User = get_user_model()
 
@@ -59,6 +63,29 @@ def signup(request):
     else:
         form = CustomUserCreationForm()
     return render(request, 'app/signup.html', {'form': form})
+
+# お気に入りの映画登録
+# お気に入りボタンの作成(ユーザーの状態によって表示を切り替える)
+
+
+@login_required
+@require_POST
+def toggle_fav_movies(request):
+    fav_movie = get_object_or_404(Movie, pk=request.POST["movie_id"])
+    user = request.user
+    if fav_movie in user.faved_movies.all():
+        user.faved_movies.remove(fav_movie)
+    else:
+        user.faved_movies.add(fav_movie)
+    return redirect('app:movie', movie_id=fav_movie.id)
+
+# お気に入り結果の表示
+@login_required
+def faved_movies(request):
+    user = request.user
+    movies = user.faved_movies.all()
+    return render(request, 'app/mypage.html', {'movies': movies})
+
 
 # メール認証時に追加
 
