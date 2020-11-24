@@ -5,19 +5,38 @@
 
 <h2>マイページ</h2>
 
-{% if 'faved_movies' in request.path %}
-<div >
-お気に入り作品
-</div>
-{% endif %}
-
-<div class="movie-container">
-    {% for movie  in movies_list %}
+<div class="movie-fav-container">
+    <p>お気に入り作品</p>
+    {% for movie in faved_movies_list %}
     <div class="movie">
         <a href="{% url 'app:movie' movie.id %}">
             <img src="{{movie.movie_icon.url}}" class="movie_icon">
         </a>
     </div>
     {% endfor %}
+</div>
+
+<div class="movie-watch-container">
+    <p>閲覧済作品</p>
+    {% for movie in watched_movies_list %}
+    <div class="movie">
+        <a href="{% url 'app:movie' movie.id %}">
+            <img src="{{movie.movie_icon.url}}" class="movie_icon">
+        </a>
+    </div>
+    {% endfor %}
+</div>
+
+<div class="character-fav-container">
+    <p>好きなキャラ</p>
+    {% for character in faved_characters_list %}
+    <div class="movie">
+        <a href="{% url 'app:character' character.id %}">
+            <img src="{{character.character_icon.url}}" class="character_icon">
+        </a>
+    </div>
+    {% endfor %}
+</div>
+
 
 {% endblock %}

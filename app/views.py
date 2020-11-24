@@ -20,7 +20,7 @@ from .forms import (
     LoginForm, UserCreateForm
 )
 from django.core.mail import BadHeaderError  # 送信時のエラー解消目的
-from .models import Character, Movie
+from .models import Character, Movie 
 
 # お気に入り登録用で追加
 from django.contrib.auth.decorators import login_required
@@ -36,8 +36,18 @@ def index(request):
     movies_list = Movie.objects.all().order_by('publication_date')
     return render(request, 'app/index.html', {'movies_list': movies_list})
 
+
 def mypage(request):
-    return render(request, 'app/mypage.html')
+    user = request.user
+    faved_movies_list = user.faved_movies.all()
+    watched_movies_list = user.watched_movies.all()
+    faved_characters_list = user.faved_characters.all()
+    return render(request, 'app/mypage.html', {
+        'faved_movies_list': faved_movies_list,
+        'watched_movies_list': watched_movies_list,
+        'faved_characters_list': faved_characters_list
+        })
+
 
 def character(request, pk):
     character = get_object_or_404(Character, pk=pk)
@@ -103,6 +113,26 @@ def watched_movies(request):
     user = request.user
     movies = user.watched_movies.all()
     return render(request, 'app/mypage.html', {'movies': movies})
+
+
+# 好きボタンの作成
+@login_required
+@require_POST
+def toggle_fav_characters(request):
+    fav_character = get_object_or_404(Character, pk=request.POST["character_id"])
+    user = request.user
+    if fav_character in user.faved_characters.all():
+        user.faved_characters.remove(fav_character)
+    else:
+        user.faved_characters.add(fav_character)
+    return redirect('app:character', pk=fav_character.id)
+
+# 好き結果の表示
+@login_required
+def faved_characters(request):
+    user = request.user
+    characters = user.faved_characters.all()
+    return render(request, 'app/mypage.html', {'characters': characters})
 
 
 

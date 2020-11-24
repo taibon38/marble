@@ -65,4 +65,12 @@ urlpatterns = [
         'watched_movies/', 
         views.watched_movies, 
         name='fwatched_movies'),
+    path(
+        'toggle_fav_characters/',
+        views.toggle_fav_characters,
+        name='toggle_fav_characters'),
+    path(
+        'faved_characters/', 
+        views.faved_characters, 
+        name='faved_characters'),
 ]
