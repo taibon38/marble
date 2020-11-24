@@ -66,8 +66,6 @@ def signup(request):
 
 # お気に入りの映画登録
 # お気に入りボタンの作成(ユーザーの状態によって表示を切り替える)
-
-
 @login_required
 @require_POST
 def toggle_fav_movies(request):
@@ -77,7 +75,7 @@ def toggle_fav_movies(request):
         user.faved_movies.remove(fav_movie)
     else:
         user.faved_movies.add(fav_movie)
-    return redirect('app:movie', movie_id=fav_movie.id)
+    return redirect('app:movie', pk=fav_movie.id)
 
 # お気に入り結果の表示
 @login_required
@@ -87,9 +85,28 @@ def faved_movies(request):
     return render(request, 'app/mypage.html', {'movies': movies})
 
 
+# 観たよボタンの作成
+@login_required
+@require_POST
+def toggle_watch_movies(request):
+    watch_movie = get_object_or_404(Movie, pk=request.POST["movie_id"])
+    user = request.user
+    if watch_movie in user.watched_movies.all():
+        user.watched_movies.remove(watch_movie)
+    else:
+        user.watched_movies.add(watch_movie)
+    return redirect('app:movie', pk=watch_movie.id)
+
+# 観たよの表示
+@login_required
+def watched_movies(request):
+    user = request.user
+    movies = user.watched_movies.all()
+    return render(request, 'app/mypage.html', {'movies': movies})
+
+
+
 # メール認証時に追加
-
-
 class UserCreate(generic.CreateView):
     """ユーザー仮登録"""
     template_name = 'app/user_create.html'
