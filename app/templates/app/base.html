@@ -29,23 +29,17 @@
                     </li>
                     <li class="nav-item">
                         <a class="nav-link" href="#">リンク</a>
-                    </li>
-                        <li class="nav-item">
-                        <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">無効</a>
-                    </li>
                     <li>
                         <form class="form-inline my-2 my-lg-0">
-                            <input type="search" class="form-control mr-sm-2" placeholder="作品名/キャラ名で検索" aria-label="作品名/キャラ名で検索">
+                            <input type="search" class="form-control mr-sm-2" placeholder="フリーワード" aria-label="フリーワード">
                             <button type="submit" class="btn btn-outline-warning my-2 my-sm-0">検索</button>
                         </form>
                     </li>
-                    <li>
+                    <li class="nav-item">
                         <div>
                             {% if request.user.is_authenticated %}
-                                <li>
                                     <img src={{user.profile_icon.url}}  class="profile_icon">
                                     <nobr class="text-light">{{user.username}}さん。こんにちは。</nobr>
-                                </li>
                                 <li class="nav-item dropdown">
                                     <a href="#" class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     マイページ

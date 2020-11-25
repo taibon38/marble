@@ -44,6 +44,7 @@ class Movie(models.Model):
         return truncatechars(self.detail, 10)
     short_detail.fget.short_description = '解説'
 
+
 class Character(models.Model):
     """キャラクター"""
     name = models.CharField(verbose_name='キャラクター名', max_length=150)
@@ -76,11 +77,13 @@ class Category(models.Model):
     def __str__(self):
         return self.title
 
+
 class MovieCategory(models.Model):
     movie = models.ForeignKey("Movie", on_delete=models.CASCADE)
     category = models.ForeignKey("Category", on_delete=models.CASCADE)
     created_at = models.DateTimeField(auto_now_add=True) #作成時に更新
     updated_at = models.DateTimeField(auto_now=True) #保存時に更新
+
 
 class MovieCharacter(models.Model):
     movie = models.ForeignKey("Movie", on_delete=models.CASCADE)

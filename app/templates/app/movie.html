@@ -14,7 +14,7 @@
     {% if request.user.is_authenticated %}
     <form action="{% url 'app:toggle_fav_movies' %}" method="post">{% csrf_token %}
         <input type="hidden" name="movie_id" value="{{ movie.id }}">
-        {% if fav_movie in user.faved_movies.all %}
+        {% if movie in user.faved_movies.all %}
             <input type="submit" name="submit" class="fav_button" value="お気に入りから外す" /> 
         {% else %}
             <input type="submit" name="submit" class="fav_button" value=" お気に入り登録" />
@@ -23,7 +23,7 @@
 
     <form action="{% url 'app:toggle_watch_movies' %}" method="post">{% csrf_token %}
         <input type="hidden" name="movie_id" value="{{ movie.id }}">
-        {% if watch_movie in user.watched_movies.all %}
+        {% if movie in user.watched_movies.all %}
             <input type="submit" name="submit" class="watch_button" value="観たよから外す" /> 
         {% else %}
             <input type="submit" name="submit" class="watch_button" value=" 観たよ" />
