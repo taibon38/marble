@@ -21,7 +21,7 @@ from .forms import (
 )
 from django.core.mail import BadHeaderError  # 送信時のエラー解消目的
 
-from .models import Character
+from .models import Character, MovieCharacter
 
 User = get_user_model()
 
@@ -35,6 +35,11 @@ def index(request):
 def character(request, pk):
     character = get_object_or_404(Character, pk=pk)
     return render(request, 'app/character.html', {'character': character})
+
+
+def movie_character(request, movie_character):
+    movie_character = MovieCharacter.objects.get(name=movie_character)
+    return render(request, 'app/character.html', {'movie_character': movie_character})
 
 
 def signup(request):
