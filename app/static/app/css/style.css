@@ -13,3 +13,27 @@ ul{
     object-fit: cover;
     border-radius: 4px;
 }
+
+.character_icon {
+    width: 100%;
+    max-width: 150px;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 2px;
+  }
+
+.movie_icon {
+    width: 100%;
+    max-width: 150px;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 2px;
+  }
+
+
+.movie{
+    width: calc(100%/5);
+    float: left;
+    padding: 5px;
+    margin-bottom: 15px;
+}
