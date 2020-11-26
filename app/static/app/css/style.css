@@ -37,3 +37,15 @@ ul{
     padding: 5px;
     margin-bottom: 15px;
 }
+
+.movie-fav-container{
+    display: flex;
+}
+
+.movie-watch-container{
+    display: flex;
+}
+
+.character-fav-container{
+    display: flex;
+}

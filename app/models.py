@@ -24,6 +24,7 @@ class Movie(models.Model):
         "Category",
         verbose_name='楽しみ方',
         through="MovieCategory",
+        related_name="movies_categories"
     )
     characters = models.ManyToManyField(
         "Character",
