@@ -34,7 +34,11 @@ User = get_user_model()
 
 def index(request):
     movies_list = Movie.objects.all().order_by('publication_date')
-    return render(request, 'app/index.html', {'movies_list': movies_list})
+    characters_list = Character.objects.all()
+    return render(request, 'app/index.html', {
+        'movies_list': movies_list ,
+        'characters_list': characters_list
+        })
 
 
 def mypage(request):
