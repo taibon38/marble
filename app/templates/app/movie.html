@@ -10,25 +10,37 @@
 <P>あらすじ：{{movie.sumally}}</P>
 <P>解説：{{movie.detail}}</P>
 
-<p>楽しみ方：{{movie.categories}}</p>
+<p>楽しみ方：</p>
+    {% for category in movie.categories.all %}
+        <a href="">
+            <button type="button" class ="btn btn-light"> {{ category.title }}</button>
+        </a>
+    {% endfor %}
+
+<p>キャラクター:</p>
+    {% for character in movie.characters.all %}
+        <a href="{% url 'app:character' character.id %}">
+            <button type="button" class ="btn btn-light">{{character.name}}</button> 
+        </a>
+    {% endfor %}
 
 <div>
     {% if request.user.is_authenticated %}
     <form action="{% url 'app:toggle_fav_movies' %}" method="post">{% csrf_token %}
         <input type="hidden" name="movie_id" value="{{ movie.id }}">
         {% if movie in user.faved_movies.all %}
-            <input type="submit" name="submit" class="fav_button" value="お気に入りから外す" /> 
+            <input type="submit" name="submit" class="btn-light" value="お気に入りから外す" /> 
         {% else %}
-            <input type="submit" name="submit" class="fav_button" value=" お気に入り登録" />
+            <input type="submit" name="submit" class="btn-success" value=" お気に入り登録" />
         {% endif %}
     </form>
 
     <form action="{% url 'app:toggle_watch_movies' %}" method="post">{% csrf_token %}
         <input type="hidden" name="movie_id" value="{{ movie.id }}">
         {% if movie in user.watched_movies.all %}
-            <input type="submit" name="submit" class="watch_button" value="観たよから外す" /> 
+            <input type="submit" name="submit" class="btn-light" value="観たよから外す" /> 
         {% else %}
-            <input type="submit" name="submit" class="watch_button" value=" 観たよ" />
+            <input type="submit" name="submit" class="btn-success" value=" 観たよ" />
         {% endif %}
     </form>
 
