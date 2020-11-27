@@ -67,3 +67,50 @@ ul{
 	left:100px;
 	bottom:10px;
 }
+
+/* 下記はマイページでボタンをクリックしたときの動作 */
+/*全体*/
+.hidden_box {
+    margin: 2em 0;/*前後の余白*/
+    padding: 0;
+}
+
+/*ボタンクリック時 →思ったように反応しない*/
+.mypage_button input:checked + label {
+    background: #00BC9B;
+    color: seashell;
+}
+
+/*ボタン装飾*/
+label {
+    padding: 10px;
+    font-weight: bold;
+    cursor :pointer;
+}
+
+/*ボタンホバー時*/
+label:hover {
+    background: #00BC9B;
+    color: seashell;
+}
+
+/*チェックは見えなくする*/
+.hidden_box input {
+    display: none;
+}
+
+/*中身を非表示にしておく*/
+.hidden_box .hidden_show {
+    height: 0;
+    padding: 0;
+    overflow: hidden;
+    opacity: 0;
+    transition: 0.5s;
+}
+
+/*クリックで中身表示*/
+.hidden_box input:checked ~ .hidden_show {
+    padding: 10px 0;
+    height: auto;
+    opacity: 1;
+}

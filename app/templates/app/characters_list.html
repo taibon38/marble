@@ -1,0 +1,9 @@
+<div class="character_tags">
+    {% for character  in characters_list %}
+    <div class="character">
+        <a href="{% url 'app:character' character.id %}">
+            <button type="button" class ="btn btn-light">{{character.name}}</button> 
+        </a>
+    </div>
+    {% endfor %}
+</div>
