@@ -13,3 +13,57 @@ ul{
     object-fit: cover;
     border-radius: 4px;
 }
+
+.character_icon {
+    width: 100%;
+    max-width: 150px;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 2px;
+  }
+
+.movie_icon {
+    width: 100%;
+    max-width: 150px;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 2px;
+  }
+
+.movie_icon_min{
+    width: 100%;
+    max-width: 90px;
+    height: 120px;
+    object-fit: cover;
+    border-radius: 2px;
+}
+
+.movie{
+    width: calc(100%/5);
+    float: left;
+    padding: 5px;
+    margin-bottom: 15px;
+}
+
+.movie-fav-container{
+    display: flex;
+}
+
+.movie-watch-container{
+    display: flex;
+}
+
+.character-fav-container{
+    display: flex;
+}
+
+.character{
+    float: left;
+    padding-left: 1em;
+}
+
+.character_tags{
+    position:absolute;
+	left:100px;
+	bottom:10px;
+}

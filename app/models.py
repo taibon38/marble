@@ -17,13 +17,14 @@ class Movie(models.Model):
     detail = models.TextField(verbose_name='解説', blank=True)
     movie_icon = models.ImageField(
         verbose_name='作品アイコン',
-        upload_to='movie-icons',
+        upload_to='movie_icons',
         null=True,
         blank=True)
     categories = models.ManyToManyField(
         "Category",
         verbose_name='楽しみ方',
         through="MovieCategory",
+        related_name="movies_categories"
     )
     characters = models.ManyToManyField(
         "Character",
@@ -43,6 +44,7 @@ class Movie(models.Model):
     def short_detail(self):
         return truncatechars(self.detail, 10)
     short_detail.fget.short_description = '解説'
+
 
 class Character(models.Model):
     """キャラクター"""
@@ -76,11 +78,13 @@ class Category(models.Model):
     def __str__(self):
         return self.title
 
+
 class MovieCategory(models.Model):
     movie = models.ForeignKey("Movie", on_delete=models.CASCADE)
     category = models.ForeignKey("Category", on_delete=models.CASCADE)
     created_at = models.DateTimeField(auto_now_add=True) #作成時に更新
     updated_at = models.DateTimeField(auto_now=True) #保存時に更新
+
 
 class MovieCharacter(models.Model):
     movie = models.ForeignKey("Movie", on_delete=models.CASCADE)

@@ -1,6 +1,6 @@
 from django.contrib import admin
 from django.conf.urls import include, static
-from app.views import signup
+from .views import signup, toggle_fav_movies, faved_movies
 from django.urls import path
 from . import views
 from django.contrib.auth import views as auth_views
@@ -12,6 +12,10 @@ urlpatterns = [
         '',
         views.index,
         name='index'),
+    path(
+        'mypage/',
+        views.mypage,
+        name='mypage'),
     path(
         'signup/',
         views.signup,
@@ -45,5 +49,33 @@ urlpatterns = [
         'movie_character/<str:movie_character>/', 
         views.movie_character,  
         name='movie_character'
-    ),
+        ),
+    path(
+        'movie/<int:pk>',
+        views.movie,
+        name='movie'),
+    path(
+        'toggle_fav_movies/',
+        views.toggle_fav_movies,
+        name='toggle_fav_movies'),
+    path(
+        'faved_movies/', 
+        views.faved_movies, 
+        name='faved_movies'),
+    path(
+        'toggle_watch_movies/',
+        views.toggle_watch_movies,
+        name='toggle_watch_movies'),
+    path(
+        'watched_movies/', 
+        views.watched_movies, 
+        name='fwatched_movies'),
+    path(
+        'toggle_fav_characters/',
+        views.toggle_fav_characters,
+        name='toggle_fav_characters'),
+    path(
+        'faved_characters/', 
+        views.faved_characters, 
+        name='faved_characters'),
 ]
