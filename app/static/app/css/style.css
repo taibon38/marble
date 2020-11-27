@@ -30,6 +30,13 @@ ul{
     border-radius: 2px;
   }
 
+.movie_icon_min{
+    width: 100%;
+    max-width: 90px;
+    height: 120px;
+    object-fit: cover;
+    border-radius: 2px;
+}
 
 .movie{
     width: calc(100%/5);

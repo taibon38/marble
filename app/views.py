@@ -26,6 +26,7 @@ from .models import Character, Movie
 from django.contrib.auth.decorators import login_required
 from django.views.decorators.http import require_POST
 
+from .models import Character, MovieCharacter
 
 User = get_user_model()
 
@@ -58,6 +59,9 @@ def character(request, pk):
     return render(request, 'app/character.html', {'character': character})
 
 
+def movie_character(request, movie_character):
+    movie_character = MovieCharacter.objects.get(name=movie_character)
+    return render(request, 'app/character.html', {'movie_character': movie_character})
 def movie(request, pk):
     movie = get_object_or_404(Movie, pk=pk)
     return render(request, 'app/movie.html', {'movie': movie})
