@@ -22,6 +22,15 @@ ul{
     border-radius: 2px;
   }
 
+  .character_icon_min {
+    width: 100%;
+    max-width: 90px;
+    height: 120px;
+    object-fit: cover;
+    border-radius: 2px;
+  }
+
+
 .movie_icon {
     width: 100%;
     max-width: 150px;
@@ -39,12 +48,17 @@ ul{
 }
 
 .movie{
-    width: calc(100%/5);
+    width: calc(100%/8);
     float: left;
     padding: 5px;
     margin-bottom: 15px;
 }
+/* 
+.movie_font{
+    font-size: 1rem;
+} */
 
+/* 
 .movie-fav-container{
     display: flex;
 }
@@ -55,7 +69,7 @@ ul{
 
 .character-fav-container{
     display: flex;
-}
+} */
 
 .character{
     float: left;
@@ -66,4 +80,51 @@ ul{
     position:absolute;
 	left:100px;
 	bottom:10px;
+}
+
+/* 下記はマイページでボタンをクリックしたときの動作 */
+/*全体*/
+.hidden_box {
+    margin: 2em 0;/*前後の余白*/
+    padding: 0;
+}
+
+/*ボタンクリック時 →思ったように反応しない*/
+.mypage_button input:checked + label {
+    background: #00BC9B;
+    color: seashell;
+}
+
+/*ボタン装飾*/
+label {
+    padding: 10px;
+    font-weight: bold;
+    cursor :pointer;
+}
+
+/*ボタンホバー時*/
+label:hover {
+    background: #00BC9B;
+    color: seashell;
+}
+
+/*チェックは見えなくする*/
+.hidden_box input {
+    display: none;
+}
+
+/*中身を非表示にしておく*/
+.hidden_box .hidden_show {
+    height: 0;
+    padding: 0;
+    overflow: hidden;
+    opacity: 0;
+    transition: 0.5s;
+}
+
+/*クリックで中身表示*/
+.hidden_box input:checked ~ .hidden_show {
+    padding: 10px 0;
+    height: auto;
+    opacity: 1;
 }
