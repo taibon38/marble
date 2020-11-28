@@ -4,9 +4,9 @@
 {% block content %}
 
 
-<h2>マイページ｜タブ切り替え実装</h2>
+<h2>マイページ</h2>
 <!-- 上下左右に規定の余白を設定するbootstrapクラス p-3を指定 -->
-<main class="p-3"> 
+<main class="mx-auto" style="width: auto;"> 
     <ul class ="nav nav-tabs border border-0 mb-5">
         <li class="nav-item mr-2">
             <a href="#faved_movies" class="nav-link" data-toggle="tab">お気に入り作品</a>
@@ -23,21 +23,21 @@
             <div id="faved_movies" class="tab-pane active img-fluid">  
             {% for movie in faved_movies_list %}       
                     <a href="{% url 'app:movie' movie.id %}">
-                        <img src="{{movie.movie_icon.url}}" alt="" class="movie_icon_min">
+                        <img src="{{movie.movie_icon.url}}" alt="" class="movie_icon_min mx-1 mb-2">
                     </a>
             {% endfor %}
             </div>
             <div id="watched_movies" class="tab-pane img-fluid">  
                 {% for movie in watched_movies_list %}       
                         <a href="{% url 'app:movie' movie.id %}">
-                            <img src="{{movie.movie_icon.url}}" alt="" class="movie_icon_min">
+                            <img src="{{movie.movie_icon.url}}" alt="" class="movie_icon_min mx-1 mb-2">
                         </a>
                 {% endfor %}
             </div>
             <div id="faved_characters" class="tab-pane img-fluid">  
                 {% for character in faved_characters_list %}  
                         <a href="{% url 'app:character' character.id %}">
-                            <img src="{{character.character_icon.url}}" alt="" class="character_icon_min">
+                            <img src="{{character.character_icon.url}}" alt="" class="character_icon_min mx-1 mb-2">
                         </a>
                 {% endfor %}
             </div>
