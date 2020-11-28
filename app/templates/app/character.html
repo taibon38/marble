@@ -20,7 +20,7 @@
     <form action="{% url 'app:toggle_fav_characters' %}" method="post">{% csrf_token %}
         <input type="hidden" name="character_id" value="{{ character.id }}">
         {% if character in user.faved_characters.all %}
-            <input type="submit" name="submit" class="fav_button" value="少し距離を置く" /> 
+            <input type="submit" name="submit" class="fav_button" value="好きから外す" /> 
         {% else %}
             <input type="submit" name="submit" class="fav_button" value="好き認定" />
         {% endif %}

@@ -4,38 +4,65 @@
 {% block content %}
 
 <h2>マイページ</h2>
-
-<div class="movie-fav-container">
-    <p>お気に入り作品</p>
-    {% for movie in faved_movies_list %}
-    <div class="movie">
-        <a href="{% url 'app:movie' movie.id %}">
-            <img src="{{movie.movie_icon.url}}" class="movie_icon">
-        </a>
-    </div>
-    {% endfor %}
+<div class ="mypage_button">
+    <label for="label1">お気に入り作品</label>
+    <label for="label2">閲覧済作品</label>
+    <label for="label3">好きなキャラ</label>
 </div>
 
-<div class="movie-watch-container">
-    <p>閲覧済作品</p>
-    {% for movie in watched_movies_list %}
-    <div class="movie">
-        <a href="{% url 'app:movie' movie.id %}">
-            <img src="{{movie.movie_icon.url}}" class="movie_icon">
-        </a>
+<div class="hidden_box">
+    <!-- <label for="label1">お気に入り作品</label> -->
+    <input type="checkbox" id="label1"/>
+    <div class="hidden_show">
+    <!--非表示ここから-->     
+        <div class="movie-fav-container">
+        {% for movie in faved_movies_list %}
+            <div class="movie">
+                <a href="{% url 'app:movie' movie.id %}">
+                    <img src="{{movie.movie_icon.url}}" class="movie_icon_min">
+                </a>
+            </div>
+        {% endfor %}
     </div>
-    {% endfor %}
+    <!--ここまで-->
+    </div>
 </div>
 
-<div class="character-fav-container">
-    <p>好きなキャラ</p>
-    {% for character in faved_characters_list %}
-    <div class="movie">
-        <a href="{% url 'app:character' character.id %}">
-            <img src="{{character.character_icon.url}}" class="character_icon">
-        </a>
+<div class="hidden_box">
+    <!-- <label for="label2">閲覧済作品</label> -->
+    <input type="checkbox" id="label2"/>
+    <div class="hidden_show">
+    <!--非表示ここから-->     
+        <div class="movie-watch-container">
+        {% for movie in watched_movies_list %}
+            <div class="movie"> 
+                <a href="{% url 'app:movie' movie.id %}">
+                    <img src="{{movie.movie_icon.url}}" class="movie_icon_min">
+                    <!-- <p class="movie_font">{{movie.title}}</p> -->
+                </a>
+            </div>
+        {% endfor %}
+        </div>
+    <!--ここまで-->
     </div>
-    {% endfor %}
+</div>
+
+<div class="hidden_box">
+    <!-- <label for="label3">好きなキャラ</label> -->
+    <input type="checkbox" id="label3"/>
+    <div class="hidden_show">
+    <!--非表示ここから-->      
+        <div class="character-fav-container">
+            {% for character in faved_characters_list %}
+            <div class="movie">
+                <a href="{% url 'app:character' character.id %}">
+                    <img src="{{character.character_icon.url}}" class="character_icon_min">
+                </a>
+            </div>
+            {% endfor %}
+        </div>
+    <!--ここまで-->
+    </div>
 </div>
 
 
