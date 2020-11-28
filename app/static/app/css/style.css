@@ -48,11 +48,12 @@ ul{
 }
 
 .movie{
-    width: calc(100%/8);
+    width: calc(100%/7);
     float: left;
     padding: 5px;
     margin-bottom: 15px;
 }
+
 /* 
 .movie_font{
     font-size: 1rem;
