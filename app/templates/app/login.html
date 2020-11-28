@@ -6,7 +6,7 @@
 {% load static %}
 <h2>SNSアカウントで登録・ログイン</h2>
 <ul>
-    <li><a href="{% url 'social:begin' 'google-oauth2' %}"><img src="{% static 'app/google.png' %}"></a></li> 
+    <li><a href="{% url 'social:begin' 'google-oauth2' %}"><img src="{% static 'google.png' %}"></a></li>
     <li><div class="fb-login-button" data-size="large" data-button-type="continue_with" data-layout="rounded" data-auto-logout-link="false" data-use-continue-as="false" data-width=""></div></li>
     <li><a href="{% url 'social:begin' 'twitter' %}">Twitterでログイン</a></li>
     <!-- <li><a href="{% url 'social:begin' 'facebook' %}">Facebookでログイン</a></li>  -->
