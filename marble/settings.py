@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 from pathlib import Path
 
 import environ
+import os
 
 # settings.pyの位置を起点として1つ上の親ディレクトリを参照。
 BASE_DIR = environ.Path(__file__) - 1
@@ -142,6 +143,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 
 #ログイン、ログアウト後のリダイレクト先を指定
@@ -184,8 +186,6 @@ EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 
 # ImageFieldのアップロード先
-import os
-
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
 
