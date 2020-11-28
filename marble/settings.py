@@ -13,6 +13,7 @@ from pathlib import Path
 
 import environ
 import os
+import dj_database_url
 
 # settings.pyの位置を起点として1つ上の親ディレクトリを参照。
 BASE_DIR = environ.Path(__file__) - 1
@@ -104,6 +105,8 @@ DATABASES = {
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
+
+DATABASES['default'].update(dj_database_url.config(conn_max_age=600, ssl_require=True))
 
 
 # Password validation
