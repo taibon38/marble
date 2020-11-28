@@ -3,67 +3,45 @@
 
 {% block content %}
 
-<h2>マイページ</h2>
-<div class ="mypage_button">
-    <label for="label1">お気に入り作品</label>
-    <label for="label2">閲覧済作品</label>
-    <label for="label3">好きなキャラ</label>
-</div>
 
-<div class="hidden_box">
-    <!-- <label for="label1">お気に入り作品</label> -->
-    <input type="checkbox" id="label1"/>
-    <div class="hidden_show">
-    <!--非表示ここから-->     
-        <div class="movie-fav-container">
-        {% for movie in faved_movies_list %}
-            <div class="movie">
-                <a href="{% url 'app:movie' movie.id %}">
-                    <img src="{{movie.movie_icon.url}}" class="movie_icon_min">
-                </a>
-            </div>
-        {% endfor %}
-    </div>
-    <!--ここまで-->
-    </div>
-</div>
+<h2>マイページ｜タブ切り替え実装</h2>
+<!-- 上下左右に規定の余白を設定するbootstrapクラス p-3を指定 -->
+<main class="p-3"> 
+    <ul class ="nav nav-tabs border border-0 mb-5">
+        <li class="nav-item mr-2">
+            <a href="#faved_movies" class="nav-link" data-toggle="tab">お気に入り作品</a>
+        </li>
+        <li class="nav-item mx-2">
+            <a href="#watched_movies" class="nav-link" data-toggle="tab">閲覧済作品</a>
+        </li>
+        <li class="nav-item mx-2">
+            <a href="#faved_characters" class="nav-link" data-toggle="tab">好きな作品</a>
+        </li>
+    </ul>
 
-<div class="hidden_box">
-    <!-- <label for="label2">閲覧済作品</label> -->
-    <input type="checkbox" id="label2"/>
-    <div class="hidden_show">
-    <!--非表示ここから-->     
-        <div class="movie-watch-container">
-        {% for movie in watched_movies_list %}
-            <div class="movie"> 
-                <a href="{% url 'app:movie' movie.id %}">
-                    <img src="{{movie.movie_icon.url}}" class="movie_icon_min">
-                    <!-- <p class="movie_font">{{movie.title}}</p> -->
-                </a>
-            </div>
-        {% endfor %}
-        </div>
-    <!--ここまで-->
-    </div>
-</div>
-
-<div class="hidden_box">
-    <!-- <label for="label3">好きなキャラ</label> -->
-    <input type="checkbox" id="label3"/>
-    <div class="hidden_show">
-    <!--非表示ここから-->      
-        <div class="character-fav-container">
-            {% for character in faved_characters_list %}
-            <div class="movie">
-                <a href="{% url 'app:character' character.id %}">
-                    <img src="{{character.character_icon.url}}" class="character_icon_min">
-                </a>
-            </div>
+    <div class="tab-content"> 
+            <div id="faved_movies" class="tab-pane active img-fluid">  
+            {% for movie in faved_movies_list %}       
+                    <a href="{% url 'app:movie' movie.id %}">
+                        <img src="{{movie.movie_icon.url}}" alt="" class="movie_icon_min">
+                    </a>
             {% endfor %}
-        </div>
-    <!--ここまで-->
+            </div>
+            <div id="watched_movies" class="tab-pane img-fluid">  
+                {% for movie in watched_movies_list %}       
+                        <a href="{% url 'app:movie' movie.id %}">
+                            <img src="{{movie.movie_icon.url}}" alt="" class="movie_icon_min">
+                        </a>
+                {% endfor %}
+            </div>
+            <div id="faved_characters" class="tab-pane img-fluid">  
+                {% for character in faved_characters_list %}  
+                        <a href="{% url 'app:character' character.id %}">
+                            <img src="{{character.character_icon.url}}" alt="" class="character_icon_min">
+                        </a>
+                {% endfor %}
+            </div>
     </div>
-</div>
-
+</main>
 
 {% endblock %}

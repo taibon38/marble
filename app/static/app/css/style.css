@@ -83,6 +83,27 @@ ul{
 	bottom:10px;
 }
 
+/* マイページでタブ切り替えの色変更(bootstrapの色を変更) */
+.nav-tabs > li > a{
+    border:  none;
+    background-color: #E5E5E5;
+    color: black !important;
+}
+.nav-tabs > li > a:hover{
+    background-color: #00BC9B !important;
+    border:  none;
+    border-radius: 0;
+    color:#fff !important;
+}
+.nav-tabs > li > a:focus{
+    background-color: #00BC9B !important;
+    border:  none;
+    border-radius: 0;
+    color:#fff !important;
+}
+
+
+
 /* 下記はマイページでボタンをクリックしたときの動作 */
 /*全体*/
 .hidden_box {
