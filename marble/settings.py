@@ -12,6 +12,21 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 import django_heroku
 from pathlib import Path
 
+import environ
+
+# settings.pyの位置を起点として1つ上の親ディレクトリを参照。
+BASE_DIR = environ.Path(__file__) - 1
+
+env = environ.Env()
+env.read_env('.env')
+
+# # 環境変数でDJANGO_READ_ENV_FILEをTrueにしておくと.envを読んでくれる。
+# READ_ENV_FILE = env.bool('DJANGO_READ_ENV_FILE', default=False)
+# if READ_ENV_FILE:
+#     # env_file = str(BASE_DIR.path('.env'))
+#     env.read_env('.env')
+
+
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
@@ -23,7 +38,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'cqxm=fpw2)#dnob1))8p1neos55p-@*y5^!-e$x+)fs4c(kf+i'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = env('DEBUG')
 
 ALLOWED_HOSTS = ['127.0.0.1','0.0.0.0','localhost']
 
@@ -150,20 +165,6 @@ AUTHENTICATION_BACKENDS = (
 )
         
 
-
-import environ
-
-# settings.pyの位置を起点として1つ上の親ディレクトリを参照。
-BASE_DIR = environ.Path(__file__) - 1
-
-env = environ.Env()
-env.read_env('.env')
-
-# # 環境変数でDJANGO_READ_ENV_FILEをTrueにしておくと.envを読んでくれる。
-# READ_ENV_FILE = env.bool('DJANGO_READ_ENV_FILE', default=False)
-# if READ_ENV_FILE:
-#     # env_file = str(BASE_DIR.path('.env'))
-#     env.read_env('.env')
 
 # Googleログイン設定
 SOCIAL_AUTH_GOOGLE_OAUTH2_KEY = env('SOCIAL_AUTH_GOOGLE_OAUTH2_KEY') # クライアントID
