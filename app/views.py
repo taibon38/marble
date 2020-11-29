@@ -20,7 +20,7 @@ from .forms import (
     LoginForm, UserCreateForm
 )
 from django.core.mail import BadHeaderError  # 送信時のエラー解消目的
-from .models import Character, Movie 
+from .models import Category, Character, Movie 
 
 # お気に入り登録用で追加
 from django.contrib.auth.decorators import login_required
@@ -36,9 +36,11 @@ User = get_user_model()
 def index(request):
     movies_list = Movie.objects.all().order_by('publication_date')
     characters_list = Character.objects.all()
+    categories_list = Category.objects.all()
     return render(request, 'app/index.html', {
         'movies_list': movies_list ,
-        'characters_list': characters_list
+        'characters_list': characters_list,
+        'categories_list': categories_list
         })
 
 

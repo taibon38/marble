@@ -3,9 +3,22 @@
 
 {% block content %}
 
+<div class="container">
+
 {% include 'app/movies_list.html' %}
-{% include 'app/characters_list.html' %}
 
+    <div class="search">
+        <div class="search_tags">
+            <!-- <p>キャラクターで探す</p> -->
+            {% include 'app/characters_list.html' %}
+        </div>
 
+        <div class="search_tags">
+            <!-- <p>楽しみ方で探す</p> -->
+            {% include 'app/category_list.html' %}
+        </div>
+    </div>
+
+</div>
 
 {% endblock %}
