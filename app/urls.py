@@ -78,4 +78,8 @@ urlpatterns = [
         'faved_characters/', 
         views.faved_characters, 
         name='faved_characters'),
+    path(
+        'search/<str:category>/', 
+        views.search_category,
+        name='search_category'),  # indexで楽しみ方タグで検索
 ]

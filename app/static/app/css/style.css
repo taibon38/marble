@@ -72,12 +72,47 @@ ul{
     display: flex;
 } */
 
+.container{
+    width: 100%;
+    max-width: 960px;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+/* 検索タグをきれいにしたい。
+.search{
+    display:flex;
+    flex-flow: column;
+    border:2px #ccc solid;
+    height:300px;
+    margin:0 0 1em;
+}
+
+.search_tags{
+    padding:1em;
+    background-color:#FFCC80;
+    margin:0.5em auto;
+    width:50%;
+} */
+
+
 .character{
     float: left;
     padding-left: 1em;
 }
 
 .character_tags{
+    position:absolute;
+	left:100px;
+	bottom:60px;
+}
+
+.category{
+    float: left;
+    padding-left: 1em;
+}
+
+.category_tags{
     position:absolute;
 	left:100px;
 	bottom:10px;
