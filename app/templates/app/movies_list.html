@@ -1,4 +1,4 @@
-<div class="movie-cantainer"></div>
+<div class="movie-cantainer">
     {% for movie  in movies_list %}
     <div class="movie">
         <a href="{% url 'app:movie' movie.id %}">
