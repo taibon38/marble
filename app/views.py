@@ -27,6 +27,10 @@ from .models import Category, Character, Movie, Character, MovieCharacter, Movie
 from django.contrib.auth.decorators import login_required
 from django.views.decorators.http import require_POST
 
+# フリーワード検索用で追加
+from django.contrib import messages
+from django.db.models import Q
+
 
 User = get_user_model()
 
@@ -37,6 +41,17 @@ def index(request):
     movies_list = Movie.objects.all().order_by('publication_date')
     characters_list = Character.objects.all()
     categories_list = Category.objects.all()
+
+    """フリーワード検索機能の処理"""
+    keyword = request.GET.get('keyword')
+
+    if keyword:
+        movies_list = movies_list.filter(
+            Q(title__icontains=keyword) | Q(sumally__icontains=keyword) | Q(detail__icontains=keyword)
+              # titleはMovieモデルのfield名、__icontains(部分一致)はQオブジェクトのプロパティ
+        )
+        messages.success(request, '「{}」の検索結果'.format(keyword))
+
     return render(request, 'app/index.html', {
         'movies_list': movies_list,
         'characters_list': characters_list,

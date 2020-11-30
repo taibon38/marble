@@ -30,11 +30,12 @@
                     <li class="nav-item">
                         <a class="nav-link" href="#">リンク</a>
                     <li>
-                        <form class="form-inline my-2 my-lg-0">
-                            <input type="search" class="form-control mr-sm-2" placeholder="フリーワード" aria-label="フリーワード">
+                        <form method="GET" action="{% url 'app:index' %}"　class="form-inline my-2 my-lg-0">
+                            <input type="search" name="keyword" class="form-control mr-sm-2" placeholder="フリーワード" aria-label="フリーワード">
                             <button type="submit" class="btn btn-outline-warning my-2 my-sm-0">検索</button>
                         </form>
                     </li>
+
                     <li class="nav-item">
                         <div>
                             {% if request.user.is_authenticated %}
