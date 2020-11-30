@@ -79,7 +79,11 @@ urlpatterns = [
         views.faved_characters, 
         name='faved_characters'),
     path(
-        'search/<str:category>/', 
+        'search/categories/<str:category>/', 
         views.search_category,
-        name='search_category'),  # indexで楽しみ方タグで検索
+        name='search_category'),  # index.htmlで楽しみ方タグで検索できる機能
+    path(
+        'search/characters/<str:character>/', 
+        views.search_character,
+        name='search_character'),  # index.htmlでキャラクター名タグで検索できる機能
 ]

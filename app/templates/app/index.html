@@ -7,6 +7,10 @@
 <h2>「{{ category.title }} 」の検索結果</h2>
 {% endif %}
 
+{% if character %}
+<h2>「{{ character.name }} 」の検索結果</h2>
+{% endif %}
+
 <div class="container">
 
 {% include 'app/movies_list.html' %}

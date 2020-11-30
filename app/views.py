@@ -43,6 +43,7 @@ def index(request):
         'categories_list': categories_list
         })
 
+
 def search_category(request, category):
     # titleがURLの文字列と一致するCategoryインスタンスを取得
     category = Category.objects.get(title=category)
@@ -51,6 +52,17 @@ def search_category(request, category):
     movies = Movie.objects.filter(categories=category)
     return render(request, 'app/index.html', {
         'category': category,
+        'movies': movies
+        })
+
+
+def search_character(request, character):
+    # titleがURLの文字列と一致するCharacterインスタンスを取得
+    character = Character.objects.get(name=character)
+    # 取得したCharacterが属する映画一覧を取得
+    movies = Movie.objects.filter(characters=character)
+    return render(request, 'app/index.html', {
+        'character': character,
         'movies': movies
         })
 
