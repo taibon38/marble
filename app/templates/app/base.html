@@ -24,15 +24,14 @@
         
             <div class="collapse navbar-collapse" id="Navber">
                 <ul class="navbar-nav ml-auto">
-                    <li class="nav-item active">
-                        <a class="nav-link" href="#">ホーム <span class="sr-only">(現位置)</span></a>
-                    </li>
-                    <li class="nav-item">
-                        <a class="nav-link" href="#">リンク</a>
                     <li>
-                        <form method="GET" action="{% url 'app:index' %}"　class="form-inline my-2 my-lg-0">
-                            <input type="search" name="keyword" class="form-control mr-sm-2" placeholder="フリーワード" aria-label="フリーワード">
-                            <button type="submit" class="btn btn-outline-warning my-2 my-sm-0">検索</button>
+                        <form method="GET" action="{% url 'app:index' %}"　class="form-inline ">
+                            <div class="input-group">
+                                <input type="search" name="keyword" class="form-control" placeholder="フリーワード" aria-label="フリーワード">
+                                <div class="input-group-append">
+                                    <button type="submit" class="btn btn-secondary">検索</button>
+                                </div>
+                            </div>
                         </form>
                     </li>
 
