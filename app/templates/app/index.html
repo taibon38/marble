@@ -4,12 +4,30 @@
 {% block content %}
 
 {% if category %}
-<h2>「{{ category.title }} 」の検索結果</h2>
+<p>「{{ category.title }} 」の検索結果</p>
+<p>該当する作品は{{movies_list.count}}件です🎬/p>
 {% endif %}
 
 {% if character %}
-<h2>「{{ character.name }} 」の検索結果</h2>
+<p>「{{ character.name }} 」の検索結果</p>
+<p>該当する作品は{{movies_list.count}}件です🎬/p>
+
 {% endif %}
+
+{% if messages %}
+<ul class="messages">
+    {% for message in messages %}
+    <li class="alert{% if message.tags %} alert-{{ message.tags }}{% endif %} alert-dismissible" role="alert">
+        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+        </button>
+        {{ message }}
+    </li>
+    {% endfor %}
+</ul>
+<p>該当する作品は{{movies_list.count}}件です🎬</p>
+{% endif %}
+
 
 <div class="container">
 
