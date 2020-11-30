@@ -10,14 +10,14 @@
 <P>あらすじ：{{movie.sumally}}</P>
 <P>解説：{{movie.detail}}</P>
 
-<p>楽しみ方：</p>
+<p>楽しみ方カテゴリ：</p>
     {% for category in movie.categories.all %}
-        <a href="">
+        <a href="{% url 'app:search_category' category=category.title %}">
             <button type="button" class ="btn btn-light"> {{ category.title }}</button>
         </a>
     {% endfor %}
 
-<p>キャラクター:</p>
+<p>キャラクター詳細:</p>
     {% for character in movie.characters.all %}
         <a href="{% url 'app:character' character.id %}">
             <button type="button" class ="btn btn-light">{{character.name}}</button> 
