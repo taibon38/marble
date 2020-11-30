@@ -48,10 +48,9 @@ def index(request):
     if keyword:
         movies_list = movies_list.filter(
             Q(title__icontains=keyword) | Q(sumally__icontains=keyword) | Q(detail__icontains=keyword)
-              # titleはMovieモデルのfield名、__icontains(部分一致)はQオブジェクトのプロパティ
+            # titleはMovieモデルのfield名、__icontains(部分一致)はQオブジェクトのプロパティ
         )
-        messages.success(request, '「{}」の検索結果'.format(keyword))
-
+        messages.info(request, '「{}」の検索結果'.format(keyword))
     return render(request, 'app/index.html', {
         'movies_list': movies_list,
         'characters_list': characters_list,

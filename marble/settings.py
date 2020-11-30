@@ -11,7 +11,9 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 """
 from pathlib import Path
 
-import environ
+import environ 
+import os
+
 
 # settings.pyの位置を起点として1つ上の親ディレクトリを参照。
 BASE_DIR = environ.Path(__file__) - 1
@@ -73,10 +75,11 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'marble.urls'
 
+
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [os.path.join(BASE_DIR, 'templates')],  # 404ページカスタマイズで利用
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -184,7 +187,6 @@ EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 
 # ImageFieldのアップロード先
-import os
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
