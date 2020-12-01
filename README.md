@@ -23,6 +23,13 @@ flake8                 3.8.4 →pep8通りにコードが書けているかを�
 Pillow                 8.0.1 →画像ファイルを利用
 requests               2.25.0 →requestsを利用
 social-auth-app-django 4.0.0 →SNSログイン実装で利用
+
+### command
+pip install -r requirements.txt
+python manage.py migrate
+python manage.py runserver
+python manage.py createsuperuser
+
 ```
 ### design
 ```
