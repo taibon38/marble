@@ -57,6 +57,7 @@ INSTALLED_APPS = [
     'app',
     'social_django', #SNS認証で利用
     'django_static_md5url',  # CSSの更新用で利用
+    'bootstrap4',
 ]
 
 AUTH_USER_MODEL = 'users.User' 
