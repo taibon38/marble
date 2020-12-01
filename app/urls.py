@@ -4,6 +4,7 @@ from .views import signup, toggle_fav_movies, faved_movies
 from django.urls import path
 from . import views
 from django.contrib.auth import views as auth_views
+from django.views.generic import TemplateView
 
 
 app_name = 'app'
@@ -86,4 +87,9 @@ urlpatterns = [
         'search/characters/<str:character>/', 
         views.search_character,
         name='search_character'),  # index.htmlでキャラクター名タグで検索できる機能
+    path('profile/', views.ProfileView.as_view(), name='profile'),
+    path('delete_confirm', TemplateView.as_view(template_name='app/registration/delete_confirm.html'), name='delete-confirmation'),
+    path('delete_complete', views.DeleteView.as_view(), name='delete-complete'),
+    path('password_change/', views.PasswordChange.as_view(), name='password_change'),
+    path('password_change/done/', views.PasswordChangeDone.as_view(), name='password_change_done'),
 ]

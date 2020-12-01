@@ -1,4 +1,6 @@
-from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth.forms import (
+    UserCreationForm, PasswordChangeForm
+)
 from django.shortcuts import get_object_or_404, render, redirect
 from django.contrib.auth import authenticate, login
 from .forms import CustomUserCreationForm
@@ -9,13 +11,12 @@ from django.conf import settings
 from django.contrib.auth import get_user_model
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.views import (
-    LoginView, LogoutView
+    LoginView, LogoutView 
 )
 from django.contrib.sites.shortcuts import get_current_site
 from django.core.signing import BadSignature, SignatureExpired, loads, dumps
 from django.http import Http404, HttpResponseBadRequest
 from django.template.loader import render_to_string
-from django.views import generic
 from .forms import (
     LoginForm, UserCreateForm
 )
@@ -31,6 +32,13 @@ from django.views.decorators.http import require_POST
 from django.contrib import messages
 from django.db.models import Q
 
+
+# マイページの編集機能で追加
+from django.views import generic
+from django.contrib.auth.views import (
+    LoginView, LogoutView, PasswordChangeView, PasswordChangeDoneView
+)
+from django.urls import reverse_lazy
 
 User = get_user_model()
 
@@ -260,3 +268,42 @@ class UserCreateComplete(generic.TemplateView):
                     return super().get(request, **kwargs)
 
         return HttpResponseBadRequest()
+
+
+#  マイページ関連
+
+class Top(generic.TemplateView):
+    template_name = 'index.html'
+
+class ProfileView(LoginRequiredMixin, generic.View):
+
+    def get(self, *args, **kwargs):
+        return render(self.request,'app/registration/profile.html')
+
+class DeleteView(LoginRequiredMixin, generic.View):
+
+    def get(self, *args, **kwargs):
+        user = User.objects.get(email=self.request.user.email)
+        user.is_active = False
+        user.save()
+        auth_logout(self.request)
+        return render(self.request, 'app/registration/delete_complete.html')
+
+class MyPasswordChangeForm(PasswordChangeForm):
+    """パスワード変更フォーム"""
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        for field in self.fields.values():
+            field.widget.attrs['class'] = 'form-control'
+
+class PasswordChange(PasswordChangeView):
+    """パスワード変更ビュー"""
+    form_class = MyPasswordChangeForm
+    success_url = reverse_lazy('app:password_change_done')
+    template_name = 'app/registration/password_change.html'
+
+
+class PasswordChangeDone(PasswordChangeDoneView):
+    """パスワード変更しました"""
+    template_name = 'register/password_change_done.html'
