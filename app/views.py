@@ -1,5 +1,6 @@
 from django.contrib.auth.forms import (
-    UserCreationForm, PasswordChangeForm
+    AuthenticationForm, UserCreationForm, PasswordChangeForm,
+    PasswordResetForm, SetPasswordForm
 )
 from django.shortcuts import get_object_or_404, render, redirect
 from django.contrib.auth import authenticate, login
@@ -36,9 +37,12 @@ from django.db.models import Q
 # マイページの編集機能で追加
 from django.views import generic
 from django.contrib.auth.views import (
-    LoginView, LogoutView, PasswordChangeView, PasswordChangeDoneView
+    LoginView, LogoutView, PasswordChangeView, PasswordChangeDoneView,
+    PasswordResetView, PasswordResetDoneView, PasswordResetConfirmView, PasswordResetCompleteView
+
 )
 from django.urls import reverse_lazy
+from django.contrib.auth import logout as auth_logout
 
 User = get_user_model()
 
@@ -275,16 +279,18 @@ class UserCreateComplete(generic.TemplateView):
 class Top(generic.TemplateView):
     template_name = 'index.html'
 
+
 class ProfileView(LoginRequiredMixin, generic.View):
 
     def get(self, *args, **kwargs):
         return render(self.request,'app/registration/profile.html')
 
-class DeleteView(LoginRequiredMixin, generic.View):
 
+class DeleteView(LoginRequiredMixin, generic.View):
+    """退会機能"""
     def get(self, *args, **kwargs):
         user = User.objects.get(email=self.request.user.email)
-        user.is_active = False
+        user.is_active = False  # 非アクティブになるだけで、データベースからは削除されない
         user.save()
         auth_logout(self.request)
         return render(self.request, 'app/registration/delete_complete.html')
@@ -301,9 +307,62 @@ class PasswordChange(PasswordChangeView):
     """パスワード変更ビュー"""
     form_class = MyPasswordChangeForm
     success_url = reverse_lazy('app:password_change_done')
-    template_name = 'app/registration/password_change.html'
+    template_name = 'app/registration/password_change_form.html'
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs) # 継承元のメソッドCALL
+        context["form_name"] = "password_change"
+        return context
 
 
 class PasswordChangeDone(PasswordChangeDoneView):
     """パスワード変更しました"""
-    template_name = 'register/password_change_done.html'
+    template_name = 'app/registration/password_change_done.html'
+
+
+
+# パスワードリセット関連
+
+class MyPasswordResetForm(PasswordResetForm):
+    """パスワード忘れたときのフォーム"""
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        for field in self.fields.values():
+            field.widget.attrs['class'] = 'form-control'
+
+
+class MySetPasswordForm(SetPasswordForm):
+    """パスワード再設定用フォーム(パスワード忘れて再設定)"""
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
+        for field in self.fields.values():
+            field.widget.attrs['class'] = 'form-control'
+
+
+class PasswordReset(PasswordResetView):
+    """パスワード変更用URLの送付ページ"""
+    subject_template_name = 'app/registration/password_reset_subject.txt'
+    email_template_name = 'app/registration/password_reset_email.html'
+    # email_template_name = 'app/registration/mail_template/password_reset/message.txt'
+    template_name = 'app/registration/password_reset_form.html'
+    form_class = MyPasswordResetForm
+    success_url = reverse_lazy('app:password_reset_done')
+
+
+class PasswordResetDone(PasswordResetDoneView):
+    """パスワード変更用URLを送りましたページ"""
+    template_name = 'app/registration/password_reset_done.html'
+
+
+class PasswordResetConfirm(PasswordResetConfirmView):
+    """新パスワード入力ページ"""
+    form_class = MySetPasswordForm
+    success_url = reverse_lazy('app:password_reset_complete')
+    template_name = 'app/registration/password_reset_confirm.html'
+
+
+class PasswordResetComplete(PasswordResetCompleteView):
+    """新パスワード設定しましたページ"""
+    template_name = 'app/registration/password_reset_complete.html'

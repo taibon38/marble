@@ -4,6 +4,8 @@
 {% block content %}
 
 {% load static %}
+{% load bootstrap4 %}
+
 <h2>SNSアカウントで登録・ログイン</h2>
 <ul>
     <li><a href="{% url 'social:begin' 'google-oauth2' %}"><img src="{% static 'app/google.png' %}"></a></li> 
@@ -21,14 +23,27 @@
     {% if form.errors %} 
         <p>メールアドレスもしくはパスワードが間違っています</p>
     {% endif %}
-    <h2>メールアドレスでログイン</h2>
-    <label>メールアドレス</label>
+
+    <!-- <h5 class="card-title text-center">ユーザーネームでログイン</h5>
+    <label>ユーザーネーム</label>
     <input name="username">
     <br>
     <label>パスワード</label>
     <input type="password" name="password">
     <br>
     <input type="submit" value="ログイン">
+    {% csrf_token %}
+</form> -->
+
+
+<h5 class="card-title text-center">ユーザーネームでログイン</h5>
+<form action="{% url 'app:login' %}" method="POST">
+    {% bootstrap_form form %}
+    <button type="submit" class="btn btn-dark btn-block">ログイン</button>
+    <input type="hidden" name="next" value="{{ next }}"/>
+    {% csrf_token %}
 </form>
+<a href="{% url 'app:password_reset' %}">パスワードをお忘れですか?</a>
+
 
 {% endblock %}
