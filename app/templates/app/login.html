@@ -35,15 +35,14 @@
     {% csrf_token %}
 </form> -->
 
-
-<h5 class="card-title text-center">ユーザーネームでログイン</h5>
-<form action="{% url 'app:login' %}" method="POST">
-    {% bootstrap_form form %}
-    <button type="submit" class="btn btn-dark btn-block">ログイン</button>
-    <input type="hidden" name="next" value="{{ next }}"/>
-    {% csrf_token %}
-</form>
-<a href="{% url 'app:password_reset' %}">パスワードをお忘れですか?</a>
-
-
+<div class="col-sm-5 mx-auto">
+    <h5 class="card-title text-center ">ユーザー名でログイン</h5>
+    <form action="{% url 'app:login' %}" method="POST">
+        {% bootstrap_form form %}
+        <button type="submit" class="btn btn-dark btn-block">ログイン</button>
+        <input type="hidden" name="next" value="{{ next }}"/>
+        {% csrf_token %}
+    </form>
+    <a href="{% url 'app:password_reset' %}">パスワードをお忘れですか?</a>
+</div>
 {% endblock %}
