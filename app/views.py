@@ -2,10 +2,9 @@ from django.contrib.auth.forms import (
     AuthenticationForm, UserCreationForm, PasswordChangeForm,
     PasswordResetForm, SetPasswordForm
 )
-from django.shortcuts import get_object_or_404, render, redirect
+from django.shortcuts import get_object_or_404, render, redirect, resolve_url
 from django.contrib.auth import authenticate, login
 from .forms import CustomUserCreationForm
-from django.shortcuts import render
 
 # メール認証機能用で追加
 from django.conf import settings
@@ -43,6 +42,12 @@ from django.contrib.auth.views import (
 )
 from django.urls import reverse_lazy
 from django.contrib.auth import logout as auth_logout
+
+# プロフィール情報編集で追加
+from django.contrib.auth.mixins import UserPassesTestMixin
+from .forms import (
+    LoginForm, UserCreateForm, UserUpdateForm
+)
 
 User = get_user_model()
 
@@ -274,7 +279,7 @@ class UserCreateComplete(generic.TemplateView):
         return HttpResponseBadRequest()
 
 
-#  マイページ関連
+# マイページ関連
 
 class Top(generic.TemplateView):
     template_name = 'index.html'
@@ -320,6 +325,29 @@ class PasswordChangeDone(PasswordChangeDoneView):
     template_name = 'app/registration/password_change_done.html'
 
 
+# プロフィール編集関連
+# 参考サイト：https://blog.narito.ninja/detail/43#_2
+class OnlyYouMixin(UserPassesTestMixin):  
+    raise_exception = True # Falseならログインページに移動させる。
+
+    def test_func(self):
+        # 今ログインしてるユーザーのpkと、そのユーザー情報ページのpkが同じか、又はスーパーユーザーなら許可
+        user = self.request.user
+        return user.pk == self.kwargs['pk'] or user.is_superuser
+
+
+class UserDetail(OnlyYouMixin, generic.DetailView):
+    model = User
+    template_name = 'app/user_detail.html'
+
+
+class UserUpdate(OnlyYouMixin, generic.UpdateView):
+    model = User
+    form_class = UserUpdateForm
+    template_name = 'app/user_form.html'
+
+    def get_success_url(self):
+        return resolve_url('app:profile')
 
 # パスワードリセット関連
 
