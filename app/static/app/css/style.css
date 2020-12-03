@@ -186,3 +186,8 @@ label:hover {
     height: auto;
     opacity: 1;
 }
+
+/* マイページのプロフィールボタン */
+.tab-content{
+    background-color: white;
+}

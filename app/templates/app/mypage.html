@@ -5,6 +5,7 @@
 
 
 <h2>マイページ</h2>
+
 <!-- 上下左右に規定の余白を設定するbootstrapクラス p-3を指定 -->
 <main class="mx-auto" style="width: auto;"> 
     <ul class ="nav nav-tabs border border-0 mb-5">
@@ -19,7 +20,7 @@
         </li>
     </ul>
 
-    <div class="tab-content"> 
+    <button class="tab-content "> 
             <div id="faved_movies" class="tab-pane active img-fluid">  
             {% for movie in faved_movies_list %}       
                     <a href="{% url 'app:movie' movie.id %}">
@@ -41,7 +42,7 @@
                         </a>
                 {% endfor %}
             </div>
-    </div>
+    </button>
 </main>
 
 {% endblock %}
