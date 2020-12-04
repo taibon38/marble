@@ -46,7 +46,7 @@ class User(AbstractBaseUser, PermissionsMixin):
     """カスタムユーザーモデル"""
     username = models.CharField("ユーザー名", unique=True, blank=False, max_length=100)
     email = models.EmailField("メールアドレス") 
-    profile_icon = ImageField("プロフィールアイコン", upload_to='profile_icons')
+    profile_icon = ImageField("アイコン", upload_to='profile_icons')
     is_staff = models.BooleanField("is_staff", default=False)
     is_active = models.BooleanField("is_active", default=True)
     date_joined = models.DateTimeField("date_joined", default=timezone.now)
