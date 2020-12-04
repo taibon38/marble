@@ -1,5 +1,5 @@
 {% extends "app/registration/base.html" %}
-
+{% load static %}
 {% block content %}
 
 <div class="center-block">
@@ -21,7 +21,11 @@
         <tbody>
         <tr>
             <th scope="row">アイコン</th>
-            <td><img src="{{user.profile_icon.url}}"  class="profile_icon"></td>
+            {% if user.profile_icon %}
+            <td><img src="{{ user.profile_icon.url }}" class="profile_icon"></td>
+            {% else %}
+            <td><img src="{% static 'images/user_icon.png' %}" class="profile_icon"></td>
+            {% endif %}
         </tr>
         <tr>
             <th scope="row">ユーザー名</th>
