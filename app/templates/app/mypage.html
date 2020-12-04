@@ -20,7 +20,7 @@
         </li>
     </ul>
 
-    <button class="tab-content "> 
+    <button class="tab-content border border-0"> 
             <div id="faved_movies" class="tab-pane active img-fluid">  
             {% for movie in faved_movies_list %}       
                     <a href="{% url 'app:movie' movie.id %}">
