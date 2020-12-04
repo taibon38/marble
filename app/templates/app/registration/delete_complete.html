@@ -1,9 +1,13 @@
 {% extends "app/base.html" %}
 
+{% load static %}
 {% load bootstrap4 %}
 
 {% block content %}
 
-    <p>アカウントを削除しました。</p>
+    <p>アカウント削除完了しました。ご利用に心から感謝します。</p>
+    <div class="col-sm-5 mx-auto">
+        <img src="{% static 'svg/handshake.svg' %}" width="480" height="480">
+    </div>  
 
 {% endblock %}
