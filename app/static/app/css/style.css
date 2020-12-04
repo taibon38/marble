@@ -187,7 +187,7 @@ label:hover {
     opacity: 1;
 }
 
-/* マイページのプロフィールボタン */
+/* マイページのタブコンテンツ */
 .tab-content{
-    background-color: white;
+    background-color: transparent;
 }
