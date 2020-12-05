@@ -2,27 +2,28 @@
 
 
 {% block content %}
+<div class="mt-3">
+    <img src={{movie.movie_icon.url}} class="movie_icon">
+    <P>作品名：{{movie.title}}</P>
+    <p>公開日：{{movie.publication_date}}</p>
+    <P>上映時間：{{movie.screening_time}}分</P>
+    <P>あらすじ：{{movie.sumally}}</P>
+    <P>解説：{{movie.detail}}</P>
 
-<img src={{movie.movie_icon.url}} class="movie_icon">
-<P>作品名：{{movie.title}}</P>
-<p>公開日：{{movie.publication_date}}</p>
-<P>上映時間：{{movie.screening_time}}分</P>
-<P>あらすじ：{{movie.sumally}}</P>
-<P>解説：{{movie.detail}}</P>
+    <p>楽しみ方カテゴリ：</p>
+        {% for category in movie.categories.all %}
+            <a href="{% url 'app:search_category' category=category.title %}">
+                <button type="button" class ="btn btn-light"> {{ category.title }}</button>
+            </a>
+        {% endfor %}
 
-<p>楽しみ方カテゴリ：</p>
-    {% for category in movie.categories.all %}
-        <a href="{% url 'app:search_category' category=category.title %}">
-            <button type="button" class ="btn btn-light"> {{ category.title }}</button>
-        </a>
-    {% endfor %}
-
-<p>キャラクター詳細:</p>
-    {% for character in movie.characters.all %}
-        <a href="{% url 'app:character' character.id %}">
-            <button type="button" class ="btn btn-light">{{character.name}}</button> 
-        </a>
-    {% endfor %}
+    <p>キャラクター詳細:</p>
+        {% for character in movie.characters.all %}
+            <a href="{% url 'app:character' character.id %}">
+                <button type="button" class ="btn btn-light">{{character.name}}</button> 
+            </a>
+        {% endfor %}
+</div>
 
 <div>
     {% if request.user.is_authenticated %}
