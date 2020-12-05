@@ -1,8 +1,18 @@
 {% extends "app/base.html" %}
+
+{% load static %}
+{% load bootstrap4 %}
+
 {% block content %}
-<p>
+<div class="mx-auto text-center mt-5 mb-5">
     本登録が完了しました。<br>
     登録されたユーザーネームとパスワードでログインしてください。<br>
-    <a class="btn btn-primary btn-lg" href="{% url 'app:login' %}">ログイン</a>
-</p>
+    <a class="btn btn-success btn-lg" href="{% url 'app:login' %}">ログイン</a>
+</div>
+
+<div class="mx-auto text-center">
+    <img src="{% static 'svg/achievement.svg' %}" width="480" height="480">
+</div>  
+
+
 {% endblock %}

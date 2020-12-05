@@ -6,4 +6,4 @@
 本登録用URL
 {{ protocol}}://{{ domain }}{% url 'app:user_create_complete' token %}
 
-ほにゃらら
+MARBLE（マーブル）運営事務局
