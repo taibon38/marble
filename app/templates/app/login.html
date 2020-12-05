@@ -22,7 +22,7 @@
         <h5 class="card-title text-center ">ユーザー名でログイン</h5>
         <form action="{% url 'app:login' %}" method="POST">
             {% bootstrap_form form %}
-            <button type="submit" class="btn btn-dark btn-block">ログイン</button>
+            <button type="submit" class="btn btn-warning btn-block">ログイン</button>
             <input type="hidden" name="next" value="{{ next }}"/>
             {% csrf_token %}
         </form>
@@ -32,7 +32,7 @@
     <div class="col-sm-5 mx-auto mt-5">
         <h5 class="card-title text-center ">初めて登録される方はこちら</h5>
         <div>
-            <a href="{% url 'app:user_create' %}" class="btn btn-warning btn-block" >会員登録画面へ</a>
+            <a href="{% url 'app:user_create' %}" class="btn btn-dark btn-block" >会員登録画面へ</a>
         </div>
     </div>
 
