@@ -8,16 +8,13 @@
 {% block content %}
 
 <div class="card-body">
-    <div class="col-sm-5 mx-auto text-center mt-3">
+    <div class="col-sm-5 mx-auto mt-3">
         <h5 class="card-title text-center ">SNSアカウントで登録・ログイン</h5>
-        <ul>
-            <li><a href="{% url 'social:begin' 'google-oauth2' %}"><img src="{% static 'app/google.png' %}"></a></li> 
-            <li><div class="fb-login-button" data-size="large" data-button-type="continue_with" data-layout="rounded" data-auto-logout-link="false" data-use-continue-as="false" data-width=""></div></li>
-            <li><a href="{% url 'social:begin' 'twitter' %}">Twitterでログイン</a></li>
-            <!-- <li><a href="{% url 'social:begin' 'facebook' %}">Facebookでログイン</a></li>  -->
-        </ul>
+            <div class="mt-2"><a class="btn btn-light btn-block" href="{% url 'social:begin' 'google-oauth2' %}"><i class="fab fa-google"></i> Googleでログイン</a></div> 
+            <!-- <li class="mt-2"><div class="fb-login-button" data-size="large" data-button-type="login_with" data-layout="default" data-auto-logout-link="true" data-use-continue-as="true" data-width=""></div></li> -->
+            <div class="mt-2"><a class="btn btn-light btn-block" href="{% url 'social:begin' 'facebook' %}"> <i class="fab fa-facebook"> Facebookでログイン</i></a></div>
+            <div class="mt-2"><a class="btn btn-light btn-block" href="{% url 'social:begin' 'twitter' %}"><i class="fab fa-twitter"> Twitterでログイン</i></a></div>
     </div>
-
     <div class="col-sm-5 mx-auto mt-5">
         <h5 class="card-title text-center ">ユーザー名でログイン</h5>
         <form action="{% url 'app:login' %}" method="POST">
