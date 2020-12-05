@@ -148,20 +148,20 @@ ul{
 }
 
 /*ボタンクリック時 →思ったように反応しない*/
-.mypage_button input:checked + label {
+.mypage_button input:checked {
     background: #00BC9B;
     color: seashell;
 }
 
 /*ボタン装飾*/
-label {
+.label_profile {
     padding: 10px;
     font-weight: bold;
     cursor :pointer;
 }
 
 /*ボタンホバー時*/
-label:hover {
+.label_profile:hover {
     background: #00BC9B;
     color: seashell;
 }
