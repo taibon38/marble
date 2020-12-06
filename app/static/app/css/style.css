@@ -191,3 +191,14 @@ ul{
 .tab-content{
     background-color: transparent;
 }
+
+
+/* プライバシーポリシーページのデザイン */
+div.wrapKOPIPE {
+    font-family: "游ゴシック" ;
+    border-radius: 15px;
+    margin: 20px 0;
+    background: #eff5f6;
+    /* border: 5px solid #e5eeef; */
+    padding: 20px;
+}
