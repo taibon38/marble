@@ -18,6 +18,10 @@ urlpatterns = [
         views.privacy,
         name='privacy'),
     path(
+        'term/',
+        views.term,
+        name='term'),
+    path(
         'mypage/',
         views.mypage,
         name='mypage'),
