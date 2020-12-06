@@ -13,6 +13,7 @@ from pathlib import Path
 
 import environ 
 import os
+import dj_database_url
 
 
 # settings.pyの位置を起点として1つ上の親ディレクトリを参照。
@@ -39,9 +40,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'cqxm=fpw2)#dnob1))8p1neos55p-@*y5^!-e$x+)fs4c(kf+i'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = env('DEBUG')
+DEBUG = env('DEBUG', bool)  # boolを指定しないと、DEBUG=Falseの"False"が文字列型として読み込まれてしまう。
 
-ALLOWED_HOSTS = ['127.0.0.1','0.0.0.0','localhost']
+ALLOWED_HOSTS = ['127.0.0.1','0.0.0.0','localhost','marble0731.herokuapp.com']
 
 
 # Application definition
@@ -107,6 +108,8 @@ DATABASES = {
         'NAME': BASE_DIR / 'db.sqlite3',
     }
 }
+# ポスグレ対応用（datebase_urlの環境変数を読み込む設定。どのデータベースを使えばいいかDjangoが把握できる。）
+DATABASES['default'].update(dj_database_url.config(conn_max_age=600, ssl_require=True))
 
 
 # Password validation
@@ -146,6 +149,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 STATIC_URL = '/static/'
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 
 #ログイン、ログアウト後のリダイレクト先を指定
