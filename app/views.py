@@ -74,9 +74,13 @@ def index(request):
         'categories_list': categories_list
         })
 
+
 def privacy(request):
-    user = request.user
     return render(request, 'app/privacy.html')
+
+
+def term(request):
+    return render(request, 'app/term.html')
 
 
 def search_category(request, category):
