@@ -26,7 +26,7 @@
             <tr>
                 <th scope="row">アイコン</th>
                 {% if user.profile_icon %}
-                <td><img src="{{ user.profile_icon.url }}" class="profile_icon"></td>
+                <td><img src="{{ user.profile_icon }}" class="profile_icon"></td>
                 {% else %}
                 <td><img src="{% static 'images/user_icon.png' %}" class="profile_icon"></td>
                 {% endif %}

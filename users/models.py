@@ -7,6 +7,8 @@ from django.utils import timezone
 from django.db.models.fields.files import ImageField
 from django.contrib.auth.base_user import BaseUserManager
 from app.models import Movie, Character
+from django.db.models.signals import post_save  # receiverを利用するために記載（SNSログイン時にアバター取得目的）
+from django.dispatch import receiver
 
 # Create your models here.
 
@@ -46,7 +48,8 @@ class User(AbstractBaseUser, PermissionsMixin):
     """カスタムユーザーモデル"""
     username = models.CharField("ユーザー名", unique=True, blank=False, max_length=100)
     email = models.EmailField("メールアドレス") 
-    profile_icon = ImageField("アイコン", upload_to='profile_icons')
+    profile_icon = models.URLField("アイコン(url)", max_length=200, blank=True)
+    # profile_icon = ImageField("アイコン", upload_to='profile_icons')
     is_staff = models.BooleanField("is_staff", default=False)
     is_active = models.BooleanField("is_active", default=True)
     date_joined = models.DateTimeField("date_joined", default=timezone.now)
