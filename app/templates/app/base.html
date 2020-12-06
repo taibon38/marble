@@ -68,9 +68,12 @@
     </header>
     <div class="container">
 
+        {% block body %}
 
-
-        {% block body %}{% endblock %}
+            {% block content %}
+            {% endblock %}
+        
+        {% endblock %}
     </div>
 </body>
 </html>

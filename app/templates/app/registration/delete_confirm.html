@@ -4,7 +4,10 @@
 {% load bootstrap4 %}
 
 {% block content %}
-<div class="row">
+<p>アカウントを削除します。よろしいですか?</p>
+<a class="btn btn-danger" href="{% url 'app:delete-complete' %}">はい</a>
+
+<!-- <div class="row">
     <div class="col-md-3">
         <ul class="list-group list-group-flush">
             <li class="list-group-item"><a href="{% url 'app:profile' %}">プロフィール</a></li>
@@ -18,7 +21,7 @@
         <p>アカウントを削除します。よろしいですか?</p>
         <a class="btn btn-danger" href="{% url 'app:delete-complete' %}">はい</a>
     </div>
-</div>
+</div> -->
 
 
 
