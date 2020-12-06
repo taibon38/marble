@@ -13,7 +13,6 @@ from pathlib import Path
 
 import environ 
 import os
-import dj_database_url
 
 
 # settings.pyの位置を起点として1つ上の親ディレクトリを参照。
@@ -43,7 +42,6 @@ SECRET_KEY = 'cqxm=fpw2)#dnob1))8p1neos55p-@*y5^!-e$x+)fs4c(kf+i'
 DEBUG = env('DEBUG', bool)  # boolを指定しないと、DEBUG=Falseの"False"が文字列型として読み込まれてしまう。
 
 ALLOWED_HOSTS = ['127.0.0.1','0.0.0.0','localhost','marble0731.herokuapp.com']
-
 
 # Application definition
 
@@ -90,7 +88,7 @@ TEMPLATES = [
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
                 'social_django.context_processors.backends',  # SNS認証で利用
-                'social_django.context_processors.login_redirect', # SNS認証で利用
+                'social_django.context_processors.login_redirect',  # SNS認証で利用
             ],
         },
     },
@@ -109,7 +107,9 @@ DATABASES = {
     }
 }
 # ポスグレ対応用（datebase_urlの環境変数を読み込む設定。どのデータベースを使えばいいかDjangoが把握できる。）
-DATABASES['default'].update(dj_database_url.config(conn_max_age=600, ssl_require=True))
+if not DEBUG:
+    import dj_database_url
+    DATABASES['default'].update(dj_database_url.config(conn_max_age=600, ssl_require=True))
 
 
 # Password validation
