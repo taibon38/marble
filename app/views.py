@@ -74,6 +74,10 @@ def index(request):
         'categories_list': categories_list
         })
 
+def privacy(request):
+    user = request.user
+    return render(request, 'app/privacy.html')
+
 
 def search_category(request, category):
     # titleがURLの文字列と一致するCategoryインスタンスを取得
