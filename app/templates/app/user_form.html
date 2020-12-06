@@ -6,12 +6,17 @@
         <form action="" method="POST" enctype="multipart/form-data">
             {{ form.non_field_errors }}
             <table class="table">
-                <tbody>
+                <body>
                     <tr>
-                        <td>現在のアイコン<img src="{{ user.profile_icon.url }}" class="profile_icon"></td>
-                        <!-- <th>ユーザーネーム：<input type="text" name="username" value="{{ user.username }}" maxlength="100" class="form-control" required="" id="id_username"></th> -->
+                        <td>現在のアイコン:<img src="{{ user.profile_icon }}" class="profile_icon"></td>
+                    </tr>
+                    <tr>
                         <td>アイコン:<input type="file" name="{{form.profile_icon.name}}" accept="image/*" class="form-control" id="id_profile_icon"></td>
+                    </tr>
+                    <tr>
                         <td>ユーザー名:{{form.username}}</td>
+                    </tr>
+                    <tr>
                         <td>メールアドレス:{{form.email}}</td>
                     </tr>
                     <!-- {% for field in form %}
@@ -20,7 +25,7 @@
                             <td>{{ field }} {{ field.errors }}</td>
                         </tr>
                     {% endfor %} -->
-                </tbody>
+                </body>
             </table>
             {% csrf_token %}
             <button type="submit" class="btn btn-success btn-lg" >更新</button>

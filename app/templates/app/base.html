@@ -39,8 +39,9 @@
                         <div>
                             {% if request.user.is_authenticated %}
                                     {% if user.profile_icon %}
-                                    <img src="{{ user.profile_icon.url }}" class="profile_icon">
+                                    <img src="{{ user.profile_icon }}" class="profile_icon">
                                     {% else %}
+                                    <!-- <img src="{{ user.profile_icon.url }}" class="profile_icon"> -->
                                     <img src="{% static 'images/user_icon.png' %}" class="profile_icon">
                                     {% endif %}
                                     <nobr class="text-light">{{user.username}}さん。こんにちは。</nobr>
