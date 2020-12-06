@@ -1,6 +1,5 @@
 {% extends 'app/base.html' %}
 
-
 {% block content %}
 
 {% if category %}
@@ -30,21 +29,19 @@
 
 
 <div class="container">
-
-{% include 'app/movies_list.html' %}
-
-    <div class="search">
-        <div class="search_tags">
-            <!-- <p>キャラクターで探す</p> -->
-            {% include 'app/characters_list.html' %}
-        </div>
-
-        <div class="search_tags">
-            <!-- <p>楽しみ方で探す</p> -->
-            {% include 'app/category_list.html' %}
-        </div>
-    </div>
-
+    <h5>キャラクターで探す</h5>
+    {% include 'app/characters_list.html' %}
 </div>
+
+<div class="container">
+    <h5>楽しみ方で探す</h5>
+    {% include 'app/category_list.html' %}
+</div>
+
+<div class="container">
+    <h5>注目の作品</h5>
+    {% include 'app/movies_list.html' %}
+</div>
+
 
 {% endblock %}

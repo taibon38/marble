@@ -72,12 +72,12 @@ ul{
     display: flex;
 } */
 
-.container{
+/* .container{
     width: 100%;
     max-width: 960px;
     margin-right: auto;
     margin-left: auto;
-}
+} */
 
 /* 検索タグをきれいにしたい。
 .search{
