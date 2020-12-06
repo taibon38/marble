@@ -22,7 +22,7 @@ from django.conf import settings #ImageFieldの画像表示目的
 from django.conf.urls.static import static #ImageFieldの画像表示目的
 
 urlpatterns = [
-    path('admin/', admin.site.urls),
+    path('cockpit/', admin.site.urls),  # adminのURLを自由に指定
     path('',include('app.urls')),
     path('oauth/',include('social_django.urls',namespace='social')),
     path('accounts/profile/',views.index,name='index'),
