@@ -15,12 +15,19 @@
             {{ form.non_field_errors }}
             <table class="table">
                 <tbody>
-                    {% for field in form %}
+                    <tr>
+                        <td>現在のアイコン<img src="{{ user.profile_icon.url }}" class="profile_icon"></td>
+                        <!-- <th>ユーザーネーム：<input type="text" name="username" value="{{ user.username }}" maxlength="100" class="form-control" required="" id="id_username"></th> -->
+                        <td>アイコン:<input type="file" name="{{form.profile_icon.name}}" accept="image/*" class="form-control" id="id_profile_icon"></td>
+                        <td>ユーザー名:{{form.username}}</td>
+                        <td>メールアドレス:{{form.email}}</td>
+                    </tr>
+                    <!-- {% for field in form %}
                         <tr>
                             <th><label for="{{ field.id_for_label }}">{{ field.label }}</label></th>
                             <td>{{ field }} {{ field.errors }}</td>
                         </tr>
-                    {% endfor %}
+                    {% endfor %} -->
                 </tbody>
             </table>
             {% csrf_token %}

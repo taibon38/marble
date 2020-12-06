@@ -43,7 +43,7 @@
                                     {% else %}
                                     <img src="{% static 'images/user_icon.png' %}" class="profile_icon">
                                     {% endif %}
-                                    <!-- <nobr class="text-light">{{user.username}}さん。こんにちは。</nobr> -->
+                                    <nobr class="text-light">{{user.username}}さん。こんにちは。</nobr>
                                 <li class="nav-item dropdown">
                                     <a href="#" class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     マイページ
@@ -57,7 +57,7 @@
                                         </div>
                                 </li>
                             {% else %}
-                                <a class="btn btn-warning" href="{% url 'app:login' %}">ログイン</a>
+                                <a class="btn btn-warning my-auto" href="{% url 'app:login' %}">ログイン</a>
                             {% endif %}
                         </div>
                     </li>
