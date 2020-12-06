@@ -2,11 +2,39 @@
 
 
 {% block content %}
-<div class="mt-3">
-    <img src={{movie.movie_icon.url}} class="movie_icon">
-    <P>作品名：{{movie.title}}</P>
-    <p>公開日：{{movie.publication_date}}</p>
-    <P>上映時間：{{movie.screening_time}}分</P>
+<div class="container mt-3">
+    <div class="row">
+        <div class="col-md-2">
+            <img src={{movie.movie_icon.url}} class="movie_icon">
+        </div>
+        <div class="col">
+            <h4 class="text-left">作品名：{{movie.title}}</h4>
+            <p class="text-left">公開日：{{movie.publication_date}}</p>
+            <P class="text-left">上映時間：{{movie.screening_time}}分</P>
+        </div>
+        {% if request.user.is_authenticated %}
+            <div class="col">                    
+                <form action="{% url 'app:toggle_fav_movies' %}" method="post">{% csrf_token %}
+                    <input type="hidden" name="movie_id" value="{{ movie.id }}">
+                    {% if movie in user.faved_movies.all %}
+                        <input type="submit" name="submit" class="btn btn-light" value="お気に入りから外す" /> 
+                    {% else %}
+                        <input type="submit" name="submit" class="btn btn-info" value=" お気に入り登録" />
+                    {% endif %}
+                </form>
+                <form action="{% url 'app:toggle_watch_movies' %}" method="post" class="mt-1">{% csrf_token %}
+                    <input type="hidden" name="movie_id" value="{{ movie.id }}">
+                    {% if movie in user.watched_movies.all %}
+                        <input type="submit" name="submit" class="btn btn-light" value="観たよから外す" /> 
+                    {% else %}
+                        <input type="submit" name="submit" class="btn btn-info" value=" 観たよ" />
+                    {% endif %}
+                </form>
+            </div>
+        {% endif %}
+    </div>
+</div>
+
     <P>あらすじ：{{movie.sumally}}</P>
     <P>解説：{{movie.detail}}</P>
 
@@ -25,28 +53,6 @@
         {% endfor %}
 </div>
 
-<div>
-    {% if request.user.is_authenticated %}
-    <form action="{% url 'app:toggle_fav_movies' %}" method="post">{% csrf_token %}
-        <input type="hidden" name="movie_id" value="{{ movie.id }}">
-        {% if movie in user.faved_movies.all %}
-            <input type="submit" name="submit" class="btn-light" value="お気に入りから外す" /> 
-        {% else %}
-            <input type="submit" name="submit" class="btn-success" value=" お気に入り登録" />
-        {% endif %}
-    </form>
 
-    <form action="{% url 'app:toggle_watch_movies' %}" method="post">{% csrf_token %}
-        <input type="hidden" name="movie_id" value="{{ movie.id }}">
-        {% if movie in user.watched_movies.all %}
-            <input type="submit" name="submit" class="btn-light" value="観たよから外す" /> 
-        {% else %}
-            <input type="submit" name="submit" class="btn-success" value=" 観たよ" />
-        {% endif %}
-    </form>
-
-
-    {% endif %}
-</div>
 
 {% endblock %}
