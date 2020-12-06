@@ -14,6 +14,10 @@ urlpatterns = [
         views.index,
         name='index'),
     path(
+        'privacy/',
+        views.privacy,
+        name='privacy'),
+    path(
         'mypage/',
         views.mypage,
         name='mypage'),
