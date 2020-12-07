@@ -8,5 +8,5 @@ def get_avatar(backend, strategy, details, response,
     if backend.name == 'google-oauth2':
         url = response["picture"]
     if url:
-        user.profile_icon = url 
+        user.avatar = url 
         user.save()

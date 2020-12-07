@@ -38,12 +38,7 @@
                     <li class="nav-item ml-3 my-auto">
                         <div>
                             {% if request.user.is_authenticated %}
-                                    {% if user.profile_icon %}
-                                    <img src="{{ user.profile_icon }}" class="profile_icon">
-                                    {% else %}
-                                    <!-- <img src="{{ user.profile_icon.url }}" class="profile_icon"> -->
-                                    <img src="{% static 'images/user_icon.png' %}" class="profile_icon">
-                                    {% endif %}
+                                    <img src="{{ user.profile_icon_url }}" class="profile_icon">
                                     <nobr class="text-light">{{user.username}}さん。こんにちは。</nobr>
                                 <li class="nav-item dropdown">
                                     <a href="#" class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
