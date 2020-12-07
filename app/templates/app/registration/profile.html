@@ -25,11 +25,7 @@
             <tbody>
             <tr>
                 <th scope="row">アイコン</th>
-                {% if user.profile_icon %}
-                <td><img src="{{ user.profile_icon }}" class="profile_icon"></td>
-                {% else %}
-                <td><img src="{% static 'images/user_icon.png' %}" class="profile_icon"></td>
-                {% endif %}
+                <td><img src="{{ user.profile_icon_url }}" class="profile_icon"></td>
             </tr>
             <tr>
                 <th scope="row">ユーザー名</th>
