@@ -1,5 +1,4 @@
 /* acordion */
-
 $(".accordion-wrap").on("click", function(){   
     $(this).children().eq(1).slideToggle(300);  
     $(this).children().eq(0).toggleClass("accordion-no-bar");
