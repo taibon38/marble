@@ -2,30 +2,44 @@
 
 
 {% block content %}
-キャラクターページです
 
-<h2>{{character.name}}</h2>
-    <img src={{character.character_icon.url}} class="character_icon">
-    {{movie_character.character}}
-
-<p>出演作品</p>
-    {% for movie in character.movies.all %}
-        <a href="{% url 'app:movie' movie.id %}">
-            <img src="{{movie.movie_icon.url}}" class="movie_icon_min">
-        </a>
-    {% endfor %}
-
-<div>
-    {% if request.user.is_authenticated %}
-    <form action="{% url 'app:toggle_fav_characters' %}" method="post">{% csrf_token %}
-        <input type="hidden" name="character_id" value="{{ character.id }}">
-        {% if character in user.faved_characters.all %}
-            <input type="submit" name="submit" class="fav_button" value="好きから外す" /> 
-        {% else %}
-            <input type="submit" name="submit" class="fav_button" value="好き認定" />
-        {% endif %}
-    </form>
-
-    {% endif %}
+<div class="containar mt-3 mx-auto">
+    <div class="row">
+        <div class="col col-md-8">
+                <img src={{character.character_icon.url}} class="character_icon">
+                {{movie_character.character}}
+                <h5 class="mt-1">{{character.name}}</h5>
+        </div>
+        <div class="col col-md-offset-1 col-md-3">
+            <div>
+                {% if request.user.is_authenticated %}
+                <form action="{% url 'app:toggle_fav_characters' %}" method="post">{% csrf_token %}
+                    <input type="hidden" name="character_id" value="{{ character.id }}">
+                    {% if character in user.faved_characters.all %}
+                        <input type="submit" name="submit" class="btn btn-block btn-light text-secondary" value="好きから外す" /> 
+                    {% else %}
+                        <input type="submit" name="submit" class="btn btn-block btn-success" value="好き認定" />
+                        <p class="font-small mt-1">マイページの「好きなキャラ」に登録されます</p>
+                        <!-- <input type="submit" name="submit" class="fav fav-tag fav-tag--ver" value="好き認定" /><i class="fas fa-star"></i></input> -->
+                    {% endif %}
+                </form>
+                {% endif %}
+            </div>
+        </div>
+    </div>
 </div>
+        <div class="text-center">
+            <p>出演作品</p>
+        </div>
+        <div class="text-center">
+            {% for movie in character.movies.all %}
+                <a href="{% url 'app:movie' movie.id %}">
+                    <img src="{{movie.movie_icon.url}}" class="movie_icon_min">
+                </a>
+            {% endfor %}
+        </div>
+
+
+
+
 {% endblock %}
