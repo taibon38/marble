@@ -202,3 +202,50 @@ div.wrapKOPIPE {
     /* border: 5px solid #e5eeef; */
     padding: 20px;
 }
+
+/* 作品ページアコーディオンの実装 */
+.accordion-wrap{
+    border-bottom: 1px solid #ddba4d;
+}
+
+.accordion-item{
+    width: 100%;
+    margin: 0 auto;
+    cursor: pointer;
+
+    margin-top: 30px;
+}
+
+.accordion-header{
+    transition: ease-in-out 100ms;
+}
+
+.accordion-text{
+    width: 100%;
+    
+    display: none;
+    padding-top: 5px;
+    padding-bottom: 20px;
+}
+
+.fa{
+    transition: ease-in-out 300ms;
+}
+
+.rotate-fa{
+    transform: rotate(180deg);
+}
+
+
+.accordion-header .fa{
+    float: right;
+    line-height: 35px;
+}
+
+.accordion-gold{
+    color: #ddba4d;
+}
+
+.accordion-no-bar{
+    border-bottom: 0;
+}

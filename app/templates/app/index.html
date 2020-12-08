@@ -28,6 +28,12 @@
 {% endif %}
 
 
+<div class="container text center">
+    <h5>注目の作品</h5>
+    {% include 'app/movies_list.html' %}
+
+</div>
+
 <div class="container">
     <h5>キャラクターで探す</h5>
     {% include 'app/characters_list.html' %}
@@ -36,11 +42,6 @@
 <div class="container">
     <h5>楽しみ方で探す</h5>
     {% include 'app/category_list.html' %}
-</div>
-
-<div class="container">
-    <h5>注目の作品</h5>
-    {% include 'app/movies_list.html' %}
 </div>
 
 

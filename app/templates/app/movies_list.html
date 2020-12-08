@@ -1,9 +1,11 @@
-<div class="movie-cantainer">
-    {% for movie  in movies_list %}
-    <div class="movie">
-        <a href="{% url 'app:movie' movie.id %}">
-            <img src="{{movie.movie_icon.url}}" class="movie_icon">
-        </a>
+
+
+    <div class="movie-cantainer">
+        {% for movie  in movies_list %}
+        <div class="movie">
+            <a href="{% url 'app:movie' movie.id %}">
+                <img src="{{movie.movie_icon.url}}" class="movie_icon">
+            </a>
+        </div>
+        {% endfor %}
     </div>
-    {% endfor %}
-</div>
