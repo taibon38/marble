@@ -51,7 +51,6 @@ ul{
     width: calc(100%/7);
     float: left;
     padding: 5px;
-    margin-bottom: 15px;
 }
 
 /* 
@@ -95,7 +94,7 @@ ul{
     width:50%;
 } */
 
-
+/* 
 .character{
     float: left;
     padding-left: 1em;
@@ -104,7 +103,6 @@ ul{
 .character_tags{
     position:absolute;
 	left:100px;
-	bottom:60px;
 }
 
 .category{
@@ -115,8 +113,7 @@ ul{
 .category_tags{
     position:absolute;
 	left:100px;
-	bottom:10px;
-}
+} */
 
 /* マイページでタブ切り替えの色変更(bootstrapの色を変更) */
 .nav-tabs > li > a{
