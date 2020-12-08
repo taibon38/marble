@@ -249,3 +249,18 @@ div.wrapKOPIPE {
 .accordion-no-bar{
     border-bottom: 0;
 }
+
+.btn-success, .btn-success:active, .btn-success:visited {
+    background-color: #00BC9B !important;
+    border: white !important;
+}
+.btn-success:hover {
+    background-color: #05ac8d !important;
+    border: white !important;
+}
+
+
+/* 文字サイズの調整 */
+.font-small {
+    font-size: 0.5rem;
+}
