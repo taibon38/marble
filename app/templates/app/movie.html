@@ -89,20 +89,24 @@
 </div>
 
 
+    <div class="mt-5">
+        <p>楽しみ方</p>
+            {% for category in movie.categories.all %}
+                <a href="{% url 'app:search_category' category=category.title %}">
+                    <button type="button" class ="btn btn-light btn-sm"> {{ category.title }}</button>
+                </a>
+            {% endfor %}
+    </div>
 
-    <p>楽しみ方カテゴリ：</p>
-        {% for category in movie.categories.all %}
-            <a href="{% url 'app:search_category' category=category.title %}">
-                <button type="button" class ="btn btn-light "> {{ category.title }}</button>
-            </a>
-        {% endfor %}
-
-    <p>キャラクター詳細:</p>
+    <div class="mt-5">
+        <p>キャラクター詳細</p>
         {% for character in movie.characters.all %}
             <a href="{% url 'app:character' character.id %}">
-                <button type="button" class ="btn btn-light">{{character.name}}</button> 
+                <button type="button" class ="btn btn-light btn-sm">{{character.name}}</button> 
             </a>
         {% endfor %}
+    </div>
+
 </div>
 
 
