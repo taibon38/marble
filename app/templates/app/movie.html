@@ -35,13 +35,65 @@
     </div>
 </div>
 
-    <P>あらすじ：{{movie.sumally}}</P>
-    <P>解説：{{movie.detail}}</P>
+<div class="container mt-5 mb-5">
+    <div class="accordion" id="collapse-accordion">
+        <div class="card mb-2">
+            <div class="card-header" id="headingOne">
+                <h5 class="mb-0">
+                <button class="btn btn-block text-left" type="button" data-toggle="collapse" data-target="#collapse-accordion-1">
+                    あらすじ
+                </button>
+                </h5>
+            </div>
+            <div id="collapse-accordion-1" class="collapse" data-parent="#collapse-accordion">
+                <div class="card-body">
+                {{movie.sumally}}
+                </div>
+            </div>
+        </div>
+        <div class="card mb-2">
+            <div class="card-header" id="headingOne">
+                <h5 class="mb-0">
+                <button class="btn btn-block text-left " type="button" data-toggle="collapse" data-target="#collapse-accordion-2">
+                解説
+                </button>
+                </h5>
+            </div>
+            <div id="collapse-accordion-2" class="collapse" data-parent="#collapse-accordion">
+                <div class="card-body">
+                {{movie.detail}}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<div class="accordion-wrap">
+    <div class="accordion-item">
+        <p class="accordion-header"> あらすじ <i class="fa fa-angle-down" aria-hidden="true"></i> </p>
+    </div>
+    <div class="accordion-text">
+        <p> {{movie.sumally}} </p>
+    </div>
+</div>
+
+
+<div class="accordion-wrap">
+    <div class="accordion-item">
+        <p class="accordion-header"> 解説 <i class="fa fa-angle-down" aria-hidden="true"></i> </p>
+    </div>
+    <div class="accordion-text">
+        <p> {{movie.detail}} </p>
+    </div>
+</div>
+
+
 
     <p>楽しみ方カテゴリ：</p>
         {% for category in movie.categories.all %}
             <a href="{% url 'app:search_category' category=category.title %}">
-                <button type="button" class ="btn btn-light"> {{ category.title }}</button>
+                <button type="button" class ="btn btn-light "> {{ category.title }}</button>
             </a>
         {% endfor %}
 
