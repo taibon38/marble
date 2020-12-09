@@ -53,12 +53,11 @@ ul{
     padding: 5px;
 }
 
-/* 
+
 .movie_font{
     font-size: 1rem;
-} */
+} 
 
-/* 
 .movie-fav-container{
     display: flex;
 }
@@ -69,16 +68,16 @@ ul{
 
 .character-fav-container{
     display: flex;
-} */
+} 
 
-/* .container{
+.container{
     width: 100%;
     max-width: 960px;
     margin-right: auto;
     margin-left: auto;
-} */
+} 
 
-/* 検索タグをきれいにしたい。
+/* 検索タグをきれいにしたい。 */
 .search{
     display:flex;
     flex-flow: column;
@@ -92,16 +91,15 @@ ul{
     background-color:#FFCC80;
     margin:0.5em auto;
     width:50%;
-} */
+}
 
-/* 
+
 .character{
     float: left;
     padding-left: 1em;
 }
 
 .character_tags{
-    position:absolute;
 	left:100px;
 }
 
@@ -111,9 +109,8 @@ ul{
 }
 
 .category_tags{
-    position:absolute;
 	left:100px;
-} */
+} 
 
 /* マイページでタブ切り替えの色変更(bootstrapの色を変更) */
 .nav-tabs > li > a{
@@ -260,4 +257,25 @@ div.wrapKOPIPE {
 /* 文字サイズの調整 */
 .font-small {
     font-size: 0.5rem;
+}
+
+
+/* indexページでレイアウトの設定 */
+
+.index-content{
+    display: flex;
+    flex-direction: column;
+}
+
+.movies_list{
+    flex: 1;
+    margin-top: 1em;
+}
+
+.characters_list{
+    margin-top: 1em;
+}
+
+.category_list{
+    margin-top: 1em;
 }
