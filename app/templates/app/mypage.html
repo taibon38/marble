@@ -1,16 +1,17 @@
 {% extends 'app/base.html' %}
 
 
+{% load static %}
 {% block content %}
 
 
 <h5 class="mt-3 my-3">マイページ</h5>
 
 <!-- 上下左右に規定の余白を設定するbootstrapクラス p-3を指定 -->
-<main class="mx-auto" style="width: auto;"> 
-    <ul class ="nav nav-tabs border border-0 mb-5">
+<main class="text-center"> 
+    <ul class ="nav nav-tabs border border-0 my-5 justify-content-center">
         <li class="nav-item mr-2">
-            <a href="#faved_movies" class="nav-link" data-toggle="tab"><i class="fas fa-star"></i> お気に入り作品</a>
+            <a href="#faved_movies" class="nav-link" data-toggle="tab"><i class="fas fa-heart"></i> お気に入り作品</a>
         </li>
         <li class="nav-item mx-2">
             <a href="#watched_movies" class="nav-link" data-toggle="tab"><i class="fas fa-eye mr-1"></i>閲覧済作品</a>
@@ -20,39 +21,51 @@
         </li>
     </ul>
 
-    <button class="tab-content border border-0"> 
-            <div id="faved_movies" class="tab-pane active img-fluid">  
-            {% if not faved_movies_list  %}
-                お気に入り登録をしよう
-            {% else %}
-                {% for movie in faved_movies_list %}       
+    <button class="tab-content border border-0 mx-auto"> 
+            <div id="faved_movies" class="tab-pane active img-fluid w-100">  
+                {% if not faved_movies_list  %}
+                    <div class="mx-auto">
+                        <p>お気に入りのMARVEL作品を登録しよう！</p>
+                        <p>作品は<a href="{% url 'app:index' %}">トップページ</a>で探せるよ！</p>
+                        <img src="{% static 'svg/love.svg' %}" width="300" height="300">
+                    </div>
+                {% else %}
+                    {% for movie in faved_movies_list %}       
                         <a href="{% url 'app:movie' movie.id %}">
                             <img src="{{movie.movie_icon.url}}" alt="" class="movie_icon_min mx-1 mb-2">
                         </a>
-                {% endfor %}
-            {% endif %}
+                    {% endfor %}
+                {% endif %}
             </div>
             <div id="watched_movies" class="tab-pane img-fluid">  
-            {% if not watched_movies_list  %}
-                閲覧した作品を登録しよう
-            {% else %}
-                {% for movie in watched_movies_list %}       
-                        <a href="{% url 'app:movie' movie.id %}">
-                            <img src="{{movie.movie_icon.url}}" alt="" class="movie_icon_min mx-1 mb-2">
-                        </a>
-                {% endfor %}
-            {% endif %}  
+                {% if not watched_movies_list  %}
+                    <div class="mx-auto">
+                        <p>閲覧したMARVEL作品を登録しよう！</p>
+                        <p>作品は<a href="{% url 'app:index' %}">トップページ</a>で探せるよ！</p>
+                        <img src="{% static 'svg/cinema.svg' %}" width="300" height="300">
+                    </div>
+                {% else %}
+                    {% for movie in watched_movies_list %}       
+                            <a href="{% url 'app:movie' movie.id %}">
+                                <img src="{{movie.movie_icon.url}}" alt="" class="movie_icon_min mx-1 mb-2">
+                            </a>
+                    {% endfor %}
+                {% endif %}  
             </div>
             <div id="faved_characters" class="tab-pane img-fluid">  
-            {% if not faved_characters_list  %}
-                好きなキャラを登録しよう
-            {% else %}
-                {% for character in faved_characters_list %}  
-                        <a href="{% url 'app:character' character.id %}">
-                            <img src="{{character.character_icon.url}}" alt="" class="character_icon_min mx-1 mb-2">
-                        </a>
-                {% endfor %}
-            {% endif %}
+                {% if not faved_characters_list  %}
+                    <div class="mx-auto">
+                        <p>好きなキャラクターを登録しよう！</p>
+                        <p>作品ページの出演キャラクターから、好きなキャラを探せるよ！</p>
+                        <img src="{% static 'svg/hero.svg' %}" width="300" height="300">
+                    </div>
+                {% else %}
+                    {% for character in faved_characters_list %}  
+                            <a href="{% url 'app:character' character.id %}">
+                                <img src="{{character.character_icon.url}}" alt="" class="character_icon_min mx-1 mb-2">
+                            </a>
+                    {% endfor %}
+                {% endif %}
             </div>
     </button>
 </main>

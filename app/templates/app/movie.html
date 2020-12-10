@@ -17,9 +17,9 @@
                 <form action="{% url 'app:toggle_fav_movies' %}" method="post">{% csrf_token %}
                     <input type="hidden" name="movie_id" value="{{ movie.id }}">
                     {% if movie in user.faved_movies.all %}
-                        <input type="submit" name="submit" class="fas btn btn-light text-secondary" value="&#xf005; お気に入りから外す" /> 
+                        <input type="submit" name="submit" class="fas btn btn-light text-secondary" value="&#xf004; お気に入りから外す" /> 
                     {% else %}
-                        <input type="submit" name="submit" class="fas btn btn-success" value="&#xf005; お気に入り登録" />
+                        <input type="submit" name="submit" class="fas btn btn-success" value="&#xf004; お気に入り登録" />
                     {% endif %}
                 </form>
                 <form action="{% url 'app:toggle_watch_movies' %}" method="post" class="mt-1">{% csrf_token %}
@@ -99,7 +99,7 @@
     </div>
 
     <div class="mt-5">
-        <p>キャラクター詳細</p>
+        <p>出演キャラクター</p>
         {% for character in movie.characters.all %}
             <a href="{% url 'app:character' character.id %}">
                 <button type="button" class ="btn btn-light btn-sm">{{character.name}}</button> 

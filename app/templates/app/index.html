@@ -3,7 +3,14 @@
 {% block content %}
 
 {% if search_theme %}
-    <p class="mt-3">「{{ search_theme }} 」の検索結果(searchtheme)</p>
+    <p class="mt-3">「{{ search_theme }} 」の検索結果</p>
+
+    {% for character in movie.characters.all %}
+        <a href="{% url 'app:character' character.id %}">
+            <button type="button" class ="btn btn-light btn-sm">{{character.name}}</button> 
+        </a>
+    {% endfor %}
+
     <p>該当する作品は{{movies_list.count}}件です🎬</p>
 
     <div class="index-content">
