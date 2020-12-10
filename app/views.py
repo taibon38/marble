@@ -90,6 +90,7 @@ def search_category(request, category):
     # 取得したCategoryに属する映画一覧を取得
     movies_list = Movie.objects.filter(categories=category)
     return render(request, 'app/index.html', {
+        'search_theme':category,
         'category': category,
         'movies_list': movies_list
         })
@@ -102,6 +103,7 @@ def search_character(request, character):
     movies_list = Movie.objects.filter(characters=character)
 
     return render(request, 'app/index.html', {
+        'search_theme':character,
         'character': character,
         'movies_list': movies_list
         })
