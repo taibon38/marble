@@ -16,10 +16,10 @@
                 <form action="{% url 'app:toggle_fav_characters' %}" method="post">{% csrf_token %}
                     <input type="hidden" name="character_id" value="{{ character.id }}">
                     {% if character in user.faved_characters.all %}
-                        <input type="submit" name="submit" class="btn btn-block btn-light text-secondary" value="好きから外す" /> 
+                        <input type="submit" name="submit" class="fas btn btn-block btn-light text-secondary" value="&#xf6fa; 好きから外す" /> 
                     {% else %}
-                        <input type="submit" name="submit" class="btn btn-block btn-success" value="好き認定" />
-                        <p class="font-small mt-1">マイページの「好きなキャラ」に登録されます</p>
+                        <input type="submit" name="submit" class="fas btn btn-block btn-success" value="&#xf6fa; 好き認定" />
+                        <p class="font-small mt-1">マイページの「<i class="fas fa-mask mr-1"></i>好きなキャラ」に登録されます</p>
                         <!-- <input type="submit" name="submit" class="fav fav-tag fav-tag--ver" value="好き認定" /><i class="fas fa-star"></i></input> -->
                     {% endif %}
                 </form>
