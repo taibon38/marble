@@ -9,3 +9,12 @@ $(".accordion-wrap").on("click", function(){
 
     $(".accordion-wrap .accordion-text").not($(this).children().eq(1)).slideUp(300);
 });
+
+$(function(){
+    $('.js-menu__item__link').each(function(){
+        $(this).on('click',function(){
+            $("+.submenu",this).slideToggle();
+            return false;
+        });
+    });
+});

@@ -3,46 +3,70 @@
 {% block content %}
 
 {% if category %}
-<p class="mt-3">「{{ category.title }} 」の検索結果</p>
-<p>該当する作品は{{movies_list.count}}件です🎬</p>
+    <p class="mt-3">「{{ category.title }} 」の検索結果</p>
+    <p>該当する作品は{{movies_list.count}}件です🎬</p>
+
+    <div class="index-content">
+        <div class="movies_list">
+            <p class="text-center">対象作品</p>
+            {% include 'app/movies_list.html' %}
+        </div>
+    </div>
 {% endif %}
 
 {% if character %}
-<p class="mt-3">「{{ character.name }} 」の検索結果</p>
-<p>該当する作品は{{movies_list.count}}件です🎬</p>
+    <p class="mt-3">「{{ character.name }} 」の検索結果</p>
+    <p>該当する作品は{{movies_list.count}}件です🎬</p>
 
+
+    <div class="index-content">
+        <div class="movies_list">
+            <p class="text-center">対象作品</p>
+            {% include 'app/movies_list.html' %}
+        </div>
+    </div>
 {% endif %}
 
 {% if messages %}
-<ul class="messages">
-    {% for message in messages %}
-    <li class="alert{% if message.tags %} alert-{{ message.tags }}{% endif %} alert-dismissible mt-3 " role="alert">
-        <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-            <span aria-hidden="true">&times;</span>
-        </button>
-        {{ message }}
-    </li>
-    {% endfor %}
-</ul>
-<p class="mt-3">該当する作品は{{movies_list.count}}件です🎬</p>
+    <ul class="messages">
+        {% for message in messages %}
+        <li class="alert{% if message.tags %} alert-{{ message.tags }}{% endif %} alert-dismissible mt-3 " role="alert">
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+            {{ message }}
+        </li>
+        {% endfor %}
+    </ul>
+    <p class="mt-3">該当する作品は{{movies_list.count}}件です🎬</p>
+
+    <div class="index-content">
+        <div class="movies_list">
+            <p class="text-center">対象作品</p>
+            {% include 'app/movies_list.html' %}
+        </div>
+    </div>
 {% endif %}
 
 
-<div class="container text center">
-    <h5>注目の作品</h5>
-    {% include 'app/movies_list.html' %}
+<!-- デフォルト表記 -->
+{% if not messages or character or category %}
+<div class="index-content">
+    <div class="movies_list">
+        <p class="text-center">作品一覧</p>
+        {% include 'app/movies_list.html' %}
+    </div>
 
+    <div class="characters_list">
+        <p class="text-center">キャラクターで探す</p>
+        {% include 'app/characters_list.html' %}
+    </div>
+    <div class="category_list">
+        <p class="text-center">楽しみ方で探す</p>
+        {% include 'app/category_list.html' %}
+    </div>
 </div>
-
-<div class="container">
-    <h5>キャラクターで探す</h5>
-    {% include 'app/characters_list.html' %}
-</div>
-
-<div class="container">
-    <h5>楽しみ方で探す</h5>
-    {% include 'app/category_list.html' %}
-</div>
+{% endif %}
 
 
 {% endblock %}
