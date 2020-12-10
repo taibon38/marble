@@ -10,37 +10,49 @@
 <main class="mx-auto" style="width: auto;"> 
     <ul class ="nav nav-tabs border border-0 mb-5">
         <li class="nav-item mr-2">
-            <a href="#faved_movies" class="nav-link" data-toggle="tab">お気に入り作品</a>
+            <a href="#faved_movies" class="nav-link" data-toggle="tab"><i class="fas fa-star"></i> お気に入り作品</a>
         </li>
         <li class="nav-item mx-2">
-            <a href="#watched_movies" class="nav-link" data-toggle="tab">閲覧済作品</a>
+            <a href="#watched_movies" class="nav-link" data-toggle="tab"><i class="fas fa-eye mr-1"></i>閲覧済作品</a>
         </li>
         <li class="nav-item mx-2">
-            <a href="#faved_characters" class="nav-link" data-toggle="tab">好きなキャラ</a>
+            <a href="#faved_characters" class="nav-link" data-toggle="tab"><i class="fas fa-mask mr-1"></i>好きなキャラ</a>
         </li>
     </ul>
 
     <button class="tab-content border border-0"> 
             <div id="faved_movies" class="tab-pane active img-fluid">  
-            {% for movie in faved_movies_list %}       
-                    <a href="{% url 'app:movie' movie.id %}">
-                        <img src="{{movie.movie_icon.url}}" alt="" class="movie_icon_min mx-1 mb-2">
-                    </a>
-            {% endfor %}
+            {% if not faved_movies_list  %}
+                お気に入り登録をしよう
+            {% else %}
+                {% for movie in faved_movies_list %}       
+                        <a href="{% url 'app:movie' movie.id %}">
+                            <img src="{{movie.movie_icon.url}}" alt="" class="movie_icon_min mx-1 mb-2">
+                        </a>
+                {% endfor %}
+            {% endif %}
             </div>
             <div id="watched_movies" class="tab-pane img-fluid">  
+            {% if not watched_movies_list  %}
+                閲覧した作品を登録しよう
+            {% else %}
                 {% for movie in watched_movies_list %}       
                         <a href="{% url 'app:movie' movie.id %}">
                             <img src="{{movie.movie_icon.url}}" alt="" class="movie_icon_min mx-1 mb-2">
                         </a>
                 {% endfor %}
+            {% endif %}  
             </div>
             <div id="faved_characters" class="tab-pane img-fluid">  
+            {% if not faved_characters_list  %}
+                好きなキャラを登録しよう
+            {% else %}
                 {% for character in faved_characters_list %}  
                         <a href="{% url 'app:character' character.id %}">
                             <img src="{{character.character_icon.url}}" alt="" class="character_icon_min mx-1 mb-2">
                         </a>
                 {% endfor %}
+            {% endif %}
             </div>
     </button>
 </main>
