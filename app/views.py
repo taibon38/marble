@@ -100,6 +100,7 @@ def search_character(request, character):
     character = get_object_or_404(Character, name=character)
     # 取得したCharacterが属する映画一覧を取得
     movies_list = Movie.objects.filter(characters=character)
+
     return render(request, 'app/index.html', {
         'character': character,
         'movies_list': movies_list
