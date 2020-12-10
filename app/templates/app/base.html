@@ -53,9 +53,8 @@
                                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                                             <a class="dropdown-item" href="{% url 'app:mypage' %}">マイページ</a>
                                             <a class="dropdown-item" href="{% url 'app:profile' %}">プロフィール</a>
-                                            <a class="dropdown-item" href="{% url 'app:logout' %}">ログアウト</a>
                                             <div class="dropdown-divider"></div>
-                                            <a class="dropdown-item" href="#">※今後追加※</a>
+                                            <a class="dropdown-item" href="{% url 'app:logout' %}">ログアウト</a>
                                         </div>
                                 </li>
                             {% else %}
@@ -68,7 +67,7 @@
         </nav>
 
     </header>
-    <div class="container">
+    <div class="container mx-auto w-auto">
 
         {% block body %}
 
