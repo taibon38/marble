@@ -248,3 +248,14 @@ div.wrapKOPIPE {
     color: #222;
     padding: 1rem;
   }
+
+/* フッター */
+.footer {
+    position: absolute;
+    bottom: 0;
+    width: 100%;
+    /* Set the fixed height of the footer here */
+    height: auto;
+    background-color: #f5f5f5;
+    font-size: 00.5em;
+}
