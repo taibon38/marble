@@ -15,7 +15,7 @@
 
     <div class="index-content">
         <div class="movies_list">
-            <p class="text-center">対象作品</p>
+            <p class="text-center"><i class="fas fa-film mr-1"></i>対象作品</p>
             {% include 'app/movies_list.html' %}
         </div>
     </div>
@@ -43,16 +43,16 @@
 {% else %}
     <div class="index-content">
         <div class="movies_list">
-            <p class="text-center">作品一覧</p>
+            <p class="text-center"><i class="fas fa-film mr-1"></i>作品一覧</p>
             {% include 'app/movies_list.html' %}
         </div>
 
         <div class="characters_list">
-            <p class="text-center">キャラクターで探す</p>
+            <p class="text-center"><i class="fas fa-mask mr-1"></i>キャラクターで探す</p>
             {% include 'app/characters_list.html' %}
         </div>
         <div class="category_list">
-            <p class="text-center">楽しみ方で探す</p>
+            <p class="text-center"><i class="far fa-laugh-squint mr-1"></i>楽しみ方で探す</p>
             {% include 'app/category_list.html' %}
         </div>
     </div>
