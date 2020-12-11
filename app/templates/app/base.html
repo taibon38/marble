@@ -32,6 +32,7 @@
             <div class="collapse navbar-collapse" id="Navber">
                 <ul class="navbar-nav ml-auto">
                     <li>
+                        <!-- フリーワード検索欄 -->
                         <form method="GET" action="{% url 'app:index' %}"　class="form-inline ">
                             <div class="input-group">
                                 <input type="search" name="keyword" class="form-control" placeholder="フリーワード" aria-label="フリーワード">
@@ -65,8 +66,8 @@
                 </ul>
             </div><!-- /.navbar-collapse -->
         </nav>
-
     </header>
+
     <div class="container mx-auto w-auto">
 
         {% block body %}
@@ -76,6 +77,13 @@
         
         {% endblock %}
     </div>
+
+
+<footer class="footer">
+    <div class="container ">
+        <p class="text-muted text-center mt-3">&copy;2020 MARBLE</p>
+    </div>
+</footer>
+
 </body>
-<!-- <footer class="footer">© 2020 MARBLE</footer> -->
 </html>
