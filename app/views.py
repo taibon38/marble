@@ -149,6 +149,20 @@ def signup(request):
         form = CustomUserCreationForm()
     return render(request, 'app/signup.html', {'form': form})
 
+
+# メール送信メソッド（詳細あまりわかってない）
+from django.core.mail import send_mail 
+
+def sendConfirmEmail(email, instance, code):
+    mail_subject = 'Confirmation code {}'.format(code)
+    message = render_to_string("app/mail_template/create/message.txt", {
+       'user': instance,
+       'code': code
+    })
+    to_email = email
+    send_mail(mail_subject, message, 'taibon38@gmail.com', [to_email], 
+              fail_silently=False)
+
 # お気に入りの映画登録
 # お気に入りボタンの作成(ユーザーの状態によって表示を切り替える)
 @login_required

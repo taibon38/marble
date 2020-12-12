@@ -210,7 +210,6 @@ SOCIAL_AUTH_PIPELINE = (
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
 
-
 # ImageFieldのアップロード先
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
@@ -223,6 +222,13 @@ MEDIA_URL = '/media/'
 if not DEBUG:
     import django_heroku
     django_heroku.settings(locals()) # django_herokuのsettings関数を実行している
+
+    # メールの送信元
+    EMAIL_USE_TLS = True
+    EMAIL_HOST = 'smtp.gmail.com'
+    EMAIL_HOST_USER = 'taibon38@gmail.com'
+    EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD')
+    EMAIL_PORT = 587
 
 
 # 500エラーの詳細表示
