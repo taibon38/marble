@@ -189,7 +189,6 @@ SOCIAL_AUTH_FACEBOOK_SECRET = env('SOCIAL_AUTH_FACEBOOK_SECRET') # app secret
 # Twitterログイン設定
 SOCIAL_AUTH_TWITTER_KEY = env('SOCIAL_AUTH_TWITTER_KEY') #APIID
 SOCIAL_AUTH_TWITTER_SECRET = env('SOCIAL_AUTH_TWITTER_SECRET')
-# SOCIAL_AUTH_LOGIN_REDIRECT_URL = 'w'
 
 # ログイン時にSNSアバターを取得する時に利用
 SOCIAL_AUTH_PIPELINE = (
@@ -224,11 +223,21 @@ if not DEBUG:
     django_heroku.settings(locals()) # django_herokuのsettings関数を実行している
 
     # メールの送信元
+    EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
     EMAIL_USE_TLS = True
     EMAIL_HOST = 'smtp.gmail.com'
     EMAIL_HOST_USER = 'taibon38@gmail.com'
-    EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD')
+    EMAIL_HOST_PASSWORD = env('EMAIL_HOST_PASSWORD')
     EMAIL_PORT = 587
+
+# mail処理
+from django.core.mail import send_mail
+
+subject = "題名"
+message = "本文\\nです"
+# user = request.user  # ログインユーザーを取得する
+from_email = 'taibon38@gmail.com'  # 送信者
+send_mail(subject, message, from_email)
 
 
 # 500エラーの詳細表示
