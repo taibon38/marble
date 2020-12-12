@@ -237,7 +237,8 @@ subject = "題名"
 message = "本文\\nです"
 # user = request.user  # ログインユーザーを取得する
 from_email = 'taibon38@gmail.com'  # 送信者
-send_mail(subject, message, from_email)
+recipient_list = ["taibon38@gmail.com"]
+send_mail(subject, message, from_email, recipient_list)
 
 
 # 500エラーの詳細表示
