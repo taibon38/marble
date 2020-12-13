@@ -307,7 +307,7 @@ class ProfileView(LoginRequiredMixin, generic.View):
 class DeleteView(LoginRequiredMixin, generic.View):
     """退会機能"""
     def get(self, *args, **kwargs):
-        user = User.objects.get(email=self.request.user.email)
+        user = User.objects.get(username=self.request.user.username)
         user.is_active = False  # 非アクティブになるだけで、データベースからは削除されない
         user.save()
         auth_logout(self.request)

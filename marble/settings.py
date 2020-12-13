@@ -215,8 +215,6 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 MEDIA_URL = '/media/'
 
 
-
-
 # Debug=Falseの時だけ実行する設定
 if not DEBUG:
     import django_heroku
