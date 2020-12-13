@@ -21,7 +21,7 @@ from django.template.loader import render_to_string
 from .forms import (
     LoginForm, UserCreateForm, EmailChangeForm
 )
-from django.core.mail import BadHeaderError  # 送信時のエラー解消目的
+from django.core.mail import BadHeaderError, send_mail  # 送信時のエラー解消目的
 from .models import Category, Character, Movie, Character, MovieCharacter, MovieCategory
 
 
@@ -433,7 +433,7 @@ class EmailChange(LoginRequiredMixin, generic.FormView):
         subject = render_to_string('app/registration/email_change_subject.txt', context)
         message = render_to_string('app/registration/email_change_message.txt', context)
         # send_mail(subject, message, None, [new_email])
-        user.email_user(subject, message, settings.EMAIL_HOST_USER)
+        send_mail(subject, message, settings.EMAIL_HOST_USER, [new_email])
 
         return redirect('app:email_change_done')
 
