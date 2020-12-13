@@ -245,7 +245,7 @@ class UserCreate(generic.CreateView):
             context).strip()
 
         # 宛先１名に対する送信メソッド。user.email_user('メールの件名', 'メールの本文')
-        user.email_user(subject, message)
+        user.email_user(subject, message, settings.EMAIL_HOST_USER)
         return redirect('app:user_create_done')
 
 
