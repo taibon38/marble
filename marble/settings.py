@@ -226,7 +226,7 @@ if not DEBUG:
     EMAIL_HOST = 'mail48.onamae.ne.jp'
     EMAIL_HOST_USER = 'contact@marble-cinema.com'
     EMAIL_HOST_PASSWORD = env('EMAIL_HOST_PASSWORD')
-    EMAIL_PORT = 465
+    EMAIL_PORT = 587
 
 # # mail処理
 # from django.core.mail import send_mail
