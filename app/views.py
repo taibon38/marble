@@ -390,6 +390,7 @@ class PasswordReset(PasswordResetView):
     # email_template_name = 'app/registration/mail_template/password_reset/message.txt'
     template_name = 'app/registration/password_reset_form.html'
     form_class = MyPasswordResetForm
+    # send_mail(subject_template_name, email_template_name, settings.EMAIL_HOST_USER, user.request.email)
     success_url = reverse_lazy('app:password_reset_done')
 
 

@@ -57,6 +57,7 @@ INSTALLED_APPS = [
     'social_django', #SNS認証で利用
     'django_static_md5url',  # CSSの更新用で利用
     'bootstrap4',
+    'storages',  # S3導入時に追加
 ]
 
 AUTH_USER_MODEL = 'users.User' 
@@ -227,6 +228,24 @@ if not DEBUG:
     EMAIL_HOST_USER = 'contact@marble-cinema.com'
     EMAIL_HOST_PASSWORD = env('EMAIL_HOST_PASSWORD')
     EMAIL_PORT = 587
+
+    # S3導入時に追加
+    AWS_ACCESS_KEY_ID = os.environ['AWS_ACCESS_KEY_ID']
+    AWS_SECRET_ACCESS_KEY = os.environ['AWS_SECRET_ACCESS_KEY']
+    AWS_STORAGE_BUCKET_NAME = os.environ['AWS_STORAGE_BUCKET_NAME']
+
+    DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+    S3_URL = 'http://%s.s3.amazonaws.com/' % AWS_STORAGE_BUCKET_NAME
+    MEDIA_URL = S3_URL
+
+    AWS_S3_FILE_OVERWRITE = False
+    AWS_DEFAULT_ACL = None
+
+# メールの送信元
+
+DEFAULT_FROM_EMAIL = 'contact@marble-cinema.com'
+
+
 
 # # mail処理
 # from django.core.mail import send_mail
