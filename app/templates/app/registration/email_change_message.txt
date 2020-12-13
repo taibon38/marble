@@ -1,0 +1,5 @@
+下記URLよりサイトにアクセスすると、メールアドレスの変更が完了します。
+
+{{ protocol}}://{{ domain }}{% url 'app:email_change_complete' token %}
+
+MARBLE(マーブル)運営事務局

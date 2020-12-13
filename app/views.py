@@ -19,7 +19,7 @@ from django.core.signing import BadSignature, SignatureExpired, loads, dumps
 from django.http import Http404, HttpResponseBadRequest
 from django.template.loader import render_to_string
 from .forms import (
-    LoginForm, UserCreateForm
+    LoginForm, UserCreateForm, EmailChangeForm
 )
 from django.core.mail import BadHeaderError  # 送信時のエラー解消目的
 from .models import Category, Character, Movie, Character, MovieCharacter, MovieCategory
@@ -355,6 +355,7 @@ class UserDetail(OnlyYouMixin, generic.DetailView):
 
 
 class UserUpdate(OnlyYouMixin, generic.UpdateView):
+    """ユーザー編集"""
     model = User
     form_class = UserUpdateForm
     template_name = 'app/user_form.html'
@@ -407,3 +408,62 @@ class PasswordResetConfirm(PasswordResetConfirmView):
 class PasswordResetComplete(PasswordResetCompleteView):
     """新パスワード設定しましたページ"""
     template_name = 'app/registration/password_reset_complete.html'
+
+
+# メールアドレス再設定(参考：https://blog.narito.ninja/detail/136/)
+class EmailChange(LoginRequiredMixin, generic.FormView):
+    """メールアドレスの変更"""
+    template_name = 'app/registration/email_change_form.html'
+    form_class = EmailChangeForm
+
+    def form_valid(self, form):
+        user = self.request.user
+        new_email = form.cleaned_data['email']
+
+        # URLの送付
+        current_site = get_current_site(self.request)
+        domain = current_site.domain
+        context = {
+            'protocol': 'https' if self.request.is_secure() else 'http',
+            'domain': domain,
+            'token': dumps(new_email),
+            'user': user,
+        }
+
+        subject = render_to_string('app/registration/email_change_subject.txt', context)
+        message = render_to_string('app/registration/email_change_message.txt', context)
+        # send_mail(subject, message, None, [new_email])
+        user.email_user(subject, message, settings.EMAIL_HOST_USER)
+
+        return redirect('app:email_change_done')
+
+
+class EmailChangeDone(LoginRequiredMixin, generic.TemplateView):
+    """メールアドレスの変更メールを送ったよ"""
+    template_name = 'app/registration/email_change_done.html'
+
+
+class EmailChangeComplete(LoginRequiredMixin, generic.TemplateView):
+    """リンクを踏んだ後に呼ばれるメアド変更ビュー"""
+    template_name = 'app/registration/email_change_complete.html'
+    timeout_seconds = getattr(settings, 'ACTIVATION_TIMEOUT_SECONDS', 60*60*24)  # デフォルトでは1日以内
+
+    def get(self, request, **kwargs):
+        token = kwargs.get('token')
+        try:
+            new_email = loads(token, max_age=self.timeout_seconds)
+
+        # 期限切れ
+        except SignatureExpired:
+            return HttpResponseBadRequest()
+
+        # tokenが間違っている
+        except BadSignature:
+            return HttpResponseBadRequest()
+
+        # tokenは問題なし
+        else:
+            User.objects.filter(email=new_email, is_active=False).delete()
+            request.user.email = new_email
+            request.user.save()
+            return super().get(request, **kwargs)

@@ -106,4 +106,7 @@ urlpatterns = [
     path('password_reset/complete/', views.PasswordResetComplete.as_view(), name='password_reset_complete'),
     path('user_detail/<int:pk>/', views.UserDetail.as_view(), name='user_detail'),
     path('user_update/<int:pk>/', views.UserUpdate.as_view(), name='user_update'),
+    path('email/change/', views.EmailChange.as_view(), name='email_change'),
+    path('email/change/done/', views.EmailChangeDone.as_view(), name='email_change_done'),
+    path('email/change/complete/<str:token>/', views.EmailChangeComplete.as_view(), name='email_change_complete'),
 ]

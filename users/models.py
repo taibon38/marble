@@ -48,7 +48,7 @@ class UserManager(BaseUserManager):
 class User(AbstractBaseUser, PermissionsMixin):
     """カスタムユーザーモデル"""
     username = models.CharField("ユーザー名", unique=True, blank=False, max_length=100)
-    email = models.EmailField("メールアドレス") 
+    email = models.EmailField("メールアドレス")
     avatar = models.URLField("アイコン(SNSから取得)", max_length=200, blank=True)
     profile_icon = ImageField("アイコン", upload_to='profile_icons', blank=True, null=True)
     is_staff = models.BooleanField("is_staff", default=False)
