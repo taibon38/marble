@@ -230,15 +230,15 @@ if not DEBUG:
     EMAIL_HOST_PASSWORD = env('EMAIL_HOST_PASSWORD')
     EMAIL_PORT = 587
 
-# mail処理
-from django.core.mail import send_mail
+# # mail処理
+# from django.core.mail import send_mail
 
-subject = "題名"
-message = "本文\\nです"
-# user = request.user  # ログインユーザーを取得する
-from_email = 'taibon38@gmail.com'  # 送信者
-recipient_list = ["taibon38@gmail.com"]
-send_mail(subject, message, from_email, recipient_list)
+# subject = "題名"
+# message = "本文\\nです"
+# # user = request.user  # ログインユーザーを取得する
+# from_email = 'taibon38@gmail.com'  # 送信者
+# recipient_list = ["taibon38@gmail.com"]
+# send_mail(subject, message, from_email, recipient_list)
 
 
 # 500エラーの詳細表示
