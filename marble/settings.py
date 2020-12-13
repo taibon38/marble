@@ -220,7 +220,7 @@ MEDIA_URL = '/media/'
 # Debug=Falseの時だけ実行する設定
 if not DEBUG:
     import django_heroku
-    django_heroku.settings(locals()) # django_herokuのsettings関数を実行している
+    django_heroku.settings(locals(), logging=False)  # django_herokuパッケージのsettings関数を実行している。loggingの引数はdefaultだとTrue（自分たちで設定したloggingを使う時はFalse
 
     # メールの送信元
     EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
