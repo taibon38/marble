@@ -51,7 +51,7 @@ class UserUpdateForm(forms.ModelForm):
 
     class Meta:
         model = User
-        fields = ('profile_icon','username', 'email',)
+        fields = ('profile_icon','username')
 
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
@@ -59,7 +59,7 @@ class UserUpdateForm(forms.ModelForm):
             field.widget.attrs['class'] = 'form-control'
 
 
-# メールアドレス変更フォーム（参考：https://blog.narito.ninja/detail/136/)
+# メールアドレス変更フォーム(参考：https://blog.narito.ninja/detail/136/)
 class EmailChangeForm(forms.ModelForm):
     """メールアドレス変更フォーム"""
 
