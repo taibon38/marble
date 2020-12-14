@@ -3,7 +3,7 @@
     <div class="movie-cantainer">
         {% for movie  in movies_list %}
         <div class="movie">
-            <a href="{% url 'app:movie' movie.id %}">
+            <a href="{% url 'app:movie' movie.id %}" class="no-underline">
                 <img src="{{movie.movie_icon.url}}" class="movie_icon">
                 <p class="text-center text-dark movie_title ">{{movie.title}}</p>
             </a>
