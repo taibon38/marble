@@ -14,6 +14,12 @@ ul{
     border-radius: 4px;
 }
 
+.movie_title{
+    margin-top: 0.25em;
+    font-size: 0.5rem;
+
+}
+
 .character_icon {
     width: 100%;
     max-width: 150px;
@@ -248,6 +254,15 @@ div.wrapKOPIPE {
     color: #222;
     padding: 1rem;
   }
+
+
+/* コンテンツ部分 */
+.wrapper{
+    min-height: 100vh;
+    position: relative;/*←相対位置*/
+    padding-bottom: 50px;/*←footerの高さ*/
+    box-sizing: border-box;/*←全て含めてmin-height:100vhに*/
+}
 
 /* フッター */
 .footer {

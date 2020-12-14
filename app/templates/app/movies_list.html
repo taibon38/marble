@@ -5,6 +5,7 @@
         <div class="movie">
             <a href="{% url 'app:movie' movie.id %}">
                 <img src="{{movie.movie_icon.url}}" class="movie_icon">
+                <p class="text-center text-dark movie_title ">{{movie.title}}</p>
             </a>
         </div>
         {% endfor %}
