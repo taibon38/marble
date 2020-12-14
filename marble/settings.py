@@ -224,7 +224,7 @@ if not DEBUG:
     EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
     EMAIL_USE_TLS = True
     EMAIL_HOST = 'mail48.onamae.ne.jp'
-    EMAIL_HOST_USER = 'contact@marble-cinema.com'
+    EMAIL_HOST_USER = env('SITE_ADMIN_EMAIL')
     EMAIL_HOST_PASSWORD = env('EMAIL_HOST_PASSWORD')
     EMAIL_PORT = 587
 
@@ -241,8 +241,7 @@ if not DEBUG:
     AWS_DEFAULT_ACL = None
 
 # メールの送信元
-DEFAULT_FROM_EMAIL = 'contact@marble-cinema.com'
-SERVER_EMAIL = 'contact@marble-cinema.com'
+DEFAULT_FROM_EMAIL = env('SITE_ADMIN_EMAIL')
 
 # # mail処理
 # from django.core.mail import send_mail
