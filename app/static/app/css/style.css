@@ -131,7 +131,7 @@ ul{
 
 .character{
     float: left;
-    padding-left: 1em;
+    padding-left: 0.5em;
 }
 
 .character_tags{
