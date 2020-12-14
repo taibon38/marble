@@ -70,6 +70,25 @@ ul{
 }
 
 
+/* 狭いブラウザとタブレット向け映画おリスト表示 */
+@media screen and  (max-width: 1020px)  { 
+    .movie{
+    width: calc(100%/3);
+    float: left;
+    padding: 5px;
+    }
+}
+
+
+/* スマホ向け映画リスト表示 */
+@media screen and (max-width: 767px) { 
+    .movie{
+    width: calc(100%/3);
+    float: left;
+    padding: 5px;
+    }
+}
+
 .movie_font{
     font-size: 1rem;
 } 
