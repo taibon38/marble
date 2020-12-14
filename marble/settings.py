@@ -240,9 +240,8 @@ if not DEBUG:
     AWS_S3_FILE_OVERWRITE = False
     AWS_DEFAULT_ACL = None
 
-    # メールの送信元
-    DEFAULT_FROM_EMAIL = 'contact@marble-cinema.com'
-
+# メールの送信元
+DEFAULT_FROM_EMAIL = 'contact@marble-cinema.com'
 
 
 # # mail処理
