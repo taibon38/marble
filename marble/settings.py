@@ -209,7 +209,6 @@ SOCIAL_AUTH_PIPELINE = (
 # メールをコンソールに表示する
 EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
 
-
 # ImageFieldのアップロード先
 
 MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
@@ -241,9 +240,8 @@ if not DEBUG:
     AWS_S3_FILE_OVERWRITE = False
     AWS_DEFAULT_ACL = None
 
-# メールの送信元
-
-DEFAULT_FROM_EMAIL = 'contact@marble-cinema.com'
+    # メールの送信元
+    DEFAULT_FROM_EMAIL = 'contact@marble-cinema.com'
 
 
 
