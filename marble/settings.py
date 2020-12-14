@@ -242,7 +242,7 @@ if not DEBUG:
 
 # メールの送信元
 DEFAULT_FROM_EMAIL = 'contact@marble-cinema.com'
-
+SERVER_EMAIL = 'contact@marble-cinema.com'
 
 # # mail処理
 # from django.core.mail import send_mail
