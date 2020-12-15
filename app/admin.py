@@ -16,8 +16,8 @@ class MovieAdmin(admin.ModelAdmin):
     #MovieとCategory、MovieとCharacterを同時に編集できるようにInlineを設定。
     inlines = [MovieCategoryInline, MovieCharacterInline] 
     list_display = (
-        # 'id',
-        'sort_order',
+        'id',
+        # 'sort_order',
         'title',
         'publication_date',
         'screening_time',
@@ -28,8 +28,8 @@ class MovieAdmin(admin.ModelAdmin):
         '_characters',)
 
     list_display_links = (
-        # 'id',
-        'sort_order',
+        'id',
+        # 'sort_order',
         'title',
         )
 
