@@ -1,6 +1,7 @@
 from django.contrib.auth import get_user_model
 from django.db import models
 from django.template.defaultfilters import truncatechars
+from sort_order_field import SortOrderField
 #adminのtextフィールドの表示数を短くする目的
 
 
@@ -8,6 +9,9 @@ from django.template.defaultfilters import truncatechars
 
 
 class Movie(models.Model):
+    class Meta:
+        ordering = ('sort_order',)
+
     """映画作品"""
     title = models.CharField(verbose_name='作品名', max_length=200)
     publication_date = models.DateField(verbose_name='公開日', blank=True)
@@ -15,6 +19,7 @@ class Movie(models.Model):
         verbose_name='上映時間', blank=True)
     sumally = models.TextField(verbose_name='あらすじ', blank=True)
     detail = models.TextField(verbose_name='解説', blank=True)
+    sort_order = SortOrderField(("No."))
     movie_icon = models.ImageField(
         verbose_name='作品アイコン',
         upload_to='movie_icons',

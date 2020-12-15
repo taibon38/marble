@@ -203,6 +203,7 @@ SOCIAL_AUTH_PIPELINE = (
     'social_core.pipeline.social_auth.load_extra_data',
     'social_core.pipeline.user.user_details',
     'users.pipeline.get_avatar',  # <- pipeline.pyというファイルのget_avatarメソッドを指定
+    'sort_order_field',
 )
 
 
