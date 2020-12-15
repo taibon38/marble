@@ -256,6 +256,7 @@ div.wrapKOPIPE {
 .movies_list{
     flex: 1;
     margin-top: 1em;
+    float: left;
 }
 
 .characters_list{
