@@ -12,7 +12,6 @@ class MovieCharacterInline(admin.TabularInline):
     model = MovieCharacter
     extra = 1
 
-
 class MovieAdmin(admin.ModelAdmin):
     #MovieとCategory、MovieとCharacterを同時に編集できるようにInlineを設定。
     inlines = [MovieCategoryInline, MovieCharacterInline] 
