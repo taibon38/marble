@@ -71,17 +71,17 @@ ul{
 
 
 /* 狭いブラウザとタブレット向け映画おリスト表示 */
-@media screen and  (max-width: 1020px)  { 
+@media screen and  (max-width:768px)  { 
     .movie{
     width: calc(100%/3);
     float: left;
-    padding: 5px;
+    padding: 0.25rem;
     }
 }
 
 
 /* スマホ向け映画リスト表示 */
-@media screen and (max-width: 767px) { 
+@media screen and (max-width: 576px) { 
     .movie{
     width: calc(100%/3);
     float: left;
