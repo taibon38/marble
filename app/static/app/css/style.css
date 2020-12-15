@@ -66,19 +66,26 @@ ul{
 .movie{
     width: calc(100%/7);
     float: left;
-    padding: 5px;
+    padding: 0.25rem;
+    text-align: center;
 }
 
+/* 映画要素の幅を、movie-iconと揃えている。
+参考：https://saruwakakun.com/html-css/basic/centering */
+.movie-link{
+    display:inline-block;
+    width: 100%;
+    max-width: 150px;
+}
 
-/* 狭いブラウザとタブレット向け映画おリスト表示 */
-@media screen and  (max-width:768px)  { 
+/* タブレット向け映画リスト表示 */
+@media screen and  (max-width:992px)  { 
     .movie{
     width: calc(100%/3);
     float: left;
     padding: 0.25rem;
     }
 }
-
 
 /* スマホ向け映画リスト表示 */
 @media screen and (max-width: 576px) { 
