@@ -12,15 +12,16 @@
     <link rel="stylesheet" type="text/css" href="{% static 'app/css/bootstrap.min.css' %}">
     <div id="fb-root"></div>
     <script async defer crossorigin="anonymous" src="https://connect.facebook.net/ja_JP/sdk.js#xfbml=1&version=v9.0&appId=1265845113778425&autoLogAppEvents=1" nonce="EsAvtUL5"></script>
-    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <!-- <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script> -->
+    <script type="text/javascript"　src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+    <!-- <script src="{% static 'app/js/jquery-3.5.1.min.js' %}"></script> -->
     <script type="text/javascript" src="{% static 'app/js/style.js' %}"></script>
-    <script src="{% static 'app/js/jquery-3.5.1.min.js' %}"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
     <script src="https://kit.fontawesome.com/a6e2a71596.js" crossorigin="anonymous"></script>
 
 </head>  
+
 <body>
     <header>
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
@@ -30,8 +31,16 @@
             </button>
         
             <div class="collapse navbar-collapse" id="Navber">
-                <ul class="navbar-nav ml-auto">
-                    <li>
+                <ul class="navbar-nav ml-auto ">
+                    <li class="nav-item my-auto">
+                        <a class="nav-link" href="/#character">キャラクターで探す</a>
+                    </li>
+
+                    <li class="nav-item my-auto">
+                        <a class="nav-link" href="/#category">楽しみ方で探す</a>
+                    </li>
+
+                    <li class="nav-item my-auto">
                         <!-- フリーワード検索欄 -->
                         <form method="GET" action="{% url 'app:index' %}"　class="form-inline ">
                             <div class="input-group">
@@ -42,14 +51,16 @@
                             </div>
                         </form>
                     </li>
+                
                     <li class="nav-item ml-3 my-auto">
                         <div>
                             {% if request.user.is_authenticated %}
-                                    <img src="{{ user.profile_icon_url }}" class="profile_icon">
-                                    <nobr class="text-light">{{user.username}}さん。こんにちは。</nobr>
+                                    
+                                    <!-- <nobr class="text-light">{{user.username}}さん。こんにちは。</nobr> -->
                                 <li class="nav-item dropdown">
                                     <a href="#" class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    マイページ
+                                        <img src="{{ user.profile_icon_url }}" class="profile_icon">
+                                        マイページ
                                     </a>
                                         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                                             <a class="dropdown-item" href="{% url 'app:mypage' %}">マイページ</a>
