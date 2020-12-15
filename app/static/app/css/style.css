@@ -2,6 +2,10 @@ ul{
     list-style: none;
 }
 
+.logo{
+    height: 60px;
+}
+
 .header-menu{
     white-space:nowrap;
 }
