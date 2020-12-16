@@ -10,6 +10,23 @@ ul{
     white-space:nowrap;
 }
 
+
+/* ヘッダー文字色 */
+.navbar-nav  > li > a{
+    color: #FAFAFA !important;
+}
+
+
+.navbar-nav  > li > a:hover{
+    text-decoration: none  !important;
+    color:#F9BC50 !important;
+}
+.navbar-nav  > li > a:focus{
+    color:#FAFAFA !important;
+}
+
+
+
 .profile_icon{
     width: 100%;
     max-width: 30px;
