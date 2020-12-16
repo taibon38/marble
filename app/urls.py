@@ -22,6 +22,10 @@ urlpatterns = [
         views.term,
         name='term'),
     path(
+        'how/',
+        views.how,
+        name='how'),
+    path(
         'mypage/',
         views.mypage,
         name='mypage'),

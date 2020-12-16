@@ -83,6 +83,9 @@ def privacy(request):
 def term(request):
     return render(request, 'app/term.html')
 
+def how(request):
+    return render(request, 'app/how.html')
+
 
 def search_category(request, category):
     # titleがURLの文字列と一致するCategoryインスタンスを取得
