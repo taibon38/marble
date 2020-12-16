@@ -13,7 +13,10 @@ ul{
 
 /* ヘッダー文字色 */
 .navbar-nav  > li > a{
-    color: #FAFAFA !important;
+    color: #fafafae0 !important;
+    font-size: 0.9em;
+    margin-top: auto;
+    margin-bottom: auto;
 }
 
 
@@ -279,14 +282,23 @@ div.wrapKOPIPE {
     /* flex: 1; */
     margin-top: 1em;
     float: left;
+    box-shadow: 0 3px 5px rgba(197, 197, 197, 0.3);
 }
 
 .characters_list{
     margin-top: 1em;
+    box-shadow: 0 3px 5px rgba(197, 197, 197, 0.3);
+
 }
 
 .category_list{
     margin-top: 1em;
+    box-shadow: 0 3px 5px rgba(197, 197, 197, 0.3);
+
+}
+
+.card-body{
+    box-shadow: 0 3px 5px rgba(197, 197, 197, 0.3) !important;
 }
 
 /* jQueryでの作品ページアコーディオン */
