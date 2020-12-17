@@ -288,6 +288,7 @@ div.wrapKOPIPE {
 
 .card-body{
     box-shadow: 0 3px 5px rgba(197, 197, 197, 0.3) !important;
+    border-radius: 5px;
 }
 
 /* jQueryでの作品ページアコーディオン */
