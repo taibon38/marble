@@ -1,7 +1,7 @@
 {% extends "app/registration/base.html" %}
 
 {% block content %}
-<div class="row">
+<div class="row card-body bg-white">
     <div class="col-md-9">
         <form action="" method="POST" enctype="multipart/form-data">
             {{ form.non_field_errors }}
@@ -28,7 +28,7 @@
                 </body>
             </table>
             {% csrf_token %}
-            <button type="submit" class="btn btn-success btn-lg" >更新</button>
+            <button type="submit" class="btn btn-success" >更新</button>
         </form>
     </div>
 </div>
