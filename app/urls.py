@@ -26,6 +26,10 @@ urlpatterns = [
         views.how,
         name='how'),
     path(
+        'contact/',
+        views.contact,
+        name='contact'),
+    path(
         'mypage/',
         views.mypage,
         name='mypage'),

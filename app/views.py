@@ -83,8 +83,13 @@ def privacy(request):
 def term(request):
     return render(request, 'app/term.html')
 
+
 def how(request):
     return render(request, 'app/how.html')
+
+
+def contact(request):
+    return render(request, 'app/contact.html')
 
 
 def search_category(request, category):

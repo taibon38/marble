@@ -94,12 +94,13 @@
                                         マイページ
                                     </button>
                                     <div class="dropdown-menu" aria-labelledby="dropdownMenuOffset">
-                                      <a class="dropdown-item" href="{% url 'app:mypage' %}">マイページ</a>
-                                      <a class="dropdown-item" href="{% url 'app:profile' %}">プロフィール</a>
-                                      <div class="dropdown-divider"></div>
-                                      <a class="dropdown-item" href="{% url 'app:logout' %}">ログアウト</a>
+                                        <a class="dropdown-item" href="{% url 'app:mypage' %}">マイページ</a>
+                                        <a class="dropdown-item" href="{% url 'app:profile' %}">プロフィール</a>
+                                        <a class="dropdown-item" href="{% url 'app:contact' %}">お問い合わせ</a>
+                                        <div class="dropdown-divider"></div>
+                                        <a class="dropdown-item" href="{% url 'app:logout' %}">ログアウト</a>
                                     </div>
-                                  </li>
+                                </li>
                             {% else %}
                                 <a class="btn btn-warning my-auto btn-sm" href="{% url 'app:login' %}">ログイン</a>
                             {% endif %}
