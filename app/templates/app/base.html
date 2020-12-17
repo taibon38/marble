@@ -39,8 +39,8 @@
 <body>
 
     <header class="sticky-top">
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-            <a class="text-white" href="{% url 'app:index' %}"><img src="{% static 'images/marble_logo.png' %}" class="logo"></a>
+        <nav class="navbar navbar-expand-lg navbar-white bg-white">
+            <a class="text-white" href="{% url 'app:index' %}"><img src="{% static 'images/marble_logo-b.png' %}" class="logo"></a>
 
             <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#Navber" aria-controls="Navber" aria-expanded="false" aria-label="ナビゲーションの切替">
                 <span class="navbar-toggler-icon"></span>
@@ -65,7 +65,7 @@
                             <div class="input-group input-group-sm">
                                 <input type="search" name="keyword" class="form-control" placeholder="フリーワードで探す" aria-label="フリーワードで探す">
                                 <div class="input-group-append">
-                                    <button type="submit" class="btn btn-secondary"><i class="fas fa-search"></i></button>
+                                    <button type="submit" class="btn btn-dark"><i class="fas fa-search"></i></button>
                                 </div>
                             </div>
                         </form>
@@ -89,7 +89,7 @@
                                         </div>
                                 </li> -->
                                 <li class="nav-item dropdown">
-                                    <button type="button" class="btn text-light dropdown-toggle btn-smw" id="dropdownMenuOffset" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-offset="10,20">
+                                    <button type="button" class="btn text-dark dropdown-toggle btn-smw" id="dropdownMenuOffset" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-offset="10,20">
                                         <img src="{{ user.profile_icon_url }}" class="profile_icon">
                                         マイページ
                                     </button>
@@ -124,7 +124,7 @@
 
     <footer class="footer">
         <div class="container">
-            <p class="text-muted text-center mt-3">&copy;2020 MARBLE</p>
+            <p class="text-white text-center mt-3">&copy;2020 MARBLE</p>
         </div>
     </footer>
 </div>

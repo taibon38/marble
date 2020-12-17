@@ -13,7 +13,8 @@ ul{
 
 /* ヘッダー文字色 */
 .navbar-nav  > li > a{
-    color: #fafafae0 !important;
+    color: #4E5B60 !important;
+    /* color: #fafafae0 !important; */
     font-size: 0.9em;
     margin-top: auto;
     margin-bottom: auto;
@@ -335,6 +336,6 @@ div.wrapKOPIPE {
     width: 100%;
     /* Set the fixed height of the footer here */
     height: auto;
-    background-color: #ffffff;
+    background-color: #4E5B60;
     font-size: 00.5em;
 }
