@@ -1,6 +1,15 @@
 {% extends "app/base.html" %}
 {% block content %}
+{% load static %}
 
-楽しみ方ページ
+<div class="card-body text-center text-dark">
+    <h5 class="pt-2 mb-5">MARBLE(マーブル) = MARVEL(マーベル) + ASSEMBLE(アッセンブル)</h5>
+    <div>
+        <p>ご訪問いただき、ありがとうございます。</p>
+        <p>マーベル映画に関する情報や、マーベル好きが集まるサイトを目指してこの名前をつけました。</p>
+        <p>2020年12月に生まれたばかりのサイトですが、一緒に育てていけましたら幸いです😊</p>
+        <img class="my-3" src="{% static 'svg/thank_you.svg' %}" width="300" height="300">
+    </div>
 
+</div>
 {% endblock %}
