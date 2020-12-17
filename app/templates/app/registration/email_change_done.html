@@ -1,6 +1,9 @@
 {% extends "app/registration/base.html" %}
 {% block content %}
-<p>
-    確認メールに記載されているリンクをクリックすると、アドレスが変更されます。
-</p>
+<div class="card-body bg-white text-center">
+    <p>
+        確認メールに記載されているリンクをクリックすると、アドレスが変更されます。
+        <img class="my-3" src="{% static 'svg/new_message.svg' %}" width="300" height="300">
+    </p>
+</div>
 {% endblock %}
