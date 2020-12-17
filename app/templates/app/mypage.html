@@ -5,22 +5,21 @@
 {% block content %}
 
 
-<h5 class="mt-3 my-3">マイページ</h5>
+<h4 class="mt-3 my-3 mx-auto">MY PAGE</h4>
 
 <!-- 上下左右に規定の余白を設定するbootstrapクラス p-3を指定 -->
-<main class="text-center bg-white pt-2 pb-4"> 
-    <ul class ="nav nav-tabs border border-0 my-5 justify-content-center">
-        <li class="nav-item mr-2">
-            <a href="#faved_movies" class="nav-link" data-toggle="tab"><i class="fas fa-heart"></i> お気に入り作品</a>
-        </li>
-        <li class="nav-item mx-2">
-            <a href="#watched_movies" class="nav-link" data-toggle="tab"><i class="fas fa-eye mr-1"></i>閲覧済作品</a>
-        </li>
-        <li class="nav-item mx-2">
-            <a href="#faved_characters" class="nav-link" data-toggle="tab"><i class="fas fa-mask mr-1"></i>好きなキャラ</a>
-        </li>
-    </ul>
-
+<ul class ="nav nav-tabs border border-0 justify-content-center">
+    <li class="nav-item mr-2">
+        <a href="#faved_movies" class="nav-link" data-toggle="tab"><i class="fas fa-heart"></i> お気に入り作品</a>
+    </li>
+    <li class="nav-item mx-2">
+        <a href="#watched_movies" class="nav-link" data-toggle="tab"><i class="fas fa-eye mr-1"></i>閲覧済作品</a>
+    </li>
+    <li class="nav-item mx-2">
+        <a href="#faved_characters" class="nav-link" data-toggle="tab"><i class="fas fa-mask mr-1"></i>好きなキャラ</a>
+    </li>
+</ul>
+<main class="text-center bg-white py-5 card-body"> 
     <button class="tab-content border border-0 mx-auto bg-white"> 
             <div id="faved_movies" class="tab-pane active img-fluid w-100">  
                 {% if not faved_movies_list  %}

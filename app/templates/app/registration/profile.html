@@ -4,45 +4,47 @@
 
 
 {% block content %}
-<div class="text-right mt-3 mb-3">
-    <a href="{% url 'app:user_update' user.pk %} ">
-        <button class="btn btn-light text-dark">プロフィール編集</button>
-    </a>
-</div>
+
+<div class="card-body bg-white py-3 px-3">
+    <div class="text-right mt-3 mb-3">
+        <a href="{% url 'app:user_update' user.pk %} ">
+            <button class="btn btn-light text-dark">プロフィール編集</button>
+        </a>
+    </div>
 
 
-<div class="row">
-    <!-- <div class="col-md-3">
-        <ul class="list-group list-group-flush">
-            <li class="list-group-item"><a href="{% url 'app:profile' %}">プロフィール</a></li>
-            <li class="list-group-item"><a href="{% url 'app:password_change' %}">パスワードの変更</a></li>
-            <li class="list-group-item"><a href="{% url 'app:logout' %}">ログアウト</a></li>
-            <li class="list-group-item"><a href="{% url 'app:delete-confirmation' %}">退会</a></li>
-        </ul>
-    </div> -->
-    <div class="col-md-9">
-        <table class="table borderless">
-            <tbody>
-            <tr>
-                <th scope="row">アイコン</th>
-                <td><img src="{{ user.profile_icon_url }}" class="profile_icon"></td>
-            </tr>
-            <tr>
-                <th scope="row">ユーザー名</th>
-                <td>{{ user.username }}</td>
-            </tr>
-            <tr>
-                <th scope="row">メールアドレス</th>
-                <td>{{ user.email }}</td>
-            </tr>
-            <tr>
-                <th scope="row">入会日</th>
-                <td>{{ user.date_joined }}</td>
-            </tr>
-            </tbody>
-        </table>
+    <div class="row ">
+        <!-- <div class="col-md-3">
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item"><a href="{% url 'app:profile' %}">プロフィール</a></li>
+                <li class="list-group-item"><a href="{% url 'app:password_change' %}">パスワードの変更</a></li>
+                <li class="list-group-item"><a href="{% url 'app:logout' %}">ログアウト</a></li>
+                <li class="list-group-item"><a href="{% url 'app:delete-confirmation' %}">退会</a></li>
+            </ul>
+        </div> -->
+        <div class="col-md-9">
+            <table class="table borderless">
+                <tbody>
+                <tr>
+                    <th scope="row">アイコン</th>
+                    <td><img src="{{ user.profile_icon_url }}" class="profile_icon"></td>
+                </tr>
+                <tr>
+                    <th scope="row">ユーザー名</th>
+                    <td>{{ user.username }}</td>
+                </tr>
+                <tr>
+                    <th scope="row">メールアドレス</th>
+                    <td>{{ user.email }}</td>
+                </tr>
+                <tr>
+                    <th scope="row">入会日</th>
+                    <td>{{ user.date_joined }}</td>
+                </tr>
+                </tbody>
+            </table>
+        </div>
     </div>
 </div>
-
 
 {% endblock %}
