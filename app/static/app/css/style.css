@@ -336,6 +336,6 @@ div.wrapKOPIPE {
     width: 100%;
     /* Set the fixed height of the footer here */
     height: auto;
-    background-color: #4E5B60;
+    /* background-color: #4E5B60; */
     font-size: 00.5em;
 }
