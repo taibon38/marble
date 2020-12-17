@@ -2,69 +2,70 @@
 {% load static %}
 
 {% block content %}
-<div class="container mt-3 bg-white py-3">
-    <div class="row">
-        <div class="col-md-2">
-            <img src={{movie.movie_icon.url}} class="movie_icon">
+<div class="card-body bg-white py-3 py-5 mb-3">
+    <div class="container mt-3 ">
+        <div class="row">
+            <div class="col-md-2">
+                <img src={{movie.movie_icon.url}} class="movie_icon">
+            </div>
+            <div class="col">
+                <p class="text-left">作品名：{{movie.title}}</p>
+                <p class="text-left">公開日：{{movie.publication_date}}</p>
+                <P class="text-left">上映時間：{{movie.screening_time}}分</P>
+            </div>
+            {% if request.user.is_authenticated %}
+                <div class="col">                    
+                    <form action="{% url 'app:toggle_fav_movies' %}" method="post">{% csrf_token %}
+                        <input type="hidden" name="movie_id" value="{{ movie.id }}">
+                        {% if movie in user.faved_movies.all %}
+                            <input type="submit" name="submit" class="fas btn btn-light text-secondary" value="&#xf004; お気に入りから外す" /> 
+                        {% else %}
+                            <input type="submit" name="submit" class="fas btn btn-success" value="&#xf004; お気に入り登録" />
+                        {% endif %}
+                    </form>
+                    <form action="{% url 'app:toggle_watch_movies' %}" method="post" class="mt-1">{% csrf_token %}
+                        <input type="hidden" name="movie_id" value="{{ movie.id }}">
+                        {% if movie in user.watched_movies.all %}
+                            <input type="submit" name="submit" class="fas btn btn-light text-secondary" value="&#xf06e; 観たよから外す" /> 
+                        {% else %}
+                            <input type="submit" name="submit" class="fas btn btn-success" value="&#xf06e;  観たよ" />
+                        {% endif %}
+            {% endif %}
         </div>
-        <div class="col">
-            <p class="text-left">作品名：{{movie.title}}</p>
-            <p class="text-left">公開日：{{movie.publication_date}}</p>
-            <P class="text-left">上映時間：{{movie.screening_time}}分</P>
-        </div>
-        {% if request.user.is_authenticated %}
-            <div class="col">                    
-                <form action="{% url 'app:toggle_fav_movies' %}" method="post">{% csrf_token %}
-                    <input type="hidden" name="movie_id" value="{{ movie.id }}">
-                    {% if movie in user.faved_movies.all %}
-                        <input type="submit" name="submit" class="fas btn btn-light text-secondary" value="&#xf004; お気に入りから外す" /> 
-                    {% else %}
-                        <input type="submit" name="submit" class="fas btn btn-success" value="&#xf004; お気に入り登録" />
-                    {% endif %}
-                </form>
-                <form action="{% url 'app:toggle_watch_movies' %}" method="post" class="mt-1">{% csrf_token %}
-                    <input type="hidden" name="movie_id" value="{{ movie.id }}">
-                    {% if movie in user.watched_movies.all %}
-                        <input type="submit" name="submit" class="fas btn btn-light text-secondary" value="&#xf06e; 観たよから外す" /> 
-                    {% else %}
-                        <input type="submit" name="submit" class="fas btn btn-success" value="&#xf06e;  観たよ" />
-                    {% endif %}
-        {% endif %}
     </div>
-</div>
 
-<div class="container mt-5 mb-5">
-    <div class="accordion" id="collapse-accordion">
-        <div class="card mb-2">
-            <div class="card-header bg-light text-dark" id="headingOne">
-                <h5 class="mb-0">
-                <button class="btn btn-block text-left " type="button" data-toggle="collapse" data-target="#collapse-accordion-1">
-                    あらすじ
-                </button>
-                </h5>
-            </div>
-            <div id="collapse-accordion-1" class="collapse" data-parent="#collapse-accordion">
-                <div class="card-body">
-                {{movie.sumally}}
+    <div class="container mt-5 mb-5">
+        <div class="accordion" id="collapse-accordion">
+            <div class="card mb-2">
+                <div class="card-header bg-light text-dark" id="headingOne">
+                    <h5 class="mb-0">
+                    <button class="btn btn-block text-left " type="button" data-toggle="collapse" data-target="#collapse-accordion-1">
+                        あらすじ
+                    </button>
+                    </h5>
+                </div>
+                <div id="collapse-accordion-1" class="collapse" data-parent="#collapse-accordion">
+                    <div class="card-body">
+                    {{movie.sumally}}
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="card mb-2">
-            <div class="card-header bg-light text-dark" id="headingOne">
-                <h5 class="mb-0">
-                <button class="btn btn-block text-left " type="button" data-toggle="collapse" data-target="#collapse-accordion-2">
-                解説
-                </button>
-                </h5>
-            </div>
-            <div id="collapse-accordion-2" class="collapse" data-parent="#collapse-accordion">
-                <div class="card-body">
-                {{movie.detail}}
+            <div class="card mb-2">
+                <div class="card-header bg-light text-dark" id="headingOne">
+                    <h5 class="mb-0">
+                    <button class="btn btn-block text-left " type="button" data-toggle="collapse" data-target="#collapse-accordion-2">
+                    解説
+                    </button>
+                    </h5>
+                </div>
+                <div id="collapse-accordion-2" class="collapse" data-parent="#collapse-accordion">
+                    <div class="card-body">
+                    {{movie.detail}}
+                    </div>
                 </div>
             </div>
         </div>
     </div>
-</div>
 
 <!-- jQueryでのアコーディオン -->
 <!-- <ul class="menu">
@@ -88,7 +89,6 @@
     ※以下省略
 </ul> -->
 
-
     <div class="mt-5">
         <p>楽しみ方</p>
             {% for category in movie.categories.all %}
@@ -106,7 +106,6 @@
             </a>
         {% endfor %}
     </div>
-
 </div>
 
 

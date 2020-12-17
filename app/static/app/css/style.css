@@ -188,16 +188,18 @@ ul{
 }
 
 .nav-tabs > li > a:hover{
-    background-color: #00BC9B !important;
+    background-color: #FFCC80 !important;
+    /* background-color: #00BC9B !important; */
     border:  none;
     border-radius:5px 5px 0 0 ;
-    color:#fff !important;
+    color:black !important;
 }
 .nav-tabs > li > a:focus{
-    background-color: #00BC9B !important;
+    background-color: #FFCC80 !important;
+    /* background-color: #00BC9B !important; */
     border:  none;
     border-radius:5px 5px 0 0 ;
-    color:#fff !important;
+    color:black !important;
 }
 
 
@@ -209,9 +211,10 @@ ul{
     padding: 0;
 }
 
-/*ボタンクリック時 →思ったように反応しない*/
+/*ボタンクリック時*/
 .mypage_button input:checked {
-    background: #00BC9B;
+    /* background: #00BC9B !important; */
+    background: #FFCC80 !important;
     color: seashell;
 }
 
@@ -224,7 +227,8 @@ ul{
 
 /*ボタンホバー時*/
 .label_profile:hover {
-    background: #00BC9B;
+    /* background: #00BC9B; */
+    background: #FFCC80;
     color: seashell;
 }
 
