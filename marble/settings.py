@@ -41,7 +41,7 @@ SECRET_KEY = 'cqxm=fpw2)#dnob1))8p1neos55p-@*y5^!-e$x+)fs4c(kf+i'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = env('DEBUG', bool)  # boolを指定しないと、DEBUG=Falseの"False"が文字列型として読み込まれてしまう。
 
-ALLOWED_HOSTS = ['127.0.0.1','0.0.0.0','localhost','marble0731.herokuapp.com', 'www.marble-cinema.com', 'marble-cinema.com']
+ALLOWED_HOSTS = ['127.0.0.1','0.0.0.0','localhost','.herokuapp.com', '.marble-cinema.com', 'marble-cinema.com']
 
 # Application definition
 
@@ -66,12 +66,13 @@ AUTH_USER_MODEL = 'users.User'
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
+    'marble.middleware.RedirectHostMiddleware',  # wwwのドメイン転送で利用
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
-    'social_django.middleware.SocialAuthExceptionMiddleware', #SNS認証で利用
+    'social_django.middleware.SocialAuthExceptionMiddleware',  # SNS認証で利用
 ]
 
 ROOT_URLCONF = 'marble.urls'
