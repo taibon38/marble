@@ -8,6 +8,7 @@ from django.views.generic import TemplateView
 
 
 app_name = 'app'
+handler404 = views.handle_page_not_found
 urlpatterns = [
     path(
         '',
@@ -119,4 +120,3 @@ urlpatterns = [
     path('email/change/complete/<str:token>/', views.EmailChangeComplete.as_view(), name='email_change_complete'),
 ]
 
-handler404 = 'app.views.handle_page_not_found'
