@@ -64,32 +64,10 @@ bootstrap.bundle.min.js は、Popper.js を含む（バンドルしている）�
 ```bash
 pip install requirements.txt
 ```
+
  
-# Usage（Comming Soon)
+# Author
  
-DEMOの実行方法など、"hoge"の基本的な使い方を説明する
- 
-```bash
-git clone https://github.com/taibon38/marble
-cd marble
-python demo.py
-```
- 
-# Note（Comming Soon)
- 
-注意点などがあれば書く
- 
-# Author（Comming Soon)
- 
-作成情報を列挙する
- 
-* 作成者
-* 所属
-* E-mail
- 
-# License（Comming Soon)
-ライセンスを明示する
- 
-"hoge" is under [MIT license](https://en.wikipedia.org/wiki/MIT_License).
- 
-MARBLE is Confidential.
+* MARBLE運営事務局
+* contact@marble-cinema.com
+
