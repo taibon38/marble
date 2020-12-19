@@ -118,3 +118,5 @@ urlpatterns = [
     path('email/change/done/', views.EmailChangeDone.as_view(), name='email_change_done'),
     path('email/change/complete/<str:token>/', views.EmailChangeComplete.as_view(), name='email_change_complete'),
 ]
+
+handler404 = 'app.views.handle_page_not_found'

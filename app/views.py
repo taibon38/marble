@@ -477,3 +477,8 @@ class EmailChangeComplete(LoginRequiredMixin, generic.TemplateView):
             request.user.email = new_email
             request.user.save()
             return super().get(request, **kwargs)
+
+
+# 404ページの設定
+def handle_page_not_found(request, exception): 
+    return redirect('app:index')
