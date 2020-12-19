@@ -77,7 +77,8 @@ def index(request):
 
 # 404ページの設定
 def handle_page_not_found(request, exception): 
-    return redirect('app:index')
+    return render(request, '404.html')
+    # return redirect('app:index)
 
 def privacy(request):
     return render(request, 'app/privacy.html')
