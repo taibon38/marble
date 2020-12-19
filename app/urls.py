@@ -1,5 +1,5 @@
 from django.contrib import admin
-from django.conf.urls import include, static
+from django.conf.urls import include, static, handler404
 from .views import signup, toggle_fav_movies, faved_movies
 from django.urls import path
 from . import views
