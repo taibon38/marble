@@ -66,7 +66,7 @@ AUTH_USER_MODEL = 'users.User'
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
-    'marble.middleware.RedirectHostMiddleware',  # wwwのドメイン転送で利用
+    # 'marble.middleware.RedirectHostMiddleware',  # wwwのドメイン転送で利用
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
@@ -243,15 +243,15 @@ if not DEBUG:
     AWS_DEFAULT_ACL = None
 
     # SSLの設定(本番環境)
-    CORS_REPLACE_HTTPS_REFERER = True
-    HOST_SCHEME = "https://"
-    SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
-    SECURE_SSL_REDIRECT = True
-    SESSION_COOKIE_SECURE = True
-    CSRF_COOKIE_SECURE = True
-    SECURE_HSTS_INCLUDE_SUBDOMAINS = True
-    SECURE_HSTS_SECONDS = 1000000
-    SECURE_FRAME_DENY = True
+    # CORS_REPLACE_HTTPS_REFERER = True
+    # HOST_SCHEME = "https://"
+    # SECURE_PROXY_SSL_HEADER = ('HTTP_X_FORWARDED_PROTO', 'https')
+    # SECURE_SSL_REDIRECT = True
+    # SESSION_COOKIE_SECURE = True
+    # CSRF_COOKIE_SECURE = True
+    # SECURE_HSTS_INCLUDE_SUBDOMAINS = True
+    # SECURE_HSTS_SECONDS = 1000000
+    # SECURE_FRAME_DENY = True
 
 # メールの送信元
 DEFAULT_FROM_EMAIL = env('SITE_ADMIN_EMAIL')
@@ -309,12 +309,13 @@ LOGGING = {
 
 
 #  SSLの設定(ローカル)
-CORS_REPLACE_HTTPS_REFERER = False
-HOST_SCHEME = "http://"
-SECURE_PROXY_SSL_HEADER = None
-SECURE_SSL_REDIRECT = False
-SESSION_COOKIE_SECURE = False
-CSRF_COOKIE_SECURE = False
-SECURE_HSTS_SECONDS = None
-SECURE_HSTS_INCLUDE_SUBDOMAINS = False
-SECURE_FRAME_DENY = False
+# if DEBUG:
+#     CORS_REPLACE_HTTPS_REFERER = False
+#     HOST_SCHEME = "http://"
+#     SECURE_PROXY_SSL_HEADER = None
+#     SECURE_SSL_REDIRECT = False
+#     SESSION_COOKIE_SECURE = False
+#     CSRF_COOKIE_SECURE = False
+#     SECURE_HSTS_SECONDS = None
+#     SECURE_HSTS_INCLUDE_SUBDOMAINS = False
+#     SECURE_FRAME_DENY = False
