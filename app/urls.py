@@ -5,10 +5,11 @@ from django.urls import path
 from . import views
 from django.contrib.auth import views as auth_views
 from django.views.generic import TemplateView
+from app.views import handle_page_not_found
 
 
 app_name = 'app'
-handler404 = views.handle_page_not_found
+handler404 = handle_page_not_found
 urlpatterns = [
     path(
         '',
