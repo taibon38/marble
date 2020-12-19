@@ -75,6 +75,9 @@ def index(request):
         'categories_list': categories_list
         })
 
+# 404ページの設定
+def handle_page_not_found(request, exception): 
+    return redirect('app:index')
 
 def privacy(request):
     return render(request, 'app/privacy.html')
@@ -479,6 +482,3 @@ class EmailChangeComplete(LoginRequiredMixin, generic.TemplateView):
             return super().get(request, **kwargs)
 
 
-# 404ページの設定
-def handle_page_not_found(request, exception): 
-    return redirect('app:index')
