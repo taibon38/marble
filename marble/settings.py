@@ -66,7 +66,7 @@ AUTH_USER_MODEL = 'users.User'
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
-    # 'marble.middleware.RedirectHostMiddleware',  # wwwのドメイン転送で利用
+    'marble.middleware.RedirectHostMiddleware',  # wwwのドメイン転送で利用
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
