@@ -4,15 +4,17 @@
 {% load bootstrap4 %}
 
 {% block content %}
-<div class="mx-auto text-center mt-5 mb-5">
-    本登録が完了しました。<br>
-    登録されたユーザーネームとパスワードでログインしてください。<br>
-    <a class="btn btn-success btn-lg" href="{% url 'app:login' %}">ログイン</a>
+
+<div class="card-body bg-white">
+    <div class="mx-auto text-center mt-5 mb-5">
+        本登録が完了しました。<br>
+        登録されたユーザーネームとパスワードでログインしてください。<br>
+        <a class="btn btn-warning mt-3" href="{% url 'app:login' %}">ログイン</a>
+    </div>
+
+    <div class="mx-auto text-center">
+        <img src="{% static 'svg/achievement.svg' %}" width="480" height="480">
+    </div>  
 </div>
-
-<div class="mx-auto text-center">
-    <img src="{% static 'svg/achievement.svg' %}" width="480" height="480">
-</div>  
-
 
 {% endblock %}
