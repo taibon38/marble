@@ -1,7 +1,7 @@
 from django.contrib.auth import get_user_model
 from django.db import models
 from django.template.defaultfilters import truncatechars
-from sort_order_field import SortOrderField
+# from sort_order_field import SortOrderField
 #adminのtextフィールドの表示数を短くする目的
 
 

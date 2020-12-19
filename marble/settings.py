@@ -43,6 +43,8 @@ DEBUG = env('DEBUG', bool)  # boolを指定しないと、DEBUG=Falseの"False"�
 
 ALLOWED_HOSTS = ['127.0.0.1','0.0.0.0','localhost','marble0731.herokuapp.com', '.marble-cinema.com']
 
+
+
 # Application definition
 
 INSTALLED_APPS = [
@@ -204,7 +206,6 @@ SOCIAL_AUTH_PIPELINE = (
     'social_core.pipeline.social_auth.load_extra_data',
     'social_core.pipeline.user.user_details',
     'users.pipeline.get_avatar',  # <- pipeline.pyというファイルのget_avatarメソッドを指定
-    'sort_order_field',
 )
 
 
