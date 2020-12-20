@@ -41,7 +41,7 @@ SECRET_KEY = 'cqxm=fpw2)#dnob1))8p1neos55p-@*y5^!-e$x+)fs4c(kf+i'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = env('DEBUG', bool)  # boolを指定しないと、DEBUG=Falseの"False"が文字列型として読み込まれてしまう。
 
-ALLOWED_HOSTS = ['127.0.0.1','0.0.0.0','localhost','marble0731.herokuapp.com', 'www.marble-cinema.com', 'marble-cinema.com']
+ALLOWED_HOSTS = ['127.0.0.1','0.0.0.0','localhost','marble0731.herokuapp.com', 'www.marble-cinema.com', 'marble-cinema.com', '.marble-cinema.com']
 
 
 
