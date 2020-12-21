@@ -489,3 +489,4 @@ class EmailChangeComplete(LoginRequiredMixin, generic.TemplateView):
             request.user.save()
             return super().get(request, **kwargs)
 
+request.get_host()
