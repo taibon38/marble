@@ -80,14 +80,20 @@ def handle_page_not_found(request, exception):
     return render(request, '404.html')
     # return redirect('app:index)
 
+# def request.get_host()
+
+
+# プライバシーポリシー
 def privacy(request):
     return render(request, 'app/privacy.html')
 
 
+# 利用規約の
 def term(request):
     return render(request, 'app/term.html')
 
 
+# サービス紹介ページ
 def how(request):
     return render(request, 'app/how.html')
 
@@ -481,5 +487,4 @@ class EmailChangeComplete(LoginRequiredMixin, generic.TemplateView):
             request.user.email = new_email
             request.user.save()
             return super().get(request, **kwargs)
-
 
