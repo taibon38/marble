@@ -39,81 +39,83 @@
 <body>
 
     <header class="sticky-top">
-        <nav class="navbar navbar-expand-lg navbar-white bg-white">
-            <a class="text-white" href="{% url 'app:index' %}"><img src="{% static 'images/marble_logo-b.png' %}" class="logo"></a>
+        <div class="fixed-top">
+            <nav class="navbar navbar-expand-lg navbar-white bg-white">
+                <a class="text-white" href="{% url 'app:index' %}"><img src="{% static 'images/marble_logo-b.png' %}" class="logo"></a>
 
-            <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#Navber" aria-controls="Navber" aria-expanded="false" aria-label="ナビゲーションの切替">
-                <span class="navbar-toggler-icon"></span>
-            </button>
-        
-            <div class="collapse navbar-collapse" id="Navber">
-                <ul class="navbar-nav ml-auto">
-                    <li class="nav-item my-auto mr-1">
-                        <a class="header-link" href="{% url 'app:how' %}">MARBLE(マーブル)とは</a>
-                    </li>
-                    <li class="nav-item my-auto">
-                        <a class="nav-link" href="/#character">キャラクターで探す</a>
-                    </li>
+                <button type="button" class="navbar-toggler" data-toggle="collapse" data-target="#Navber" aria-controls="Navber" aria-expanded="false" aria-label="ナビゲーションの切替">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+            
+                <div class="collapse navbar-collapse" id="Navber">
+                    <ul class="navbar-nav ml-auto">
+                        <li class="nav-item my-auto mr-1">
+                            <a class="header-link" href="{% url 'app:how' %}">MARBLE(マーブル)とは</a>
+                        </li>
+                        <li class="nav-item my-auto">
+                            <a class="nav-link" href="/#character">キャラクターで探す</a>
+                        </li>
 
-                    <li class="nav-item my-auto">
-                        <a class="nav-link" href="/#category">楽しみ方で探す</a>
-                    </li>
+                        <li class="nav-item my-auto">
+                            <a class="nav-link" href="/#category">楽しみ方で探す</a>
+                        </li>
 
-                    <li class="nav-item my-auto ml-4">
-                        <!-- フリーワード検索欄 -->
-                        <form method="GET" action="{% url 'app:index' %}"　class="form-inline ">
-                            <div class="input-group input-group-sm">
-                                <input type="search" name="keyword" class="form-control" placeholder="フリーワードで探す" aria-label="フリーワードで探す">
-                                <div class="input-group-append">
-                                    <button type="submit" class="btn btn-secondary"><i class="fas fa-search"></i></button>
+                        <li class="nav-item my-auto ml-4">
+                            <!-- フリーワード検索欄 -->
+                            <form method="GET" action="{% url 'app:index' %}"　class="form-inline ">
+                                <div class="input-group input-group-sm">
+                                    <input type="search" name="keyword" class="form-control" placeholder="フリーワードで探す" aria-label="フリーワードで探す">
+                                    <div class="input-group-append">
+                                        <button type="submit" class="btn btn-secondary"><i class="fas fa-search"></i></button>
+                                    </div>
                                 </div>
-                            </div>
-                        </form>
-                    </li>
-                
-                    <li class="nav-item ml-3 my-auto">
-                        <div>
-                            {% if request.user.is_authenticated %}
-                                    
-                                    <!-- <nobr class="text-light">{{user.username}}さん。こんにちは。</nobr> -->
-                                <!-- <li class="nav-item dropdown">
-                                    <a href="#" class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        <img src="{{ user.profile_icon_url }}" class="profile_icon">
-                                        マイページ
-                                    </a>
-                                        <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                            </form>
+                        </li>
+                    
+                        <li class="nav-item ml-3 my-auto">
+                            <div>
+                                {% if request.user.is_authenticated %}
+                                        
+                                        <!-- <nobr class="text-light">{{user.username}}さん。こんにちは。</nobr> -->
+                                    <!-- <li class="nav-item dropdown">
+                                        <a href="#" class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                            <img src="{{ user.profile_icon_url }}" class="profile_icon">
+                                            マイページ
+                                        </a>
+                                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                                <a class="dropdown-item" href="{% url 'app:mypage' %}">マイページ</a>
+                                                <a class="dropdown-item" href="{% url 'app:profile' %}">プロフィール</a>
+                                                <div class="dropdown-divider"></div>
+                                                <a class="dropdown-item" href="{% url 'app:logout' %}">ログアウト</a>
+                                            </div>
+                                    </li> -->
+                                    <li class="nav-item dropdown">
+                                        <button type="button" class="btn text-dark dropdown-toggle btn-smw" id="dropdownMenuOffset" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-offset="10,20">
+                                            <img src="{{ user.profile_icon_url }}" class="profile_icon">
+                                            マイページ
+                                        </button>
+                                        <div class="dropdown-menu" aria-labelledby="dropdownMenuOffset">
                                             <a class="dropdown-item" href="{% url 'app:mypage' %}">マイページ</a>
                                             <a class="dropdown-item" href="{% url 'app:profile' %}">プロフィール</a>
+                                            <!-- SSL化が完了したら下記に切り替える -->
+                                            <a class="dropdown-item" href="{% url 'app:contact' %}" referrerpolicy="no-referrer-when-downgrade">お問い合わせ</a>
+                                            <!-- <a class="dropdown-item" href="https://form.run/@marble-cinema" referrerpolicy="no-referrer-when-downgrade">お問い合わせ</a> -->
                                             <div class="dropdown-divider"></div>
                                             <a class="dropdown-item" href="{% url 'app:logout' %}">ログアウト</a>
                                         </div>
-                                </li> -->
-                                <li class="nav-item dropdown">
-                                    <button type="button" class="btn text-dark dropdown-toggle btn-smw" id="dropdownMenuOffset" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-offset="10,20">
-                                        <img src="{{ user.profile_icon_url }}" class="profile_icon">
-                                        マイページ
-                                    </button>
-                                    <div class="dropdown-menu" aria-labelledby="dropdownMenuOffset">
-                                        <a class="dropdown-item" href="{% url 'app:mypage' %}">マイページ</a>
-                                        <a class="dropdown-item" href="{% url 'app:profile' %}">プロフィール</a>
-                                        <!-- SSL化が完了したら下記に切り替える -->
-                                        <a class="dropdown-item" href="{% url 'app:contact' %}" referrerpolicy="no-referrer-when-downgrade">お問い合わせ</a>
-                                        <!-- <a class="dropdown-item" href="https://form.run/@marble-cinema" referrerpolicy="no-referrer-when-downgrade">お問い合わせ</a> -->
-                                        <div class="dropdown-divider"></div>
-                                        <a class="dropdown-item" href="{% url 'app:logout' %}">ログアウト</a>
-                                    </div>
-                                </li>
-                            {% else %}
-                                <a class="btn btn-warning my-auto btn-sm" href="{% url 'app:login' %}">ログイン</a>
-                            {% endif %}
-                        </div>
-                    </li>
-                </ul>
-            </div><!-- /.navbar-collapse -->
-        </nav>
+                                    </li>
+                                {% else %}
+                                    <a class="btn btn-warning my-auto btn-sm" href="{% url 'app:login' %}">ログイン</a>
+                                {% endif %}
+                            </div>
+                        </li>
+                    </ul>
+                </div><!-- /.navbar-collapse -->
+            </nav>
+        </div><!-- /.fixed-top -->
     </header>
     
-<div class="wrapper">
+<div class="wrapper mt-5">
     <div class="container pt-4 mx-auto w-auto body " >
 
         {% block body %}
