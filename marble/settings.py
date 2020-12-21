@@ -285,3 +285,6 @@ LOGGING = {
         },
     }
 }
+
+# 404のコンタクトページ
+CONTACT_EMAIL = "contact@marble-cinema.com"

@@ -77,10 +77,11 @@ def index(request):
 
 # 404ページの設定
 def handle_page_not_found(request, exception): 
-    return render(request, '404.html')
+    return render(request, '404.html',
+    {
+        'CONTACT_EMAIL' :CONTACT_EMAIL,
+    })
     # return redirect('app:index)
-
-# def request.get_host()
 
 
 # プライバシーポリシー
