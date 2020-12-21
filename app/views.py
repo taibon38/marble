@@ -81,8 +81,6 @@ def handle_page_not_found(request, exception):
     {
         'CONTACT_EMAIL' :CONTACT_EMAIL,
     })
-    # return redirect('app:index)
-
 
 # プライバシーポリシー
 def privacy(request):
@@ -489,4 +487,3 @@ class EmailChangeComplete(LoginRequiredMixin, generic.TemplateView):
             request.user.save()
             return super().get(request, **kwargs)
 
-request.get_host()
