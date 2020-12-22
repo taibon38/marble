@@ -74,10 +74,12 @@ MIDDLEWARE = [
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
     'social_django.middleware.SocialAuthExceptionMiddleware',  # SNS認証で利用
+    'django_http_referrer_policy.middleware.ReferrerPolicyMiddleware',  # リファラ設定で利用
 ]
 
 ROOT_URLCONF = 'marble.urls'
 
+REFERRER_POLICY = 'no-referrer-when-downgrade'
 
 TEMPLATES = [
     {
@@ -286,5 +288,3 @@ LOGGING = {
     }
 }
 
-# 404のコンタクトページ
-CONTACT_EMAIL = "contact@marble-cinema.com"
