@@ -32,6 +32,10 @@ urlpatterns = [
         views.contact,
         name='contact'),
     path(
+        'contact/complete',
+        views.contact_complete,
+        name='contact_complete'),
+    path(
         'mypage/',
         views.mypage,
         name='mypage'),
