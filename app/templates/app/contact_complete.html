@@ -1,0 +1,13 @@
+{% extends "app/base.html" %}
+{% block content %}
+{% load static %}
+
+<div class="card-body bg-white">
+  <div class="mx-auto">
+    <p>お問い合わせありがとうございました。</p><br>
+    <p>いただきました内容を事務局で確認いたします。</p><br>
+    <img src="{% static 'svg/message_sent.svg' %}" width="300" height="300">
+  </div>
+</div>
+
+{% endblock %}

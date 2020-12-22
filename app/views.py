@@ -98,6 +98,9 @@ def how(request):
 def contact(request):
     return render(request, 'app/contact.html')
 
+def contact_complete(request):
+    return render(request, 'app/contact_complete.html')
+
 
 def search_category(request, category):
     # titleがURLの文字列と一致するCategoryインスタンスを取得
