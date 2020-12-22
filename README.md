@@ -19,6 +19,7 @@ Django                 3.1.3 →Djangoを利用
 django-bootstrap4      2.3.1 →bootstrap4を利用
 django-environ         0.4.5 →.envを利用
 django-static-md5url   0.1 → CSSのキャッシュリロードで利用
+django-http-referrer-policy 1.1.1 →リファラの設定で利用
 flake8                 3.8.4 →pep8通りにコードが書けているかを確認
 Pillow                 8.0.1 →画像ファイルを利用
 requests               2.25.0 →requestsを利用
