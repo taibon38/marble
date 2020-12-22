@@ -6,6 +6,7 @@
 
         {% for character in movie.characters.all %}
             <a href="{% url 'app:character' character.id %}">
+                <img src={{character.character_icon.url}} class="character_icon">
                 <button type="button" class ="btn btn-light btn-sm">{{character.name}}</button> 
             </a>
         {% endfor %}

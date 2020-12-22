@@ -2,6 +2,10 @@ ul{
     list-style: none;
 }
 
+li > a{
+    text-decoration: none;
+}
+
 .logo{
     height: 40px;
 }
@@ -42,7 +46,7 @@ ul{
 .movie_title{
     margin-top: 0.25em;
     font-size: 0.5rem;
-    text-decoration: none;
+    text-decoration: none !important;
 }
 
 .character_icon {
@@ -76,9 +80,14 @@ ul{
     transition-duration: 0.3s;
 }
 
-.no-underline:hover{
-    text-decoration: none;
+.no-underline{
+    text-decoration: none !important;
 }
+
+.no-underline:hover{
+    text-decoration: none !important;
+}
+
 
 .movie_icon_min{
     width: 100%;
