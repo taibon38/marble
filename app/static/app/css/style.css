@@ -57,6 +57,22 @@ li > a{
     border-radius: 2px;
   }
 
+.search_result{
+    align:left;
+}
+
+.search_character_icon{
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+.search_character_icon:hover{
+    opacity: 0.8;
+    transition-duration: 0.3s;
+}
+
   .character_icon_min {
     width: 100%;
     max-width: 90px;

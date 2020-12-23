@@ -79,19 +79,6 @@
                             <div>
                                 {% if request.user.is_authenticated %}
                                         
-                                        <!-- <nobr class="text-light">{{user.username}}さん。こんにちは。</nobr> -->
-                                    <!-- <li class="nav-item dropdown">
-                                        <a href="#" class="nav-link dropdown-toggle" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                            <img src="{{ user.profile_icon_url }}" class="profile_icon">
-                                            マイページ
-                                        </a>
-                                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                                <a class="dropdown-item" href="{% url 'app:mypage' %}">マイページ</a>
-                                                <a class="dropdown-item" href="{% url 'app:profile' %}">プロフィール</a>
-                                                <div class="dropdown-divider"></div>
-                                                <a class="dropdown-item" href="{% url 'app:logout' %}">ログアウト</a>
-                                            </div>
-                                    </li> -->
                                     <li class="nav-item dropdown">
                                         <button type="button" class="btn text-dark dropdown-toggle btn-smw" id="dropdownMenuOffset" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-offset="10,20">
                                             <img src="{{ user.profile_icon_url }}" class="profile_icon">
@@ -100,9 +87,7 @@
                                         <div class="dropdown-menu" aria-labelledby="dropdownMenuOffset">
                                             <a class="dropdown-item" href="{% url 'app:mypage' %}">マイページ</a>
                                             <a class="dropdown-item" href="{% url 'app:profile' %}">プロフィール</a>
-                                            <!-- SSL化が完了したら下記に切り替える -->
                                             <a class="dropdown-item" href="{% url 'app:contact' %}">お問い合わせ</a>
-                                            <!-- <a class="dropdown-item" href="https://form.run/@marble-cinema" referrerpolicy="no-referrer-when-downgrade">お問い合わせ</a> -->
                                             <div class="dropdown-divider"></div>
                                             <a class="dropdown-item" href="{% url 'app:logout' %}">ログアウト</a>
                                         </div>

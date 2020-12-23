@@ -122,7 +122,7 @@ def search_character(request, character):
     movies_list = Movie.objects.filter(characters=character)
 
     return render(request, 'app/index.html', {
-        'search_theme':character,
+        'search_theme': character,
         'character': character,
         'movies_list': movies_list
         })
