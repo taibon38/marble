@@ -61,19 +61,39 @@ li > a{
     align:left;
 }
 
+
+/* 検索結果画面に出るアイコン */
 .search_character_icon{
     width: 100px;
     height: 100px;
     object-fit: cover;
     border-radius: 50%;
 }
-
 .search_character_icon:hover{
     opacity: 0.8;
     transition-duration: 0.3s;
 }
 
-  .character_icon_min {
+/* トップページに出るキャラクター検索 */
+.search_character_icon_min{
+    width: 80px;
+    height: 80px;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+.search_character_title{
+    margin-top: 0.25em;
+    font-size: 0.2rem;
+}
+
+.search_character_icon_min:hover{
+    opacity: 0.8;
+    transition-duration: 0.3s;
+}
+
+
+.character_icon_min {
     width: 100%;
     max-width: 90px;
     height: 120px;

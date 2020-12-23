@@ -1,8 +1,12 @@
 <div class="character_tags">
     {% for character  in characters_list %}
-    <div class="character">
-        <a href="{% url 'app:search_character' character=character.name %}">
-            <button type="button" class ="btn btn-light btn-sm mb-2">{{character.name}}</button> 
+    <div class="character text-center">
+        <a href="{% url 'app:search_character' character=character.name %}" class="text-decoration-none">
+            {% if character.character_icon %}
+            <img src={{character.character_icon.url}} class="search_character_icon_min mt-3 mb-1" />
+            <p class="text-center text-dark search_character_title">{{character.name}}</p>
+            {% endif %}
+            <!-- <button type="button" class ="btn btn-light btn-sm mb-2">{{character.name}}</button>  -->
         </a>
     </div>
     {% endfor %}
