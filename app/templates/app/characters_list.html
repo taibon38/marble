@@ -1,6 +1,6 @@
 <div class="character_tags">
     {% for character  in characters_list %}
-    <div class="character text-center">
+    <div class="character text-center mx-3">
         <a href="{% url 'app:search_character' character=character.name %}" class="text-decoration-none">
             {% if character.character_icon %}
             <img src={{character.character_icon.url}} class="search_character_icon_min mt-3 mb-1" />
