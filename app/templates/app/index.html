@@ -47,11 +47,21 @@
     {% else %}
         <div class="index-content">
             <div class="index-list bg-white px-3 py-2">
+                <select onChange="location.href=value;">
+                    <option hidden>並び替え</option>
+                    <option value="?sort=publication_date">公開日順</option>
+                    <option value="?sort=title">アイウエオ順</option>
+                </select>
                 <p class="text-center"><i class="fas fa-film mr-1"></i>作品一覧<i class="fas fa-film ml-1"></i></p>
                 {% include 'app/movies_list.html' %}
             </div>
 
             <div id="character" class="index-list bg-white px-3 py-2">
+                <!-- <select onChange="location.href=value;">
+                    <option hidden>並び替え</option>
+                    <option value="?sort=name">アイウエオ順</option>
+                    <option value="?sort=movies">出演数が多い順</option>
+                </select> -->
                 <p class="text-center " ><i class="fas fa-mask mr-1"></i>キャラクターで探す<i class="fas fa-mask ml-1"></i></p>
                 {% include 'app/characters_list.html' %}
             </div>

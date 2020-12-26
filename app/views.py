@@ -60,6 +60,22 @@ def index(request):
     characters_list = Character.objects.all()
     categories_list = Category.objects.all()
 
+    # クエリパラメーター(?sort=publication_date)の値を取得。指定されていない場合はNone。
+    sort = request.GET.get("sort")
+
+    # sortの条件に応じてmovies_listを並び替える
+    if sort == "publication_date":
+        movies_list = movies_list.order_by("publication_date")
+
+    elif sort == "title":
+        movies_list = movies_list.order_by("title")
+
+    elif sort == "name":
+        characters_list = characters_list.order_by("name")
+
+    elif sort == "movie":
+        characters_list = characters_list.order_by("movie")
+
     """フリーワード検索機能の処理"""
     keyword = request.GET.get('keyword')
 
