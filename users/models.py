@@ -66,7 +66,7 @@ class User(AbstractBaseUser, PermissionsMixin):
         verbose_name='お気に入り映画',
         through="FavedMovie",
         blank=True,
-        related_name='faved_movie'
+        related_name='faved_users'  # 逆参照時の定義。movie.faved_usersでお気に入りしているユーザー一覧が取れる。ユーザーの数が取れるため、多い順などでとれる
     )
 
     watched_movies = models.ManyToManyField(
