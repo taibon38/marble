@@ -47,9 +47,8 @@
     {% else %}
         <div class="index-content">
             <div class="index-list bg-white px-3 py-2">
-                <div class="text-right" >
-                    <select onChange="location.href=value;">
-                        <option hidden>並び替え</option>
+                <div class="text-right">
+                    <select onChange="location.href=value;" class="">
                         {% if "publication_date" in request.get_full_path %}
                             <option value="?sort=publication_date" selected>公開日順</option>
                         {% else %}

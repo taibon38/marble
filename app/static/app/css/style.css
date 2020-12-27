@@ -6,6 +6,12 @@ li > a{
     text-decoration: none;
 }
 
+select{
+    border: none;
+    font: small;
+    color: #4E5B60;
+}
+
 .logo{
     height: 40px;
 }
