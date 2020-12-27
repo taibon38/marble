@@ -8,7 +8,7 @@ li > a{
 
 select{
     border: none;
-    font: small;
+    font-size: small !important;
     color: #4E5B60;
 }
 
