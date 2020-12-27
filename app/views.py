@@ -57,7 +57,7 @@ User = get_user_model()
 
 def index(request):
     movies_list = Movie.objects.all().order_by('publication_date')
-    characters_list = Character.objects.all()
+    characters_list = Character.objects.all().order_by('name')
     categories_list = Category.objects.all()
 
     # クエリパラメーター(?sort=publication_date)の値を取得。指定されていない場合はNone。
