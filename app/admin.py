@@ -24,6 +24,7 @@ class MovieAdmin(admin.ModelAdmin):
         'movie_icon',
         'short_sumally',
         'short_detail',
+        'trailer_url',
         '_categories',
         '_characters',)
 

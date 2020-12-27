@@ -17,6 +17,8 @@ class Movie(models.Model):
         verbose_name='上映時間', blank=True)
     sumally = models.TextField(verbose_name='あらすじ', blank=True)
     detail = models.TextField(verbose_name='解説', blank=True)
+    trailer_url = models.URLField(verbose_name='予告編', blank=True)
+
     movie_icon = models.ImageField(
         verbose_name='作品アイコン',
         upload_to='movie_icons',
