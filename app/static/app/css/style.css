@@ -209,6 +209,7 @@ li > a{
 
 .character{
     float: left;
+    width: 150px;
 }
 
 .character_tags{
@@ -223,6 +224,7 @@ li > a{
 .category_tags{
 	left:100px;
 } 
+
 
 /* マイページでタブ切り替えの色変更(bootstrapの色を変更) */
 .nav-tabs > li > a{
