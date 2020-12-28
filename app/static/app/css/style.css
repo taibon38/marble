@@ -147,6 +147,17 @@ select{
     text-align: center;
 }
 
+/* キャラクターの出演作品をリスト表示 */
+.movie_list_character_parent{ 
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.movie_list_character{
+    height: 150px;
+    width: 150px;
+}
+
 /* 映画要素の幅を、movie-iconと揃えている。
 参考：https://saruwakakun.com/html-css/basic/centering */
 .movie-link{

@@ -10,9 +10,6 @@
                 {{movie_character.character}}
                 <h5 class="mt-1">{{character.name}}</h5>
         </div>
-        <div>
-            {{character.introduction}}
-        </div>
         <div class="col col-md-offset-1 col-md-3">
             <div>
                 {% if request.user.is_authenticated %}
@@ -29,18 +26,26 @@
                 {% endif %}
             </div>
         </div>
+        <div>
+            {{character.introduction}}
+        </div>
     </div>
 </div>
-        <div class="text-center">
-            <p>出演作品</p>
+    <div class="card-body bg-white">
+        <div class="text-center mt-2">
+            <p class="text-center" ><i class="fas fa-film mr-1"></i>出演作品<i class="fas fa-film ml-1"></i></p>
         </div>
-        <div class="text-center">
+        <div class="text-center movie_list_character_parent">
             {% for movie in character.movies.all %}
-                <a href="{% url 'app:movie' movie.id %}">
-                    <img src="{{movie.movie_icon.url}}" class="movie_icon_min">
-                </a>
+                <div class="movie_list_character">
+                    <a href="{% url 'app:movie' movie.id %}" class="no-underline movie-link">
+                        <img src="{{movie.movie_icon.url}}" class="movie_icon_min mt-2">
+                        <!-- <p class="text-center text-dark movie_title ">{{movie.title}}</p> -->
+                    </a>
+                </div>
             {% endfor %}
         </div>
+    </div>
 
 
 
