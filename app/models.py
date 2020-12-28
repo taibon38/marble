@@ -53,6 +53,7 @@ class Movie(models.Model):
 class Character(models.Model):
     """キャラクター"""
     name = models.CharField(verbose_name='キャラクター名', max_length=150)
+    introduction = models.TextField(verbose_name='説明文', blank=True)
     character_icon = models.ImageField(
         verbose_name="キャラクターアイコン",
         upload_to='character_icons',

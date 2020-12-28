@@ -10,6 +10,9 @@
                 {{movie_character.character}}
                 <h5 class="mt-1">{{character.name}}</h5>
         </div>
+        <div>
+            {{character.introduction}}
+        </div>
         <div class="col col-md-offset-1 col-md-3">
             <div>
                 {% if request.user.is_authenticated %}
