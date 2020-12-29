@@ -18,6 +18,8 @@ class Movie(models.Model):
     sumally = models.TextField(verbose_name='あらすじ', blank=True)
     detail = models.TextField(verbose_name='解説', blank=True)
     trailer_url = models.TextField(verbose_name='予告編', blank=True)
+    asp_url_amazon_us = models.TextField(verbose_name='amazon_字幕版', blank=True) 
+    asp_url_amazon_jp = models.TextField(verbose_name='amazon_日本語', blank=True) 
 
     movie_icon = models.ImageField(
         verbose_name='作品アイコン',

@@ -24,9 +24,11 @@ class MovieAdmin(admin.ModelAdmin):
         'movie_icon',
         'short_sumally',
         'short_detail',
-        'trailer_url',
         '_categories',
-        '_characters',)
+        '_characters',
+        'trailer_url',
+        'asp_url_amazon_us',
+        'asp_url_amazon_jp',)
 
     list_display_links = (
         'id',
