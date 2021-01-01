@@ -10,10 +10,10 @@
         <div class="container mt-3 ">
             <div class="row">
                 <div class="col-md-2">
-                    <img src={{movie.movie_icon.url}} class="movie_icon">
+                    <img src="{% block image %}{{movie.movie_icon.url}}{% endblock %}" class="movie_icon">
                 </div>
                 <div class="col">
-                    <p class="text-left">作品名：{{movie.title}}</p>
+                    <p class="text-left">作品名：{% block MovieTitle %}{{movie.title}}{% endblock %}</p>
                     <p class="text-left">公開日：{{movie.publication_date}}</p>
                     <P class="text-left">上映時間：{{movie.screening_time}}分</P>
                 </div>
