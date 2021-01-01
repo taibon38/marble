@@ -14,11 +14,21 @@
         gtag('config', 'G-6YMZY6YHEM');
         </script>
 
-    <!-- OGP設定 -->
+    <!-- OGP設定(基本設定) -->
+    <head prefix="og: http://ogp.me/ns# fb: http://ogp.me/ns/fb# article: http://ogp.me/ns/article#">
+    <title>{% block title %}MARBLE(マーブル){% endblock %}｜マーベル映画が集まる情報サイト</title>
+    <meta property="og:title" content="ページのタイトル" />
+    <meta property="og:type" content="ページの種類" />
+    <meta property="og:url" content="https://marble-cinema.com" />
+    <meta property="og:image" content="{% static 'images/marble_logo-b.png' %}" />
+    <meta property="og:site_name" content="サイト名" />
+    <meta property="og:description" content="ページのディスクリプション" />
+
+    <!-- OGP設定(ツイッター) -->
     <meta name="twitter:card" content="summary_large_image" />
     <meta name="twitter:site" content="@taibon38" />
     <meta property="og:url" content="{{ request.build_absolute_uri }}" />
-    <meta property="og:title" content="Blog記事" />
+    <meta property="og:title" content="MARBLE(マーブル)｜マーベル映画が集まる情報サイト" />
     <meta property="og:description" content="{% block MovieTitle %}{% endblock %}" />
     <meta property="og:image" content="{% block image %}https://marble-cinema.com{% endblock %}" /> 
 
