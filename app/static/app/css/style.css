@@ -213,6 +213,19 @@ select{
     max-width: 150px;
 }
 
+/* コンテンツを横スクロールで表示 */
+ul.horizontal-list {
+	overflow-x: auto;
+    white-space: nowrap;
+}
+li.item {
+	display: inline-block;
+    width: 60%;
+    max-width: 150px;
+    height: 250px;
+}	
+
+
 /* タブレット向け映画リスト表示 */
 @media screen and  (max-width:992px)  { 
     .movie{

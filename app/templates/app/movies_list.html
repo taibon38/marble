@@ -1,12 +1,12 @@
 
 
-    <div class="movie-cantainer">
+    <ul class="horizontal-list">
         {% for movie  in movies_list %}
-        <div class="movie">
-            <a href="{% url 'app:movie' movie.id %}" class="no-underline movie-link">
-                <img src="{{movie.movie_icon.url}}" class="movie_icon">
-                <p class="text-center text-dark movie_title ">{{movie.title}}</p>
-            </a>
-        </div>
+            <li class="item align-bottom">
+                <a href="{% url 'app:movie' movie.id %}" class="no-underline movie-link">
+                    <img src="{{movie.movie_icon.url}}" class="movie_icon">
+                    <p class="text-center text-dark text-wrap mb-0 movie_title " style="height: 30px;">{{movie.title}}</p>
+                </a>
+            </li>
         {% endfor %}
-    </div>
+    </ul>
