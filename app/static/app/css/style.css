@@ -137,6 +137,7 @@ select{
     color: #333333;
 }
 
+/* 予告動画のサイズ調整 */
 .trailer {
     position: relative;
     width: 100%;
@@ -454,8 +455,6 @@ div.wrapKOPIPE {
     padding-bottom: 50px;/*←footerの高さ*/
     box-sizing: border-box;/*←全て含めてmin-height:100vhに*/
 }
-
-
 
 /* フッター */
 .footer {
