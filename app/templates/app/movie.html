@@ -33,7 +33,7 @@
                 
                 <div class="main col">
                     <h5 class="main_title text-left">
-                        作品名：{% block MovieTitle %}{{movie.title}}{% endblock %}
+                        {% block MovieTitle %}{{movie.title}}{% endblock %}
                     </h5>
                     <p class="main_text text-left">
                         公開日：{{movie.publication_date}}<br>
