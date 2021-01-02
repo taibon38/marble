@@ -107,6 +107,12 @@ select{
     border-radius: 2px;
 }
 
+/* 作品ページのコンテンツ幅 */
+.container-fluid {
+    margin-right: auto;
+    margin-left: auto;
+    max-width: 900px; //例えば
+    }
 
 .movie_icon {
     width: 100%;
