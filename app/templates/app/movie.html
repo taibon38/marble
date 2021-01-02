@@ -9,7 +9,7 @@
     <div class="card-body bg-white mb-3">
         <div class="container mt-3 ">
             <div class="row">
-                <div class="left col-lg-3 col-auto">
+                <div class="left col-lg-3">
                     <img src="{% block image %}{{movie.movie_icon.url}}{% endblock %}" class="movie_icon_left">
                     {% if request.user.is_authenticated %}
                         <form action="{% url 'app:toggle_fav_movies' %}" method="post">{% csrf_token %}
@@ -39,25 +39,26 @@
                         公開日：{{movie.publication_date}}<br>
                         上映時間：{{movie.screening_time}}分
                     </P>
-                    <div class="sumally mb-2">
-                        {{movie.sumally}}
+                    <div class="mt-5">
+                        <p class="main_title">あらすじ</p>
+                        <div class="sumally mb-2 col-lg-9 text-left">
+                            {{movie.sumally}}
+                        </div>
                     </div>
                     <!-- <div>
                         <br>
                         <p>解説はこちら<span class="badge badge-danger ml-1">ネタバレあり</span></p> 
                         {{movie.detail|safe}}
                     </div> -->
-                    <div>
-                        {{movie.trailer_url|safe}}
+                    <div class="mt-5 ">
+                        <p class="main_title">予告編</p>
+                        <div class="trailer col-lg-9">
+                            {{movie.trailer_url|safe}}
+                        </div>
                     </div>
-            
-                    <div class="mx-1 my-1" onclick="dataLayer.push({'variable_name2': 'variable_value2'});">
-                        {{movie.asp_url_amazon_us|safe}}
-                        {{movie.asp_url_amazon_jp|safe}}
-                    </div>
-                        
-                    <div class="mt-5">
-                        <p>楽しみ方</p>
+                    
+                    <div class="">
+                        <p class="main_title">楽しみ方</p>
                             {% for category in movie.categories.all %}
                                 <a href="{% url 'app:search_category' category=category.title %}">
                                     <button type="button" class ="btn btn-light btn-sm"> {{ category.title }}</button>
@@ -66,13 +67,22 @@
                     </div>
             
                     <div class="mt-5">
-                        <p>出演キャラクター</p>
+                        <p class="main_title">出演キャラクター</p>
                         {% for character in movie.characters.all %}
                             <a href="{% url 'app:character' character.id %}">
                                 <button type="button" class ="btn btn-light btn-sm">{{character.name}}</button> 
                             </a>
                         {% endfor %}
                     </div>
+                    <div class="mt-5">
+                        <p class="main_title">動画レンタル</p>
+                        <div class="mx-1 my-1" onclick="dataLayer.push({'variable_name2': 'variable_value2'});">
+                            {{movie.asp_url_amazon_us|safe}}
+                            {{movie.asp_url_amazon_jp|safe}}
+                        </div>
+                    </div>
+                        
+                    
                 </div> <!-- main -->
             </div>
         </div>
