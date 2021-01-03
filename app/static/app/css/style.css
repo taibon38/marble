@@ -1,3 +1,41 @@
+/* css練習ここから */
+
+
+body.test{
+    margin: 0;
+    font-size: 2rem;
+    display: flex;
+    min-height: 100vh;
+}
+
+aside.test{
+    width: 25%;
+    min-width: 250px; /*最低限の横幅*/
+    display: flex; /* navとdivの親要素。これをつけて子要素のdivにmargin-top:auto;をつけると下に固定できる */
+    flex-direction: column; /*縦並び*/
+}
+
+ul.test{
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+div.test{
+    height: 300px;
+    margin-top: auto;
+}
+
+main.test{
+    width: 700px;
+    margin:0 auto; /* 中央寄せ */
+    /* flex: 1; */ /* widthよりもflexが優先される。こちらにするとページ幅で表示される */
+}
+
+
+
+/* css練習ここまで */
+
 
 ul{
     list-style: none;
