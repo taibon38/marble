@@ -127,6 +127,12 @@ select{
     border-radius: 2px;
 }
 
+.character_title{
+    font-size: small; 
+    color:rgb(153, 169, 184);
+    font-style: italic;
+}
+
 .main_title{
     font-weight: bold;
     color: #333333;
