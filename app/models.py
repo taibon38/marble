@@ -1,6 +1,6 @@
 from django.contrib.auth import get_user_model
 from django.db import models
-from django.template.defaultfilters import truncatechars
+from django.template.defaultfilters import title, truncatechars
 # from sort_order_field import SortOrderField
 #adminのtextフィールドの表示数を短くする目的
 
@@ -55,6 +55,7 @@ class Movie(models.Model):
 class Character(models.Model):
     """キャラクター"""
     name = models.CharField(verbose_name='キャラクター名', max_length=150)
+    title = models.CharField(verbose_name='キャッチコピー', max_length=150, blank=True)
     introduction = models.TextField(verbose_name='説明文', blank=True)
     character_icon = models.ImageField(
         verbose_name="キャラクターアイコン",
