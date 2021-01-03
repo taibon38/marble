@@ -2,12 +2,17 @@
 
 {% block content %}
     {% if search_theme %}
+        <p class="mb-3 search_result alert alert-primary">「{{ search_theme }} 」の検索結果
+            <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+            </button>
+        </p>
         {% if search_theme == character %}
             <a href="{% url 'app:character' character.id %}">
                 <img src={{character.character_icon.url}} class="search_character_icon my-3">
             </a>
         {% endif %}
-        <p class="mb-3 search_result">「{{ search_theme }} 」の検索結果</p>
+        
         {% for character in movie.characters.all %}
             <a href="{% url 'app:character' character.id %}">
                 <img src={{character.character_icon.url}} class="character_icon">
