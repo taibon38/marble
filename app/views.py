@@ -96,6 +96,11 @@ def handle_page_not_found(request, exception):
     return render(request, '404.html',
 )
 
+# cssテスト
+def test(request):
+    return render(request, 'app/test.html')
+
+
 # プライバシーポリシー
 def privacy(request):
     return render(request, 'app/privacy.html')

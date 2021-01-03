@@ -1,3 +1,4 @@
+
 ul{
     list-style: none;
 }
@@ -38,8 +39,6 @@ select{
 .navbar-nav  > li > a:focus{
     color:#FAFAFA !important;
 }
-
-
 
 .profile_icon{
     width: 100%;
@@ -241,24 +240,6 @@ li.item {
     height: 250px;
 }	
 
-
-/* タブレット向け映画リスト表示 */
-@media screen and  (max-width:992px)  { 
-    .movie{
-    width: calc(100%/3);
-    float: left;
-    padding: 0.25rem;
-    }
-}
-
-/* スマホ向け映画リスト表示 */
-@media screen and (max-width: 576px) { 
-    .movie{
-    width: calc(100%/3);
-    float: left;
-    padding: 5px;
-    }
-}
 
 .movie_font{
     font-size: 1rem;
