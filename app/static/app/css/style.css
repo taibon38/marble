@@ -121,6 +121,12 @@ select{
     border-radius: 2px;
 }
 
+.character_icon_left {
+    width: 100%;
+    object-fit: cover;
+    border-radius: 2px;
+}
+
 .main_title{
     font-weight: bold;
     color: #333333;
