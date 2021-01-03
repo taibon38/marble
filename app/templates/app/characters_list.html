@@ -1,7 +1,8 @@
 <div class="character_tags">
     {% for character  in characters_list %}
     <div class="character text-center px-3">
-        <a href="{% url 'app:search_character' character=character.name %}" class="text-decoration-none">
+        <!-- 検索結果を表示したいとき→ <a href="{% url 'app:search_character' character=character.name %}" class="text-decoration-none"> -->
+        <a href="{% url 'app:character' character.id %}" class="text-decoration-none">
             {% if character.character_icon %}
             <img src={{character.character_icon.url}} class="search_character_icon_min mt-3 mb-1" />
             <p class="text-center text-dark search_character_title">{{character.name}}</p>
