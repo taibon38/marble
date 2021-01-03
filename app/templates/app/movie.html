@@ -28,6 +28,9 @@
                                 <input type="submit" name="submit" class="fas btn btn-success mb-2" value="&#xf06e;  観たよ" />
                             {% endif %}
                         </form>
+                    {% else %}
+                        <a class="fas btn btn-success submit_button mt-2 " href="{% url 'app:login' %}">&#xf004; お気に入り登録</a>
+                        <a class="fas btn btn-success submit_button my-2 " href="{% url 'app:login' %}">&#xf06e; 観たよ</a>
                     {% endif %}
                 </div> <!-- left -->
                 
