@@ -23,6 +23,11 @@
                             <!-- <input type="submit" name="submit" class="fav fav-tag fav-tag--ver" value="好き認定" /><i class="fas fa-star"></i></input> -->
                         {% endif %}
                     </form>
+                    {% else %}
+                        <a class="fas btn btn-success submit_button mt-2 " href="{% url 'app:login' %}">&#xf6fa; 好き認定</a>
+                        <p class="font-small mt-1">
+                            会員登録(無料)でマイページの「<i class="fas fa-mask mr-1"></i>好きなキャラ」に登録できます
+                        </p>
                     {% endif %}
                 </div>
         </div> <!-- left -->
