@@ -1,37 +1,77 @@
 /* css練習ここから */
 
-
 body.test{
-    margin: 0;
+    margin: 0;  /* bodyの左側の余白を削除 */
     font-size: 2rem;
-    display: flex;
-    min-height: 100vh;
+    display: flex;  /* mainを横並びに */
+    min-height: 100vh;  /* ページビューのサイズMAX */
 }
 
 aside.test{
-    width: 25%;
+    width: 25%; /* asideの横幅をページの25% */
     min-width: 250px; /*最低限の横幅*/
     display: flex; /* navとdivの親要素。これをつけて子要素のdivにmargin-top:auto;をつけると下に固定できる */
     flex-direction: column; /*縦並び*/
 }
 
 ul.test{
-    list-style: none;
-    padding: 0;
-    margin: 0;
+    list-style: none; /* リストの点をなくす */
+    padding: 0; /* リストの横の隙間をなくす */
+    margin: 0;  /* リストの上の隙間をなくす */
 }
 
 div.test{
-    height: 300px;
-    margin-top: auto;
+    height: 300px; /* side footerの高さ調整 */
+    margin-top: auto;/* side footerをページの下に固定 */
 }
 
 main.test{
-    width: 700px;
+    width: 700px; /* mainの横幅 */
     margin:0 auto; /* 中央寄せ */
     /* flex: 1; */ /* widthよりもflexが優先される。こちらにするとページ幅で表示される */
 }
 
+
+.open,
+.close{
+    display: none; /* PCでは非表示設定 */
+}
+input[type="checkbox"]{ /* checkboxは、display noneだと反応しないため、隠す */
+    position: absolute; /*絶対位置を指定。起点は左上*/
+    left: -50vw; /* 画面の左上から50vw分左に隠してある */
+    /* top: 100px;  leftのマイナスを消してこれをつけると、チェックボックスの有無が確認できる。*/
+}
+@media screen and (max-width: 1000px){
+    main{
+        width: 100%;
+        padding-top: 50px; /* 🍔にかぶらないようにpaddingを入れている */
+    }
+    .open,
+    .close{
+        display: block; /* PCのdisplayプロパティを書き換える目的。値は何でもOK */
+    }
+    .open{
+        position: absolute; /* 左上に🍔を固定*/
+    }
+    aside{
+        position: absolute;
+        left: -250px; /* asideのmin-widthを250pxにしているため、250ずらせば隠せる */
+        height: 100%;
+        transition: all 0.2s; /* allは、全てのプロパティの変更に対してアニメーションを設定する。0.3s以内がユーザビリティ○ */
+        background: #ffffff; /* 背景色を設定しないとデフォルトは透明 */
+    }
+
+    input[type="checkbox"]:checked ~ aside{
+        left: 0;
+    } /* ~ は、関節セレクタ。同じ親かつその後の要素のasideに効く */
+
+    input[type="checkbox"]:checked ~ .back{
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.8) !important; /* 黒色を0.8の透明に。!importantは、UIビルダーの拡張機能を外すならなしでもOK*/
+    }
+}
 
 
 /* css練習ここまで */
@@ -148,7 +188,7 @@ select{
 .container-fluid {
     margin-right: auto;
     margin-left: auto;
-    max-width: 900px; //例えば
+    max-width: 900px;
     }
 
 
