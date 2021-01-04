@@ -51,25 +51,29 @@ input[type="checkbox"]{ /* checkboxは、display noneだと反応しないため
         display: block; /* PCのdisplayプロパティを書き換える目的。値は何でもOK */
     }
     .open{
-        position: absolute; /* 左上に🍔を固定*/
+        position: absolute; /* 🍔を固定*/
+        right: 0; /* 右の余白をゼロに */
     }
     aside{
         position: absolute;
-        left: -250px; /* asideのmin-widthを250pxにしているため、250ずらせば隠せる */
+        right: -250px; /* asideのmin-widthを250pxにしているため、250ずらせば隠せる */
         height: 100%;
         transition: all 0.2s; /* allは、全てのプロパティの変更に対してアニメーションを設定する。0.3s以内がユーザビリティ○ */
         background: #ffffff; /* 背景色を設定しないとデフォルトは透明 */
     }
 
+    /* ~ は、関節セレクタ。同じ親かつその後の要素のasideに効く */
+    /* checkboxにチェックが入っているときに、rightが0になる。asideを右に隠しているため、右から出てくるように見える */
     input[type="checkbox"]:checked ~ aside{
-        left: 0;
-    } /* ~ は、関節セレクタ。同じ親かつその後の要素のasideに効く */
-
+        right: 0;
+    } 
+    
+    /* メニュー横の背景部分を指定 */
     input[type="checkbox"]:checked ~ .back{
         position: absolute;
         width: 100%;
         height: 100%;
-        background: rgba(0, 0, 0, 0.8) !important; /* 黒色を0.8の透明に。!importantは、UIビルダーの拡張機能を外すならなしでもOK*/
+        background: rgba(0, 0, 0, 0.5) !important; /* 黒色を0.8の透明に。!importantは、UIビルダーの拡張機能を外すならなしでもOK*/
     }
 }
 
