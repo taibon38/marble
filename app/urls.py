@@ -12,10 +12,6 @@ app_name = 'app'
 handler404 = handle_page_not_found
 urlpatterns = [
     path(
-        'test/',
-        views.test,
-        name='test'),
-    path(
         '',
         views.index,
         name='index'),
@@ -127,5 +123,13 @@ urlpatterns = [
     path('email/change/', views.EmailChange.as_view(), name='email_change'),
     path('email/change/done/', views.EmailChangeDone.as_view(), name='email_change_done'),
     path('email/change/complete/<str:token>/', views.EmailChangeComplete.as_view(), name='email_change_complete'),
+    path(
+        'test/',
+        views.test,
+        name='test'),
+    path(
+        'test_nav/',
+        views.test_nav,
+        name='test_nav'),
 ]
 

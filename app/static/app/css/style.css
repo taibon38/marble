@@ -84,6 +84,55 @@ input[type="checkbox"]{ /* checkboxは、display noneだと反応しないため
     }
 }
 
+/* test_navに対するcss */
+body.test_nav{
+    min-height: 100vh; /* 最低の高さを100vhで指定。heightだけだとコンテンツが増えたときに見切れてしまう*/ 
+    width: 800px;
+    margin: 0 auto; /* bodyを中央寄せに */
+    display: grid;
+    grid-template: 
+        "header header header header header" 150px
+        "...... ...... ...... ...... ......" 10px
+        "left   ...... center ...... right" 1fr /*いっぱいいっぱいに引き伸ばすとき*/
+        "...... ...... ...... ...... ......" 10px /*余白つけれる。子要素にmarginを指定しなくてOK*/
+        "footer footer footer footer footer" 200px
+        / 150px 20px 1fr 10px 200px /* 横幅の指定 */
+    ;
+
+}
+
+header.test_nav{
+    grid-area: header;
+}
+
+main.test_nav{
+    grid-area: center;
+}
+
+nav.test_nav{
+    grid-area: left;
+}
+
+aside.test_nav{
+    grid-area: right;
+}
+
+footer.test_nav{
+    grid-area: footer;
+}
+
+@media screen and (max-width:1000px){
+    body.test_nav{
+        grid-template: 
+            "header" 150px
+            "center" 1fr
+            "left  "
+            "right "
+            "footer" 200px
+        ;
+    }
+}
+
 
 /* css練習ここまで */
 

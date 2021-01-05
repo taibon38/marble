@@ -100,6 +100,10 @@ def handle_page_not_found(request, exception):
 def test(request):
     return render(request, 'app/test.html')
 
+# navテスト
+def test_nav(request):
+    return render(request, 'app/test_nav.html')
+
 
 # プライバシーポリシー
 def privacy(request):
