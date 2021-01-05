@@ -8,7 +8,8 @@ body.test{
 }
 
 aside.test{
-    width: 25%; /* asideの横幅をページの25% */
+    /* width: 100%; */
+    width: 25%; /*asideの横幅をページの25%*/
     min-width: 250px; /*最低限の横幅*/
     display: flex; /* navとdivの親要素。これをつけて子要素のdivにmargin-top:auto;をつけると下に固定できる */
     flex-direction: column; /*縦並び*/
@@ -35,6 +36,8 @@ main.test{
 .open,
 .close{
     display: none; /* PCでは非表示設定 */
+    /* text-align: right;
+    padding-right: 10px; */
 }
 input[type="checkbox"]{ /* checkboxは、display noneだと反応しないため、隠す */
     position: absolute; /*絶対位置を指定。起点は左上*/
@@ -56,7 +59,9 @@ input[type="checkbox"]{ /* checkboxは、display noneだと反応しないため
     }
     aside{
         position: absolute;
-        right: -250px; /* asideのmin-widthを250pxにしているため、250ずらせば隠せる */
+        right: -250px; 
+        /* asideのmin-widthを250pxにしているため、250ずらせば隠せる */
+        /* top: -100vh; */
         height: 100%;
         transition: all 0.2s; /* allは、全てのプロパティの変更に対してアニメーションを設定する。0.3s以内がユーザビリティ○ */
         background: #ffffff; /* 背景色を設定しないとデフォルトは透明 */
@@ -66,6 +71,8 @@ input[type="checkbox"]{ /* checkboxは、display noneだと反応しないため
     /* checkboxにチェックが入っているときに、rightが0になる。asideを右に隠しているため、右から出てくるように見える */
     input[type="checkbox"]:checked ~ aside{
         right: 0;
+        /*topから出てくる仕様はこっち*/
+        /* top: 0;  */
     } 
     
     /* メニュー横の背景部分を指定 */
