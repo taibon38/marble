@@ -59,6 +59,7 @@
 
 </head>  
 
+<!-- gridの練習
 <body class="test_nav">
     <header class="test_nav">
         header
@@ -67,5 +68,38 @@
     <main class="test_nav">center</main>
     <aside class="test_nav">right</aside>
     <footer class="test_nav">footer</footer>
+</body>-->
+
+<body>
+    <header>
+        <ul class="menu">
+            <li class="logo">
+                <a class="text-white" href="{% url 'app:index' %}"><img src="{% static 'images/marble_logo-b.png' %}" class="logo"></a>
+            </li>
+            <li class="menu_search">
+                <!-- フリーワード検索欄 -->
+                <form method="GET" action="{% url 'app:index' %}"　class="form-inline ">
+                    <div class="input-group input-group-sm">
+                        <input type="search" name="keyword" class="form-control" placeholder="フリーワードで探す" aria-label="フリーワードで探す">
+                        <div class="input-group-append">
+                            <button type="submit" class="btn btn-secondary"><i class="fas fa-search"></i></button>
+                        </div>
+                    </div>
+                </form>
+            </li>
+            <li>MARBLEとは</li>
+            <li>キャラクターで探す</li>
+            <li>楽しみ方で探す</li>
+
+
+        </ul>
+    </header>
+    <main>main</main>
+    <footer>footer</footer>
 </body>
-</html>
+
+
+
+</html> 
+
+

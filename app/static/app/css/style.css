@@ -1,7 +1,7 @@
 /* css練習ここから */
 
 body.test{
-    margin: 0;  /* bodyの左側の余白を削除 */
+    margin: 0;  /* bdyの左側の余白を削除 */
     font-size: 2rem;
     display: flex;  /* mainを横並びに */
     min-height: 100vh;  /* ページビューのサイズMAX */
@@ -137,6 +137,29 @@ footer.test_nav{
 /* css練習ここまで */
 
 
+/* ガチcss */
+
+ul.menu{
+    list-style: none;
+    padding: 10px 0 ; /* headerの上下にpadding */
+    margin: 0;
+    display: flex; /* 横並び*/
+    padding-left: 0;
+    align-items: center; /* 上下中央揃え */
+    height: 50px; /* headerの高さを指定*/
+}
+
+li.logo{
+    margin-right: auto; /*ロゴだけ左寄せ（右のコンテンツと自動でmarginを取る）*/
+}
+
+li.menu_search{　/* フリーワード検索を中央寄せ */
+    margin-left: auto; 
+    margin-right: auto;
+}
+
+
+/* bootstrapメインcss */
 ul{
     list-style: none;
 }
