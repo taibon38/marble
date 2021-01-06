@@ -74,9 +74,18 @@
     <header>
         <ul class="menu">
             <li class="logo">
-                <a class="text-white" href="{% url 'app:index' %}"><img src="{% static 'images/marble_logo-b.png' %}" class="logo"></a>
+                <a  href="{% url 'app:index' %}"><img src="{% static 'images/marble_logo-b.png' %}" class="logo"></a>
             </li>
-            <li class="menu_search">
+            <li>
+                <a  href="{% url 'app:how' %}">MARBLE(マーブル)とは</a>
+            </li>
+            <li>
+                <a  href="/#character">キャラクターで探す</a>
+            </li>
+            <li>
+                <a href="/#category">楽しみ方で探す</a>
+            </li>
+            <li>
                 <!-- フリーワード検索欄 -->
                 <form method="GET" action="{% url 'app:index' %}"　class="form-inline ">
                     <div class="input-group input-group-sm">
@@ -87,10 +96,27 @@
                     </div>
                 </form>
             </li>
-            <li>MARBLEとは</li>
-            <li>キャラクターで探す</li>
-            <li>楽しみ方で探す</li>
-
+            <li>
+                <div>
+                    {% if request.user.is_authenticated %}
+                        <li class="nav-item dropdown">
+                            <button type="button" class="btn text-dark dropdown-toggle btn-smw" id="dropdownMenuOffset" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-offset="10,20">
+                                <img src="{{ user.profile_icon_url }}" class="profile_icon">
+                                マイページ
+                            </button>
+                            <div class="dropdown-menu" aria-labelledby="dropdownMenuOffset">
+                                <a class="dropdown-item" href="{% url 'app:mypage' %}">マイページ</a>
+                                <a class="dropdown-item" href="{% url 'app:profile' %}">プロフィール</a>
+                                <a class="dropdown-item" href="{% url 'app:contact' %}">お問い合わせ</a>
+                                <div class="dropdown-divider"></div>
+                                <a class="dropdown-item" href="{% url 'app:logout' %}">ログアウト</a>
+                            </div>
+                        </li>
+                    {% else %}
+                        <a class="btn btn-warning my-auto btn-sm" href="{% url 'app:login' %}">登録・ログイン</a>
+                    {% endif %}
+                </div>
+            </li>
 
         </ul>
     </header>

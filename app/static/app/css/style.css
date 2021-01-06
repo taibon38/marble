@@ -153,10 +153,30 @@ li.logo{
     margin-right: auto; /*ロゴだけ左寄せ（右のコンテンツと自動でmarginを取る）*/
 }
 
-li.menu_search{　/* フリーワード検索を中央寄せ */
-    margin-left: auto; 
-    margin-right: auto;
+li.logo > a > img{
+    max-height: 40px; /* ロゴサイズの指定 */
 }
+
+ul > li{
+    margin-right: 10px; /* headerメニューにmargin設定 */
+}
+
+/* ヘッダー文字色 */
+.menu > li > a{ 
+    color: #4E5B60 ;
+    font-size: 0.9em;
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+.menu  > li > a:hover{
+    text-decoration: none ;
+    color:#F9BC50 ;
+}
+.menu  > li > a:focus{
+    color:#F9BC50 ;
+}
+
 
 
 /* bootstrapメインcss */
