@@ -1,150 +1,11 @@
-/* css練習ここから */
-
-body.test{
-    margin: 0;  /* bdyの左側の余白を削除 */
-    font-size: 2rem;
-    display: flex;  /* mainを横並びに */
-    min-height: 100vh;  /* ページビューのサイズMAX */
-}
-
-aside.test{
-    /* width: 100%; */
-    width: 25%; /*asideの横幅をページの25%*/
-    min-width: 250px; /*最低限の横幅*/
-    display: flex; /* navとdivの親要素。これをつけて子要素のdivにmargin-top:auto;をつけると下に固定できる */
-    flex-direction: column; /*縦並び*/
-}
-
-ul.test{
-    list-style: none; /* リストの点をなくす */
-    padding: 0; /* リストの横の隙間をなくす */
-    margin: 0;  /* リストの上の隙間をなくす */
-}
-
-div.test{
-    height: 300px; /* side footerの高さ調整 */
-    margin-top: auto;/* side footerをページの下に固定 */
-}
-
-main.test{
-    width: 700px; /* mainの横幅 */
-    margin:0 auto; /* 中央寄せ */
-    /* flex: 1; */ /* widthよりもflexが優先される。こちらにするとページ幅で表示される */
-}
-
-
-.open,
-.close{
-    display: none; /* PCでは非表示設定 */
-    /* text-align: right;
-    padding-right: 10px; */
-}
-input[type="checkbox"]{ /* checkboxは、display noneだと反応しないため、隠す */
-    position: absolute; /*絶対位置を指定。起点は左上*/
-    left: -50vw; /* 画面の左上から50vw分左に隠してある */
-    /* top: 100px;  leftのマイナスを消してこれをつけると、チェックボックスの有無が確認できる。*/
-}
-@media screen and (max-width: 1000px){
-    main{
-        width: 100%;
-        padding-top: 50px; /* 🍔にかぶらないようにpaddingを入れている */
-    }
-    .open,
-    .close{
-        display: block; /* PCのdisplayプロパティを書き換える目的。値は何でもOK */
-    }
-    .open{
-        position: absolute; /* 🍔を固定*/
-        right: 0; /* 右の余白をゼロに */
-    }
-    aside{
-        position: absolute;
-        right: -250px; 
-        /* asideのmin-widthを250pxにしているため、250ずらせば隠せる */
-        /* top: -100vh; */
-        height: 100%;
-        transition: all 0.2s; /* allは、全てのプロパティの変更に対してアニメーションを設定する。0.3s以内がユーザビリティ○ */
-        background: #ffffff; /* 背景色を設定しないとデフォルトは透明 */
-    }
-
-    /* ~ は、関節セレクタ。同じ親かつその後の要素のasideに効く */
-    /* checkboxにチェックが入っているときに、rightが0になる。asideを右に隠しているため、右から出てくるように見える */
-    input[type="checkbox"]:checked ~ aside{
-        right: 0;
-        /*topから出てくる仕様はこっち*/
-        /* top: 0;  */
-    } 
-    
-    /* メニュー横の背景部分を指定 */
-    input[type="checkbox"]:checked ~ .back{
-        position: absolute;
-        width: 100%;
-        height: 100%;
-        background: rgba(0, 0, 0, 0.5) !important; /* 黒色を0.8の透明に。!importantは、UIビルダーの拡張機能を外すならなしでもOK*/
-    }
-}
-
-/* test_navに対するcss */
-body.test_nav{
-    min-height: 100vh; /* 最低の高さを100vhで指定。heightだけだとコンテンツが増えたときに見切れてしまう*/ 
-    width: 800px;
-    margin: 0 auto; /* bodyを中央寄せに */
-    display: grid;
-    grid-template: 
-        "header header header header header" 150px
-        "...... ...... ...... ...... ......" 10px
-        "left   ...... center ...... right" 1fr /*いっぱいいっぱいに引き伸ばすとき*/
-        "...... ...... ...... ...... ......" 10px /*余白つけれる。子要素にmarginを指定しなくてOK*/
-        "footer footer footer footer footer" 200px
-        / 150px 20px 1fr 10px 200px /* 横幅の指定 */
-    ;
-
-}
-
-header.test_nav{
-    grid-area: header;
-}
-
-main.test_nav{
-    grid-area: center;
-}
-
-nav.test_nav{
-    grid-area: left;
-}
-
-aside.test_nav{
-    grid-area: right;
-}
-
-footer.test_nav{
-    grid-area: footer;
-}
-
-@media screen and (max-width:1000px){
-    body.test_nav{
-        grid-template: 
-            "header" 150px
-            "center" 1fr
-            "left  "
-            "right "
-            "footer" 200px
-        ;
-    }
-}
-
-
-/* css練習ここまで */
-
-
-/* ガチcss */
+/* ヘッダー用 */
 
 ul.menu{
     list-style: none;
     padding: 10px 0 ; /* headerの上下にpadding */
     margin: 0;
-    display: flex; /* 横並び*/
     padding-left: 0;
+    display: flex;
     align-items: center; /* 上下中央揃え */
     height: 50px; /* headerの高さを指定*/
 }
@@ -177,6 +38,91 @@ ul > li{
     color:#F9BC50 ;
 }
 
+.nav_open,
+.nav_close{
+    display: none;  
+    /* PCでは非表示設定 */
+    /* text-align: right;
+    padding-right: 10px; */
+}
+input[type="checkbox"]{ /* checkboxは、display noneだと反応しないため、隠す */
+    position: absolute; /*絶対位置を指定。起点は左上*/
+    left: -50vw; /* 画面の左上から50vw分左に隠してある */
+}
+
+
+ul.mobile_menu{ /*モバイル用ヘッダーをPCでは隠す*/
+    display: none;
+}
+
+@media screen and (max-width: 1000px){
+    /*モバイルになったときのヘッダー*/
+    ul.mobile_menu{
+        height: 30px;
+        padding: 0;
+        display: flex;
+    }
+    li.mobile_logo{
+        margin-right: auto; /*ロゴだけ左寄せ（右のコンテンツと自動でmarginを取る）*/
+    }
+    li.mobile_logo > a > img{
+        max-height: 30px; /* ロゴサイズの指定 */
+    }
+
+    /* モバイルになったときのスライドメニュー */
+    ul.menu{
+        /* width: 100%; */
+        width: 25%; /*asideの横幅をページの25%*/
+        min-width: 250px; /*最低限の横幅*/
+        display: flex; /* navとdivの親要素。これをつけて子要素のdivにmargin-top:auto;をつけると下に固定できる */
+        flex-direction: column; /*縦並び*/
+    }
+
+    .logo{
+        display: none; 
+        /* スマホのときはスライドしてくるナビにロゴ隠し */
+    }
+
+    .nav_open,
+    .nav_close{
+        display: block; 
+        /* PCのdisplayプロパティを書き換える目的。値は何でもOK */
+    }
+    .nav_open{
+        /* position: absolute;  */
+            /* 🍔を固定*/
+        right: 0; 
+            /* 右の余白をゼロに */
+    }
+    
+    header{
+        position: absolute;
+        right: -250px;  
+        /* headerのmin-widthを250pxにしているため、250ずらせば隠せる */
+        height: 100%;
+        transition: all 0.2s; 
+            /* allは、全てのプロパティの変更に対してアニメーションを設定する。0.3s以内がユーザビリティ○ */
+        background: #ffffff; 
+            /* 背景色を設定しないとデフォルトは透明 */
+    }
+
+    /* ~ は、関節セレクタ。同じ親かつその後の要素に効く */
+    /* checkboxにチェックが入っているときに、rightが0になる。asideを右に隠しているため、右から出てくるように見える */
+    input[type="checkbox"]:checked ~ header{
+        right: 0;
+        /* topから出てくる仕様はこっち */
+        /* top: 0;  */
+    } 
+    
+    /* メニュー横の背景部分を指定 */
+    input[type="checkbox"]:checked ~ .nav_back{
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.5) !important;  
+        /* 黒色を0.8の透明に。!importantは、UIビル ダーの拡張機能を外すならなしでもOK*/
+    }
+}
 
 
 /* bootstrapメインcss */
