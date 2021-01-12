@@ -8,10 +8,10 @@
     list-style: none;
     text-decoration: none;
     }
-
-/* ヘッダー設定 */
+x
+/* ヘッダー設定 */ 
 .header_bg{
-    background: #323232;
+    background: white;
     width: 100%;
     height: 80px;
 }
@@ -21,55 +21,51 @@
     max-width: 1024px;
     height: 100%;
     margin: 0 auto;
+    padding: 10px 0;
     display: flex;
     justify-content: space-between;
     align-items: center; /*上下中央寄せ*/
 }
 
 .logo{
-    height: 40px;
-    margin: 0 0 0 40px;
+    height: 35px;
 }
 
 /* ヘッダーナビゲーション */
 
 .header_nav_lists{
     display: flex;
+    align-items: center;
+    margin: 0;
 }
 
 .header_nav_lists li {
-    margin: 0 40px 0 0;
+    margin: 0 10px 0 0;
 }
 
 .nav_link {
-    font-size: 18px;
+    color: #4E5B60;
+    font-size: 14px;
+    text-decoration: none;
 }
 
-/* ハンバーガーメニュー */
+.nav_link:hover{
+    text-decoration: none ;
+    color:#F9BC50 ;
+}
 
-.responsive_btn{  /*この大きさを変更すればハンバーガーボタンを自由に帰れる*/
+.nav_link:focus{
+    text-decoration: none ;
+    color:#F9BC50 ;
+}
+
+/* レスポンシブ用メニュー PCでは非表示 */
+.hamburger-menu{
     display: none;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    width: 32px;
-    height: 32px;
-    margin: 0 40px 0 0 ;
-    cursor: pointer;
-    position: relative;
-    z-index: 10;
-}
-
-.menu_line{
-    background: #fafafa;
-    border-radius: 5px;
-    width: 100%;
-    height: 5px;
-    margin: 4px 0;
 }
 
 /* レスポンシブスタイル */
-@media screen and(max-width:768px){
+@media screen and (max-width:768px){
     .responsive_btn{
         display: flex;
     }
@@ -79,29 +75,130 @@
     }
 
     .header_nav{
-        background: #323232;
-        width: 100px;
+        background: white;
+        width: 360px;
         height: 100vh;
         padding: 80px 0 0 0 ;
-        position: fixed;
+        position: absolute;
         top: 0;
         right: -100%;
-        transition: 0.25s;
+        transition: .5s;
+        
     }
 
     .header_nav_lists{
         display: block;
-        text-align: center;
+        padding: 10px;
     }
 
     .header_nav_lists li{
-        margin: 0 0 40px;
+        margin: 0 0 10px;
         text-align: center;
     }
 
     .nav_link{
-        font-size: 20px;
+        font-size: 12px;
     }
+
+    /* ハンバーガーメニュー */
+    .hamburger-menu{
+        display: block;
+    }
+
+
+    .menu-btn {
+        position: fixed;
+        top: 10px;
+        right: 10px;
+        display: flex;
+        height: 60px;
+        width: 60px;
+        justify-content: center;
+        align-items: center;
+        z-index: 90;
+        background-color: #fff;
+    }
+    .menu-btn span,
+    .menu-btn span:before,
+    .menu-btn span:after {
+        content: '';
+        display: block;
+        height: 2px;
+        width: 25px;
+        border-radius: 3px;
+        background-color: #4E5B60;
+        position: absolute;
+    }
+    .menu-btn span:before {
+        bottom: 8px;
+    }
+    .menu-btn span:after {
+        top: 8px;
+    }
+
+    /* ✕ボタンの実装 */
+    #menu-btn-check:checked ~ .menu-btn span {
+        background-color: rgba(255, 255, 255, 0);/*メニューオープン時は真ん中の線を透明にする*/
+    }
+    #menu-btn-check:checked ~ .menu-btn span::before {
+        bottom: 0;
+        transform: rotate(45deg);
+    }
+    #menu-btn-check:checked ~ .menu-btn span::after {
+        top: 0;
+        transform: rotate(-45deg);
+    }
+
+    #menu-btn-check {
+        display: none; /* チェックボックスを非表示*/
+    }
+
+    /* メニューの内容表示 */
+    .menu-content {
+        width: 100%;
+        height: 100%;
+        position: fixed;
+        top: 0;
+        left: 100%;/*leftの値を変更してメニューを画面外へ*/
+        z-index: 80;
+        background-color: #fff;
+        transition: all 0.25s;/*アニメーション設定*/
+        box-shadow: 3px 2px 5px 6px rgba(0,0,0,0.1);
+    }
+
+    #menu-btn-check:checked ~ .menu-content {
+        left:  60vw;/*メニューを画面内へ*/
+    }
+
+    .menu-content ul {
+        padding: 70px 10px 0;
+    }
+    .menu-content ul li {
+        padding-left: 10px;
+        list-style: none;
+    }
+    .menu-content ul li a {
+        display: block;
+        width: 100%;
+        font-size: 15px;
+        box-sizing: border-box;
+        columns: #4E5B60;;
+        text-decoration: none;
+        padding: 9px 15px 10px 0;
+        position: relative;
+    }
+    .menu-content ul li a::before {
+        content: "";
+        width: 7px;
+        height: 7px;
+        border-top: solid 2px #ffffff;
+        border-right: solid 2px #ffffff;
+        transform: rotate(45deg);
+        position: absolute;
+        right: 11px;
+        top: 16px;
+    }
+
 
 }
 
@@ -109,3 +206,5 @@
 .menu_active {
     right: 0;
 }
+
+

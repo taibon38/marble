@@ -1,4 +1,3 @@
-
 // スムーズスクロール部分の記述
 $(function() {
     var headerHeight = $('.sticky-top').outerHeight();

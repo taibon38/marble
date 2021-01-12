@@ -1,5 +1,42 @@
-/* ヘッダー用 */
+/*styling open close button*/
+.menu_button {
+    display:inline;
+    position:absolute;
+    right:50px;
+    top:6px;
+    z-index:999;
+    font-size:30px;
+  }
+  .menu_button a {
+    text-decoration:none;
+  }
+  .btn-open:after {
+    color:#333;
+    content:"\f0c9";
+    font-family:"FontAwesome";
+    transition-property:all .2s linear 0s;
+    -moz-transition:all .2s linear 0s;
+    -webkit-transition:all .2s linear 0s;
+    -o-transition:all .2s linear 0s;
+  }
+  .btn-open:hover:after {
+    color:#34B484;
+  }
+  .btn-close:after {
+    color:#fff;
+    content:"\f00d";
+    font-family:"FontAwesome";
+    transition-property:all .2s linear 0s;
+    -moz-transition:all .2s linear 0s;
+    -webkit-transition:all .2s linear 0s;
+    -o-transition:all .2s linear 0s;
+  }
+  .btn-close:hover:after {
+    color: #34B484;
+  }
 
+
+/* ヘッダー用 */
 ul.menu{
     list-style: none;
     padding: 10px 0 ; /* headerの上下にpadding */
