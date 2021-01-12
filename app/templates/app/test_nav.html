@@ -75,10 +75,29 @@
     <header class="header_bg">
         <div class="header_contents">
             <a class="logo"  href="{% url 'app:index' %}"><img src="{% static 'images/marble_logo-b.png' %}" class="logo"></a>
-            
+            <div class="sp_login">
+                {% if request.user.is_authenticated %}
+                    <li class="nav-item dropdown">
+                        <button type="button" class="btn text-dark dropdown-toggle btn-smw" id="dropdownMenuOffset" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" data-offset="10,20">
+                            <img src="{{ user.profile_icon_url }}" class="profile_icon">
+                            マイページ
+                        </button>
+                        <div class="dropdown-menu" aria-labelledby="dropdownMenuOffset">
+                            <a class="dropdown-item" href="{% url 'app:mypage' %}">マイページ</a>
+                            <a class="dropdown-item" href="{% url 'app:profile' %}">プロフィール</a>
+                            <a class="dropdown-item" href="{% url 'app:contact' %}">お問い合わせ</a>
+                            <div class="dropdown-divider"></div>
+                            <a class="dropdown-item" href="{% url 'app:logout' %}">ログアウト</a>
+                        </div>
+                    </li>
+                {% else %}
+                    <a class="btn btn-warning my-auto btn-sm" href="{% url 'app:login' %}">登録・ログイン</a>
+                {% endif %}
+            </div>
             <div class="hamburger-menu">
                 <input type="checkbox" id="menu-btn-check">
                 <label for="menu-btn-check" class="menu-btn"><span></span></label>
+                
                 <!-- ここからメニュー -->
                 <div class="menu-content">
                     <ul>
@@ -91,7 +110,6 @@
                         <li>
                             <a class="nav_link" href="/#category">楽しみ方で探す</a>
                         </li>
-                        
                     </ul>
                 </div>
                 <!--ここまでメニュー-->
