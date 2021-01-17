@@ -11,7 +11,7 @@ $(function() {
         }, 100);
     }
   // ①aタグをクリックし、href属性に # から始まるリンクが設定してあったら発動
-  $('a[href^="/#"]').click(function(){
+  $('a[href^="#"]').click(function(){
  
     // ②クリックしたaタグのhref属性（リンク先URI）を取得し、変数に格納
     var href = $(this).attr('href');
@@ -24,7 +24,7 @@ $(function() {
     var position = target.offset().top - headerHeight;
  
     // ⑤scrollTopに上で取得した位置を設定し、ヌルヌルとスクロールさせる
-    $('html,body').animate({scrollTop : position}, 500);
+    $('html,body').animate({scrollTop : position}, 400);
  
     // ⑥a要素のデフォルトの機能を無効化する
     return false;
