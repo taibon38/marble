@@ -94,6 +94,7 @@
                     <a class="btn btn-warning my-auto btn-sm" href="{% url 'app:login' %}">登録・ログイン</a>
                 {% endif %}
             </div>
+
             <div class="hamburger-menu">
                 <input type="checkbox" id="menu-btn-check">
                 <label for="menu-btn-check" class="menu-btn"><span></span></label>
@@ -109,6 +110,17 @@
                         </li>
                         <li>
                             <a class="nav_link" href="/#category">楽しみ方で探す</a>
+                        </li>
+                        <li class="sp_search">
+                            <!-- フリーワード検索欄 -->
+                            <form method="GET" action="{% url 'app:index' %}"　class="form-inline ">
+                                <div class="input-group input-group-sm">
+                                    <input type="search" name="keyword" class="form-control" placeholder="ワード検索" aria-label="ワード検索">
+                                    <div class="input-group-append">
+                                        <button type="submit" class="btn btn-secondary"><i class="fas fa-search"></i></button>
+                                    </div>
+                                </div>
+                            </form>
                         </li>
                     </ul>
                 </div>

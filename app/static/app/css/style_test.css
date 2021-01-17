@@ -60,7 +60,7 @@ x
 }
 
 /* レスポンシブ用メニュー PCでは非表示 */
-.hamburger-menu,.sp_login{
+.hamburger-menu,.sp_login {
     display: none;
 }
 
@@ -85,7 +85,6 @@ x
         margin-left: auto;
         margin-right: 70px;
     }
-
     /* ハンバーガーメニュー */
     .hamburger-menu{
         display: block;
@@ -152,7 +151,7 @@ x
     }
 
     #menu-btn-check:checked ~ .menu-content {
-        left:  60vw;/*メニューを画面内へ*/
+        left:  45vw;/*メニューを画面内へ*/
     }
 
     .menu-content ul {
@@ -182,6 +181,12 @@ x
         position: absolute;
         right: 11px;
         top: 16px;
+    }
+
+    /* スマホの検索窓サイズ */
+    .sp_search{
+        margin-top: 10px;
+        width: 50vw;
     }
 
 
