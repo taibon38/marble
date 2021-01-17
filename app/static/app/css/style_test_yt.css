@@ -261,3 +261,130 @@ ul.mobile_menu{ /*モバイル用ヘッダーをPCでは隠す*/
     }
 }
 
+
+
+
+/* ヘッダー用（保存用 */
+ul.menu{
+    list-style: none;
+    padding: 10px 0 ; /* headerの上下にpadding */
+    margin: 0;
+    padding-left: 0;
+    display: flex;
+    align-items: center; /* 上下中央揃え */
+    height: 50px; /* headerの高さを指定*/
+}
+
+li.logo{
+    margin-right: auto; /*ロゴだけ左寄せ（右のコンテンツと自動でmarginを取る）*/
+}
+
+li.logo > a > img{
+    max-height: 40px; /* ロゴサイズの指定 */
+}
+
+ul > li{
+    margin-right: 10px; /* headerメニューにmargin設定 */
+}
+
+/* ヘッダー文字色 */
+.menu > li > a{ 
+    color: #4E5B60 ;
+    font-size: 0.9em;
+    margin-top: auto;
+    margin-bottom: auto;
+}
+
+.menu  > li > a:hover{
+    text-decoration: none ;
+    color:#F9BC50 ;
+}
+.menu  > li > a:focus{
+    color:#F9BC50 ;
+}
+
+.nav_open,
+.nav_close{
+    display: none;  
+    /* PCでは非表示設定 */
+    /* text-align: right;
+    padding-right: 10px; */
+}
+input[type="checkbox"]{ /* checkboxは、display noneだと反応しないため、隠す */
+    position: absolute; /*絶対位置を指定。起点は左上*/
+    left: -50vw; /* 画面の左上から50vw分左に隠してある */
+}
+
+
+ul.mobile_menu{ /*モバイル用ヘッダーをPCでは隠す*/
+    display: none;
+}
+
+@media screen and (max-width: 1000px){
+    /*モバイルになったときのヘッダー*/
+    ul.mobile_menu{
+        height: 30px;
+        padding: 0;
+        display: flex;
+    }
+    li.mobile_logo{
+        margin-right: auto; /*ロゴだけ左寄せ（右のコンテンツと自動でmarginを取る）*/
+    }
+    li.mobile_logo > a > img{
+        max-height: 30px; /* ロゴサイズの指定 */
+    }
+
+    /* モバイルになったときのスライドメニュー */
+    ul.menu{
+        /* width: 100%; */
+        width: 25%; /*asideの横幅をページの25%*/
+        min-width: 250px; /*最低限の横幅*/
+        display: flex; /* navとdivの親要素。これをつけて子要素のdivにmargin-top:auto;をつけると下に固定できる */
+        flex-direction: column; /*縦並び*/
+    }
+
+    .logo{
+        display: none; 
+        /* スマホのときはスライドしてくるナビにロゴ隠し */
+    }
+
+    .nav_open,
+    .nav_close{
+        display: block; 
+        /* PCのdisplayプロパティを書き換える目的。値は何でもOK */
+    }
+    .nav_open{
+        /* position: absolute;  */
+            /* 🍔を固定*/
+        right: 0; 
+            /* 右の余白をゼロに */
+    }
+    
+    header{
+        position: absolute;
+        right: -250px;  
+        /* headerのmin-widthを250pxにしているため、250ずらせば隠せる */
+        height: 100%;
+        transition: all 0.2s; 
+            /* allは、全てのプロパティの変更に対してアニメーションを設定する。0.3s以内がユーザビリティ○ */
+        background: #ffffff; 
+            /* 背景色を設定しないとデフォルトは透明 */
+    }
+
+    /* ~ は、関節セレクタ。同じ親かつその後の要素に効く */
+    /* checkboxにチェックが入っているときに、rightが0になる。asideを右に隠しているため、右から出てくるように見える */
+    input[type="checkbox"]:checked ~ header{
+        right: 0;
+        /* topから出てくる仕様はこっち */
+        /* top: 0;  */
+    } 
+    
+    /* メニュー横の背景部分を指定 */
+    input[type="checkbox"]:checked ~ .nav_back{
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.5) !important;  
+        /* 黒色を0.8の透明に。!importantは、UIビル ダーの拡張機能を外すならなしでもOK*/
+    }
+}

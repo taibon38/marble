@@ -8,7 +8,6 @@
     list-style: none;
     text-decoration: none;
     }
-x
 /* ヘッダー設定 */ 
 .header_bg{
     background: white;
@@ -188,13 +187,4 @@ x
         margin-top: 10px;
         width: 50vw;
     }
-
-
 }
-
-/* js function "menuToggle" starting only */
-.menu_active {
-    right: 0;
-}
-
-

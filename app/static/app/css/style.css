@@ -60,106 +60,185 @@ ul > li{
 }
 
 /* ヘッダー文字色 */
-.menu > li > a{ 
-    color: #4E5B60 ;
-    font-size: 0.9em;
-    margin-top: auto;
-    margin-bottom: auto;
+.header_bg{
+    background: white;
+    width: 100%;
 }
 
-.menu  > li > a:hover{
+.header_contents{
+    width: 100%;
+    /* max-width: 1024px; */
+    height: 100%;
+    margin: 0 auto;
+    padding: 10px 0;
+    display: flex;
+    justify-content: space-between;
+    align-items: center; /*上下中央寄せ*/
+}
+
+.logo{
+    height: 35px;
+}
+
+/* ヘッダーナビゲーション */
+
+.header_nav_lists{
+    display: flex;
+    align-items: center;
+    margin: 0;
+}
+
+.header_nav_lists li {
+    margin: 0 10px 0 0;
+}
+
+.nav_link {
+    color: #4E5B60;
+    font-size: 14px;
+    text-decoration: none;
+}
+
+.nav_link:hover{
     text-decoration: none ;
     color:#F9BC50 ;
 }
-.menu  > li > a:focus{
+
+.nav_link:focus{
+    text-decoration: none ;
     color:#F9BC50 ;
 }
 
-.nav_open,
-.nav_close{
-    display: none;  
-    /* PCでは非表示設定 */
-    /* text-align: right;
-    padding-right: 10px; */
-}
-input[type="checkbox"]{ /* checkboxは、display noneだと反応しないため、隠す */
-    position: absolute; /*絶対位置を指定。起点は左上*/
-    left: -50vw; /* 画面の左上から50vw分左に隠してある */
-}
-
-
-ul.mobile_menu{ /*モバイル用ヘッダーをPCでは隠す*/
+/* レスポンシブ用メニュー PCでは非表示 */
+.hamburger-menu,.sp_login {
     display: none;
 }
 
-@media screen and (max-width: 1000px){
-    /*モバイルになったときのヘッダー*/
-    ul.mobile_menu{
-        height: 30px;
-        padding: 0;
+
+/* レスポンシブスタイル */
+@media screen and (max-width:768px){
+    .responsive_btn{
         display: flex;
     }
-    li.mobile_logo{
-        margin-right: auto; /*ロゴだけ左寄せ（右のコンテンツと自動でmarginを取る）*/
-    }
-    li.mobile_logo > a > img{
-        max-height: 30px; /* ロゴサイズの指定 */
+
+    .header_bg{
+        position: relative;
     }
 
-    /* モバイルになったときのスライドメニュー */
-    ul.menu{
-        /* width: 100%; */
-        width: 25%; /*asideの横幅をページの25%*/
-        min-width: 250px; /*最低限の横幅*/
-        display: flex; /* navとdivの親要素。これをつけて子要素のdivにmargin-top:auto;をつけると下に固定できる */
-        flex-direction: column; /*縦並び*/
+    .header_nav{
+        display: none;
     }
 
-    .logo{
-        display: none; 
-        /* スマホのときはスライドしてくるナビにロゴ隠し */
+    /* 登録・ログインボタン */
+    .sp_login{
+        display: block;
+        margin-left: auto;
+        margin-right: 70px;
+    }
+    /* ハンバーガーメニュー */
+    .hamburger-menu{
+        display: block;
     }
 
-    .nav_open,
-    .nav_close{
-        display: block; 
-        /* PCのdisplayプロパティを書き換える目的。値は何でもOK */
-    }
-    .nav_open{
-        /* position: absolute;  */
-            /* 🍔を固定*/
-        right: 0; 
-            /* 右の余白をゼロに */
-    }
-    
-    header{
+    .menu-btn {
         position: absolute;
-        right: -250px;  
-        /* headerのmin-widthを250pxにしているため、250ずらせば隠せる */
-        height: 100%;
-        transition: all 0.2s; 
-            /* allは、全てのプロパティの変更に対してアニメーションを設定する。0.3s以内がユーザビリティ○ */
-        background: #ffffff; 
-            /* 背景色を設定しないとデフォルトは透明 */
+        top: 3px;
+        right: 10px;
+        display: flex;
+        height: 50px;
+        width: 50px;
+        justify-content: center;
+        align-items: center;
+        z-index: 90;
+        /* background-color: #fff; */
+    }
+    .menu-btn span,
+    .menu-btn span:before,
+    .menu-btn span:after {
+        content: '';
+        display: block;
+        height: 2px;
+        width: 25px;
+        border-radius: 3px;
+        background-color: #4E5B60;
+        position: absolute;
+    }
+    .menu-btn span:before {
+        bottom: 8px;
+    }
+    .menu-btn span:after {
+        top: 8px;
     }
 
-    /* ~ は、関節セレクタ。同じ親かつその後の要素に効く */
-    /* checkboxにチェックが入っているときに、rightが0になる。asideを右に隠しているため、右から出てくるように見える */
-    input[type="checkbox"]:checked ~ header{
-        right: 0;
-        /* topから出てくる仕様はこっち */
-        /* top: 0;  */
-    } 
-    
-    /* メニュー横の背景部分を指定 */
-    input[type="checkbox"]:checked ~ .nav_back{
-        position: absolute;
+    /* ✕ボタンの実装 */
+    #menu-btn-check:checked ~ .menu-btn span {
+        background-color: rgba(255, 255, 255, 0);/*メニューオープン時は真ん中の線を透明にする*/
+    }
+    #menu-btn-check:checked ~ .menu-btn span::before {
+        bottom: 0;
+        transform: rotate(45deg);
+    }
+    #menu-btn-check:checked ~ .menu-btn span::after {
+        top: 0;
+        transform: rotate(-45deg);
+    }
+
+    #menu-btn-check {
+        display: none; /* チェックボックスを非表示*/
+    }
+
+    /* メニューの内容表示 */
+    .menu-content {
         width: 100%;
         height: 100%;
-        background: rgba(0, 0, 0, 0.5) !important;  
-        /* 黒色を0.8の透明に。!importantは、UIビル ダーの拡張機能を外すならなしでもOK*/
+        position: fixed;
+        top: 0;
+        left: 100%;/*leftの値を変更してメニューを画面外へ*/
+        z-index: 80;
+        background-color: #fff;
+        transition: all 0.25s;/*アニメーション設定*/
+        box-shadow: 3px 2px 5px 6px rgba(0,0,0,0.1);
+    }
+
+    #menu-btn-check:checked ~ .menu-content {
+        left:  45vw;/*メニューを画面内へ*/
+    }
+
+    .menu-content ul {
+        padding: 70px 10px 0;
+    }
+    .menu-content ul li {
+        padding-left: 10px;
+        list-style: none;
+    }
+    .menu-content ul li a {
+        display: block;
+        width: 100%;
+        font-size: 15px;
+        box-sizing: border-box;
+        columns: #4E5B60;;
+        text-decoration: none;
+        padding: 9px 15px 10px 0;
+        position: relative;
+    }
+    .menu-content ul li a::before {
+        content: "";
+        width: 7px;
+        height: 7px;
+        border-top: solid 2px #ffffff;
+        border-right: solid 2px #ffffff;
+        transform: rotate(45deg);
+        position: absolute;
+        right: 11px;
+        top: 16px;
+    }
+
+    /* スマホの検索窓サイズ */
+    .sp_search{
+        margin-top: 10px;
+        width: 45vw;
     }
 }
+
 
 
 /* bootstrapメインcss */
@@ -177,9 +256,9 @@ select{
     color: #4E5B60;
 }
 
-.logo{
+/* .logo{
     height: 40px;
-}
+} */
 
 .header-menu{
     white-space:nowrap;
