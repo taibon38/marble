@@ -237,6 +237,18 @@ ul > li{
         margin-top: 10px;
         width: 45vw;
     }
+
+    /* マイページのタブ　PC版非表示*/
+    .nav-pc{
+        display: none;
+    }
+
+    .nav-sp{
+        display: block !important;
+        width: 25%;
+        text-align: center ;
+    }
+
 }
 
 
@@ -565,9 +577,13 @@ li.item {
     color:black !important;
 }
 
+/* マイページでスマホ用タブを非表示 */
+.nav-sp{
+    display: none;
+}
 
 
-/* 下記はマイページでボタンをクリックしたときの動作 */
+/* 下記はマイページボタンをクリックしたときの動作 */
 /*全体*/
 .hidden_box {
     margin: 2em 0;/*前後の余白*/
@@ -620,6 +636,7 @@ li.item {
 .tab-content{
     background-color: transparent;
 }
+
 
 
 /* プライバシーポリシーページのデザイン */
