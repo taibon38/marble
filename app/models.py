@@ -55,6 +55,7 @@ class Movie(models.Model):
 class Character(models.Model):
     """キャラクター"""
     name = models.CharField(verbose_name='キャラクター名', max_length=150)
+    subname = models.CharField(verbose_name='サブネーム', max_length=150, blank=True)
     title = models.CharField(verbose_name='キャッチコピー', max_length=150, blank=True)
     introduction = models.TextField(verbose_name='説明文', blank=True)
     character_icon = models.ImageField(

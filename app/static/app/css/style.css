@@ -393,6 +393,12 @@ select{
 
 .main_title{
     font-weight: bold;
+    font-size: large;
+    color: #333333;
+}
+
+.subname{
+    font-size: small;
     color: #333333;
 }
 

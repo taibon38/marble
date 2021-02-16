@@ -51,6 +51,7 @@ class CharacterAdmin(admin.ModelAdmin):
     list_display = (
         'id',
         'name',
+        'subname',
         'title',
         'character_icon',
         '_movies')
