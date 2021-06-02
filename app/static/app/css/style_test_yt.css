@@ -321,6 +321,13 @@ ul.mobile_menu{ /*モバイル用ヘッダーをPCでは隠す*/
 }
 
 /* satozonのコンテンツ */
+
+
+.satozon{
+    color: #e02222;
+}
+
+
 .boxContainer{
     font-size: 0;
 }
